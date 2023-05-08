@@ -1,0 +1,25 @@
+<html>
+
+<body>
+    <script type="module">
+        import { generate, parse } from "./personalInformation.js"
+        import {readAsString} from "./fileReader.js"
+        readAsString("./README.md")
+        window.document.body.appendChild(
+            generate(
+                parse(
+                    `
+                    ## 孙中杰
+                    - 性别：男
+                    - 年龄：23岁
+                    - 经验：10年经验
+                    - 号码：15653564910
+                    - 邮箱：1326840837@qq.com
+            `)
+            )
+        )
+
+    </script>
+</body>
+
+</html>
