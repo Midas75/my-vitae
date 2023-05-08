@@ -11,15 +11,10 @@ let personalInformation = {
             if (!key.startsWith("_") && data[key] != null) {
                 let div = document.createElement('div');
                 div.style = config.personalInformation._tagStyle;
-
-                let textLayer = document.createElement('div');
-                textLayer.style = config.personalInformation._textLayerStyle;
-                textLayer.innerHTML = formatIfExists(
+                div.innerHTML = formatIfExists(
                     config.personalInformation[key].format,
                     data[key]
                 )
-
-                div.appendChild(textLayer);
 
                 obj.contents[0].appendChild(div);
             }

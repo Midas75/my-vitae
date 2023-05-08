@@ -1,16 +1,15 @@
 const config = {
     baseModel: {
         _containerStyle: "100vw;clear:both;margin-bottom:4vw",
-        _contentStyle: "clear: both;margin-bottom: 2vw;font-size:1.5vw",
+        _contentStyle: "clear: both;margin-bottom: 2vw;font-size:1.5vw;padding-left:2vw",
         _titleLayerStyle: "clear:both;font-size:3vw;width:100vw;margin-bottom:1vw",
-        _splitLayerStyle: "clear:both;margin-bottom:2vw;align-items:flex-end;display:flex",
+        _splitLayerStyle: "clear:both;margin-bottom:2vw;",//align-items:flex-end;display:flex
         _leftSplitLineStyle: "width:10vw;background-color:aquamarine;height:1vw;",
-        _rightSplitLineStyle: "width:90vw;background-color:aqua;height:0.3vw",
+        _rightSplitLineStyle: "width:auto;background-color:aqua;height:0.3vw",
 
     },
     personalInformation: {
-        _tagStyle: "display:inline-table;background-color: #EEEEEE;margin-right: 1vw;padding-left: 0.5vw;padding-right: 0.5vw;",
-        _textLayerStyle: "font-size:2vw",
+        _tagStyle: "font-size:2vw;display:inline-table;background-color: #EEEEEE;margin-right: 1vw;padding-left: 0.5vw;padding-right: 0.5vw;",
 
         gender: {
             key: ["性别", "gender"],

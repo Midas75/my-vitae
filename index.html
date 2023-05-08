@@ -2,15 +2,14 @@
 
 <body>
     <!-- <script src="./marked.min.js"></script> -->
-    <script src="./marked.min.js"></script>
     <script type="module">
         import { personalInformation } from "./personalInformation.js"
         import { educationExperience } from "./educationExperience.js"
         import { award } from "./award.js"
         import { personalSkill } from "./personalSkill.js"
+        import { workExperience } from "./workExperience.js"
         import { readAsStringAsync } from "./fileReader.js"
-        import { split, removeAnnotation, findPersonalInformation } from "./mdSpliter.js"
-        import { findTitle } from "./baseMatcher.js"
+        import { findTitle, split, removeAnnotation, findPersonalInformation } from "./baseMatcher.js"
         let str = await readAsStringAsync("./README.md")
         str = removeAnnotation(str)
 
@@ -49,6 +48,15 @@
                     window.document.body.appendChild(
                         personalSkill.render(
                             personalSkill.parse(
+                                item
+                            )
+                        )
+                    )
+                    break;
+                case "工作经历":
+                    window.document.body.appendChild(
+                        workExperience.render(
+                            workExperience.parse(
                                 item
                             )
                         )

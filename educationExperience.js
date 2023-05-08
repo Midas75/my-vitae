@@ -1,7 +1,6 @@
-import { findTitle, findValueByKeys } from "./baseMatcher.js";
+import { findTitle, findValueByKeys,splitSub } from "./baseMatcher.js";
 import { config } from "./conf.js";
 import { formatIfExists } from "./utils.js";
-import { splitSub } from "./mdSpliter.js";
 import { newBaseModel } from "./baseModel.js";
 let educationExperience = {
     render: function (data) {
