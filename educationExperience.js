@@ -4,7 +4,7 @@ import { formatIfExists } from "./utils.js";
 import { splitSub } from "./mdSpliter.js";
 import { newBaseModel } from "./baseModel.js";
 let educationExperience = {
-    generate: function (data) {
+    render: function (data) {
         let obj = newBaseModel("教育经历", data.length)
 
         for (let i = 0; i < data.length; i++) {

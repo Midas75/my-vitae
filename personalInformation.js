@@ -4,7 +4,7 @@ import { config } from "./conf.js";
 import { formatIfExists } from "./utils.js";
 
 let personalInformation = {
-    generate: function (data) {
+    render: function (data) {
         let obj = newBaseModel(data.name);
 
         for (let key in config.personalInformation) {

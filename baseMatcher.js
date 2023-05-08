@@ -15,3 +15,9 @@ export function findValueByKeys(str, keys) {
 export function findTitle(str) {
     return str.match(/(?<=#?# ).+/)[0];
 }
+export function findContent(str){
+    return str.replace(/#+.*/g,"")
+}
+export function findAttribute(attribute){
+    return str.find(attribute)
+}

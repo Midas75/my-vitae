@@ -1,9 +1,13 @@
 <html>
 
 <body>
+    <!-- <script src="./marked.min.js"></script> -->
+    <script src="./marked.min.js"></script>
     <script type="module">
         import { personalInformation } from "./personalInformation.js"
         import { educationExperience } from "./educationExperience.js"
+        import { award } from "./award.js"
+        import { personalSkill } from "./personalSkill.js"
         import { readAsStringAsync } from "./fileReader.js"
         import { split, removeAnnotation, findPersonalInformation } from "./mdSpliter.js"
         import { findTitle } from "./baseMatcher.js"
@@ -11,7 +15,7 @@
         str = removeAnnotation(str)
 
         window.document.body.appendChild(
-            personalInformation.generate(
+            personalInformation.render(
                 personalInformation.parse(
                     findPersonalInformation(str)[0]
                 )
@@ -25,13 +29,30 @@
             switch (title) {
                 case "教育经历":
                     window.document.body.appendChild(
-                        educationExperience.generate(
+                        educationExperience.render(
                             educationExperience.parse(
                                 item
                             )
                         )
                     )
                     break;
+                case "获奖情况":
+                    window.document.body.appendChild(
+                        award.render(
+                            award.parse(
+                                item
+                            )
+                        )
+                    )
+                    break;
+                case "个人技能":
+                    window.document.body.appendChild(
+                        personalSkill.render(
+                            personalSkill.parse(
+                                item
+                            )
+                        )
+                    )
             }
         }
 

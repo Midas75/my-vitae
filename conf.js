@@ -1,15 +1,15 @@
 const config = {
     baseModel: {
         _containerStyle: "100vw;clear:both;margin-bottom:4vw",
-        _contentStyle: "clear: both;margin-bottom: 2vw;",
-        _titleLayerStyle: "clear:both;font-size:4vw;width:100vw;margin-bottom:1vw",
+        _contentStyle: "clear: both;margin-bottom: 2vw;font-size:1.5vw",
+        _titleLayerStyle: "clear:both;font-size:3vw;width:100vw;margin-bottom:1vw",
         _splitLayerStyle: "clear:both;margin-bottom:2vw;align-items:flex-end;display:flex",
         _leftSplitLineStyle: "width:10vw;background-color:aquamarine;height:1vw;",
         _rightSplitLineStyle: "width:90vw;background-color:aqua;height:0.3vw",
 
     },
     personalInformation: {
-        _tagStyle: "background-color: #EEEEEE;font:0.5vw;float:left;margin-right: 1vw;padding-left: 0.5vw;padding-right: 0.5vw;",
+        _tagStyle: "display:inline-table;background-color: #EEEEEE;margin-right: 1vw;padding-left: 0.5vw;padding-right: 0.5vw;",
         _textLayerStyle: "font-size:2vw",
 
         gender: {
@@ -27,7 +27,7 @@ const config = {
         work: {
             key: ["经验", "work"],
             format: function (value) {
-                return "💼 " + value+" 工作经验"
+                return "💼 " + value + " 工作经验"
             }
         },
         phone: {
@@ -45,7 +45,7 @@ const config = {
     },
     educationExperience: {
         _mainContainerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;",
-        _schoolLayerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;",
+        _schoolLayerStyle: "font-size: 2vw;font-weight: bold;",
         _timeLayerStyle: "font-size: 1.5vw;color: #AAAAAA;margin-left:2vw",
 
         _detailContainerStyle: "clear:both;align-items: baseline;display: flex;text-align: center;",
@@ -70,6 +70,35 @@ const config = {
             key: ["时间", "time"]
         },
 
+    },
+    award: {
+        _containerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;",
+        _timeLayerStyle: "font-size: 1.5vw;color: #AAAAAA;",
+        _awardLayerStyle: "font-size: 1.5vw;margin-left:2vw",
+
+        time: {
+            key: ["时间", "time"]
+        }
+    },
+    workExperience: {
+        _mainContainerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;",
+        _companyLayerStyle: "font-size: 2vw;",
+        _departmentLayerStyle: "font-size: 1.5vw;margin-left:2vw",
+        _positionLayerStyle:"font-size: 1.5vw;margin-left:2vw",
+        _practiceLayerStyle:"font-size:1.5vw;border-radius: 0.4vw;margin-left:2vw;background-color: #DFF;color:aqua;padding-left: 0.5vw;padding-right: 0.5vw;",
+        _timeLayerStyle:"font-size: 1.5vw;margin-left:auto",
+        department: {
+            key: ["部门", "department"]
+        },
+        position: {
+            key: ["职位", "position"]
+        },
+        time: {
+            key: ["时间", "time"]
+        },
+        content: {
+            key: ["内容", "content"]
+        }
     }
 }
 
