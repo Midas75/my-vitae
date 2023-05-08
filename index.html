@@ -2,22 +2,38 @@
 
 <body>
     <script type="module">
-        import { generate, parse } from "./personalInformation.js"
-        import {readAsString} from "./fileReader.js"
-        readAsString("./README.md")
+        import { personalInformation } from "./personalInformation.js"
+        import { educationExperience } from "./educationExperience.js"
+        import { readAsStringAsync } from "./fileReader.js"
+        import { split, removeAnnotation, findPersonalInformation } from "./mdSpliter.js"
+        import { findTitle } from "./baseMatcher.js"
+        let str = await readAsStringAsync("./README.md")
+        str = removeAnnotation(str)
+
         window.document.body.appendChild(
-            generate(
-                parse(
-                    `
-                    ## 孙中杰
-                    - 性别：男
-                    - 年龄：23岁
-                    - 经验：10年经验
-                    - 号码：15653564910
-                    - 邮箱：1326840837@qq.com
-            `)
+            personalInformation.generate(
+                personalInformation.parse(
+                    findPersonalInformation(str)[0]
+                )
             )
         )
+
+        str = split(str)
+
+        for (let item of str) {
+            let title = findTitle(item)
+            switch (title) {
+                case "教育经历":
+                    window.document.body.appendChild(
+                        educationExperience.generate(
+                            educationExperience.parse(
+                                item
+                            )
+                        )
+                    )
+                    break;
+            }
+        }
 
     </script>
 </body>
