@@ -1,4 +1,4 @@
-import { findTitle, findValueByKeys,splitSub } from "./baseMatcher.js";
+import { findTitle, findValueByKeys, splitIntoListItems, splitSub } from "./baseMatcher.js";
 import { config } from "./conf.js";
 import { newBaseModel } from "./baseModel.js";
 import { Lexer, marked } from "./marked.esm.min.js"
@@ -7,7 +7,6 @@ let workExperience = {
         let obj = newBaseModel("工作经历", data.length)
 
         for (let i = 0; i < data.length; i++) {
-
             let mainContainer = document.createElement('div');
             mainContainer.style = config.workExperience._mainContainerStyle;
 
@@ -31,7 +30,12 @@ let workExperience = {
                 positionLayer.innerHTML = data[i]["position"];
                 mainContainer.appendChild(positionLayer);
             }
-
+            if (data[i]["practice"] != null) {
+                let practiceLayer = document.createElement('div');
+                practiceLayer.style = config.workExperience._practiceLayerStyle;
+                practiceLayer.innerHTML = "实习";
+                mainContainer.appendChild(practiceLayer);
+            }
             if (data[i]["time"] != null) {
                 let timeLayer = document.createElement('div');
                 timeLayer.style = config.workExperience._timeLayerStyle;
@@ -39,12 +43,15 @@ let workExperience = {
                 mainContainer.appendChild(timeLayer);
             }
 
+            obj.contents[i].appendChild(mainContainer);
+
             if (data[i]["content"] != null) {
                 let contentLayer = document.createElement('div');
+                contentLayer.style = config.workExperience._contentLayerStyle
                 contentLayer.innerHTML = marked.parse(data[i]["content"]);
-                mainContainer.appendChild(contentLayer);
+                obj.contents[i].appendChild(contentLayer);
             }
-            obj.contents[i].appendChild(mainContainer);
+
         }
 
         return obj.container
@@ -52,15 +59,15 @@ let workExperience = {
     parse: function (str) {
         let data = [];
         let subs = splitSub(str)
-        
+
         for (let item of subs) {
-            let lex=Lexer.lex(item)
             let obj = {}
             obj["company"] = findTitle(item)
 
+            let listItems = splitIntoListItems(item);
             for (let key in config.workExperience) {
                 if (!key.startsWith("_")) {
-                    obj[key] = findValueByKeys(item, config.workExperience[key].key);
+                    obj[key] = findValueByKeys(listItems, config.workExperience[key].key);
                 }
             }
             data.push(obj)

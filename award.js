@@ -1,4 +1,4 @@
-import { findTitle, findValueByKeys,splitSub } from "./baseMatcher.js";
+import { findTitle, findValueByKeys,splitIntoListItems,splitSub } from "./baseMatcher.js";
 import { config } from "./conf.js";
 import { formatIfExists } from "./utils.js";
 import { newBaseModel } from "./baseModel.js";
@@ -37,8 +37,9 @@ let award = {
         for (let item of subs) {
 
             let obj = {}
+            let listItems=splitIntoListItems(item)
             obj["name"] = findTitle(item)
-            obj["time"] = findValueByKeys(item, config.award.time.key)
+            obj["time"] = findValueByKeys(listItems, config.award.time.key)
 
             data.push(obj)
         }

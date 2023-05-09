@@ -1,35 +1,60 @@
-export function findValueByKey(str, key) {
+import { Lexer } from "./marked.esm.min.js"
+
+export function _findValueByKey(str, key) {
     let matchResult = str.match(new RegExp("(?<=- (" + key + ")：).+"));
     if (matchResult != null) return matchResult[0];
     else return null;
 }
-export function findValueByKeys(str, keys) {
+export function _findValueByKeys(str, keys) {
     let queryKeys = "";
     for (let i = 0; i < keys.length; i++) {
         queryKeys += keys[i];
         if (i != keys.length - 1)
             queryKeys += "\|";
     }
-    return findValueByKey(str,queryKeys);
+    return _findValueByKey(str, queryKeys);
+}
+export function findValueByKeys(listItems,keys){
+    for(let key of keys){
+        if(listItems[key]!=null){
+            return listItems[key];
+        }
+    }
+    return null;
+}
+export function splitIntoListItems(str) {
+    let tokens = Lexer.lex(str)
+    let res = {
+
+    }
+    for (let item of tokens) {
+        if(item.type=="list"){
+            for(let listItem of item.items){
+                let spiltArray=listItem.text.split(/：|:/)
+                res[spiltArray[0]]=spiltArray[1]==null?spiltArray[0]:spiltArray[1]
+            }
+        }
+    }
+    return res
 }
 export function findTitle(str) {
     return str.match(/(?<=#?# ).+/)[0];
 }
-export function findContent(str){
-    return str.replace(/#+.*/g,"")
+export function findContent(str) {
+    return str.replace(/#+.*/g, "")
 }
-export function findAttribute(attribute){
+export function findAttribute(attribute) {
     return str.find(attribute)
 }
-export function split(str){
+export function split(str) {
     return str.match(/(## )[\s\S]*?(?=(\n## )|$)/g)
 }
-export function removeAnnotation(str){
-    return str.replace(/<!--[\s\S]*?-->/g,"")
+export function removeAnnotation(str) {
+    return str.replace(/<!--[\s\S]*?-->/g, "")
 }
-export function findPersonalInformation(str){
+export function findPersonalInformation(str) {
     return str.match(/(?<=(\n|^))(# )[\s\S]*?(?=(\n## )|$)/g)
 }
-export function splitSub(str){
+export function splitSub(str) {
     return str.match(/(### )[\s\S]*?(?=(\n#+?# )|$)/g)
 }

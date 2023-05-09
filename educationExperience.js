@@ -1,4 +1,4 @@
-import { findTitle, findValueByKeys,splitSub } from "./baseMatcher.js";
+import { findTitle, findValueByKeys,splitIntoListItems,splitSub } from "./baseMatcher.js";
 import { config } from "./conf.js";
 import { formatIfExists } from "./utils.js";
 import { newBaseModel } from "./baseModel.js";
@@ -63,10 +63,10 @@ let educationExperience = {
 
             let obj = {}
             obj["school"] = findTitle(item)
-
+            let listItems=splitIntoListItems(item)
             for (let key in config.educationExperience) {
                 if (!key.startsWith("_")) {
-                    obj[key] = findValueByKeys(item, config.educationExperience[key].key);
+                    obj[key] = findValueByKeys(listItems, config.educationExperience[key].key);
                 }
             }
             data.push(obj)

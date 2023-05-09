@@ -1,4 +1,4 @@
-import { findValueByKeys, findTitle } from "./baseMatcher.js";
+import { findValueByKeys,splitIntoListItems, findTitle } from "./baseMatcher.js";
 import { newBaseModel } from "./baseModel.js";
 import { config } from "./conf.js";
 import { formatIfExists } from "./utils.js";
@@ -26,10 +26,12 @@ let personalInformation = {
         str.replace(/\n+\n/g, "\n");
 
         data.name = findTitle(str);
+        
+        let listItems=splitIntoListItems(str);
 
         for (let key in config.personalInformation) {
             if (!key.startsWith("_")) {
-                data[key] = findValueByKeys(str, config.personalInformation[key].key);
+                data[key] = findValueByKeys(listItems, config.personalInformation[key].key);
             }
         }
         return data;

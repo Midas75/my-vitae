@@ -27,7 +27,7 @@ export function newBaseModel(title, subItemNumbers = 1) {
     let contents = []
     for (let i = 0; i < subItemNumbers; i++) {
         let content = document.createElement('div');
-        content.style = config.baseModel._contentStyle;
+        content.style = config.baseModel._contentContainerStyle;
         contents.push(content);
         container.appendChild(content);
     }

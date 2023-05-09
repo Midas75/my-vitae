@@ -1,11 +1,11 @@
 const config = {
     baseModel: {
         _containerStyle: "100vw;clear:both;margin-bottom:4vw",
-        _contentStyle: "clear: both;margin-bottom: 2vw;font-size:1.5vw;padding-left:2vw",
+        _contentContainerStyle: "clear: both;margin-bottom: 2vw;font-size:1.5vw;padding-left:2vw",
         _titleLayerStyle: "clear:both;font-size:3vw;width:100vw;margin-bottom:1vw",
         _splitLayerStyle: "clear:both;margin-bottom:2vw;",//align-items:flex-end;display:flex
-        _leftSplitLineStyle: "width:10vw;background-color:aquamarine;height:1vw;",
-        _rightSplitLineStyle: "width:auto;background-color:aqua;height:0.3vw",
+        _leftSplitLineStyle: "width:10vw;background-color:#DFF;height:1vw;",
+        _rightSplitLineStyle: "width:auto;background-color:#0DD;height:0.3vw",
 
     },
     personalInformation: {
@@ -84,8 +84,9 @@ const config = {
         _companyLayerStyle: "font-size: 2vw;",
         _departmentLayerStyle: "font-size: 1.5vw;margin-left:2vw",
         _positionLayerStyle:"font-size: 1.5vw;margin-left:2vw",
-        _practiceLayerStyle:"font-size:1.5vw;border-radius: 0.4vw;margin-left:2vw;background-color: #DFF;color:aqua;padding-left: 0.5vw;padding-right: 0.5vw;",
+        _practiceLayerStyle:"font-size:1.5vw;border-radius: 0.4vw;margin-left:2vw;background-color: #DFF;color:#0BB;padding-left: 0.5vw;padding-right: 0.5vw;",
         _timeLayerStyle:"font-size: 1.5vw;margin-left:auto",
+        _contentLayerStyle:"clear:both;font-size:1.5vw;",
         department: {
             key: ["部门", "department"]
         },
@@ -97,6 +98,9 @@ const config = {
         },
         content: {
             key: ["内容", "content"]
+        },
+        practice:{
+            key:["实习","practice"]
         }
     }
 }
