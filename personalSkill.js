@@ -10,11 +10,9 @@ let personalSkill = {
         return obj.container
     },
     parse: function (str) {
-        let data = {};
-
-        data.content = findContent(str);
-
-        return data
+        return {
+            content:findContent(str)
+        }
     }
 }
 export { personalSkill }

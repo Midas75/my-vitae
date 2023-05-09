@@ -23,7 +23,7 @@ export function findValueByKeys(listItems,keys){
     return null;
 }
 export function splitIntoListItems(str) {
-    let tokens = Lexer.lex(str)
+    let tokens = Lexer.lex(str);
     let res = {
 
     }
@@ -31,7 +31,12 @@ export function splitIntoListItems(str) {
         if(item.type=="list"){
             for(let listItem of item.items){
                 let spiltArray=listItem.text.split(/：|:/)
-                res[spiltArray[0]]=spiltArray[1]==null?spiltArray[0]:spiltArray[1]
+                if(spiltArray.length==1){
+                    res[spiltArray[0]]=spiltArray[0];    
+                }
+                else{
+                    res[spiltArray[0]]=listItem.text.substr(spiltArray[0].length+1);
+                }
             }
         }
     }
@@ -41,7 +46,12 @@ export function findTitle(str) {
     return str.match(/(?<=#?# ).+/)[0];
 }
 export function findContent(str) {
-    return str.replace(/#+.*/g, "")
+    let tokens=Lexer.lex(str)
+    let res="";
+    for(let i=1;i<tokens.length;i++){
+        res+=tokens[i].raw;
+    }
+    return res;
 }
 export function findAttribute(attribute) {
     return str.find(attribute)

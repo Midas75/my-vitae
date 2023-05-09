@@ -13,7 +13,7 @@ let educationExperience = {
 
             if (data[i]["school"] != null) {
                 let schoolLayer = document.createElement('div');
-                schoolLayer.style = config.educationExperience._schoolLayerStyle;
+                schoolLayer.style = config.educationExperience._titleLayerStyle;
                 schoolLayer.innerHTML = data[i]["school"];
                 mainContainer.appendChild(schoolLayer);
             }

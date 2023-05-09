@@ -18,7 +18,7 @@ let award = {
                 container.appendChild(timeLayer);
 
                 let awardLayer = document.createElement('div');
-                awardLayer.style=config.award._awardLayerStyle;
+                awardLayer.style=config.award._titleLayerStyle;
                 awardLayer.innerHTML=data[i]["name"];
                 container.appendChild(awardLayer);
             }
