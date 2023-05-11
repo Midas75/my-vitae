@@ -48,7 +48,7 @@
         let previewDoc = previewWindow.document;
 
         let editorArea = editorDoc.createElement('div');
-        editorArea.style = "width:100%;height:auto;white-space: pre-wrap;border:none;resize:none;padding:1vw"
+        editorArea.style = "height:auto;white-space: pre-wrap;border:none;resize:none;padding:1vw"
         editorArea.setAttribute('contenteditable', true);
         editorArea.setAttribute('user-modify',"read-write-plaintext-only");
         window.addEventListener('load', async function () {
