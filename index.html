@@ -32,6 +32,7 @@
         }
         for(let item of str){
             let title=findTitle(item)
+            if(titleModelMap[title]!=null)
             window.document.body.appendChild(
                 titleModelMap[title].render(
                     titleModelMap[title].parse(
