@@ -1,9 +1,17 @@
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
+
 <body>
-    <!-- <script src="./marked.min.js"></script> -->
+    <div id="container" style="display: flex;flex-direction: row;justify-content: center;height:100%">
+        <iframe id="editor" style="width:49vw;">
+        </iframe>
+        <div id="scrollLock" style="padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw">🔒</div>
+        <iframe id="preview" style="width:49vw;margin-left:auto">
+        </iframe>
+    </div>
     <script type="module">
         import { personalInformation } from "./personalInformation.js"
         import { educationExperience } from "./educationExperience.js"
@@ -13,37 +21,147 @@
         import { projectExperience } from "./projectExperience.js"
         import { readAsStringAsync } from "./fileReader.js"
         import { findTitle, split, removeAnnotation, findPersonalInformation } from "./baseMatcher.js"
-        let str = await readAsStringAsync("./MyVitae.md")
-        str = removeAnnotation(str)
 
-        window.document.body.appendChild(
-            personalInformation.render(
-                personalInformation.parse(
-                    findPersonalInformation(str)[0]
-                )
-            )
-        )
+        let str = "";
 
-        str = split(str)
-        let titleModelMap = {
-            "教育经历": educationExperience,
-            "获奖情况": award,
-            "个人技能": personalSkill,
-            "工作经历": workExperience,
-            "项目经历": projectExperience
-        }
-        for(let item of str){
-            let title=findTitle(item)
-            if(titleModelMap[title]!=null)
-            window.document.body.appendChild(
-                titleModelMap[title].render(
-                    titleModelMap[title].parse(
-                        item
+        let editor = document.getElementById('editor');
+        let preview = document.getElementById('preview');
+
+        let editorWindow = editor.contentWindow;
+        let previewWindow = preview.contentWindow;
+
+        let scrollTarget = null;
+        let scrollLock = true;
+
+        let scrollLockButton = document.getElementById("scrollLock");
+        scrollLockButton.addEventListener("click", function (event) {
+            if (scrollLock) {
+                scrollLockButton.innerText = "🔓";
+            }
+            else {
+                scrollLockButton.innerText = "🔒";
+            }
+            scrollLock = !scrollLock;
+        })
+
+        let editorDoc = editorWindow.document;
+        let previewDoc = previewWindow.document;
+
+        let editorArea = editorDoc.createElement('div');
+        editorArea.style = "width:100%;height:auto;white-space: pre-wrap;border:none;resize:none;"
+        editorArea.setAttribute('contenteditable', true);
+
+        window.addEventListener('load', async function () {
+            if (localStorage.getItem("myVitae") != null && localStorage.getItem("myVitae") != undefined) {
+                str = localStorage.getItem("myVitae")
+            }
+            else {
+                str = await readAsStringAsync("./MyVitae.md");
+            }
+            editorArea.innerHTML = str;
+            render(str)
+        })
+
+        editorDoc.addEventListener('keydown', function (event) {
+            if ((event.key == 'p' || event.key == 'P') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {// ctrl+p
+                event.preventDefault();
+                previewWindow.print()
+            } else if ((event.key == 's' || event.key == 'S') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {//ctrl+s
+                event.preventDefault();
+                localStorage.setItem("myVitae", editorArea.innerHTML)
+            }
+        })
+        previewDoc.addEventListener('keydown', function (event) {
+            if ((event.key == 'p' || event.key == 'P') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {// ctrl+p
+                event.preventDefault();
+                previewWindow.print()
+            }
+            else if ((event.key == 's' || event.key == 'S') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {//ctrl+s
+                event.preventDefault();
+                localStorage.setItem("myVitae", editorArea.innerHTML)
+            }
+        })
+        document.addEventListener('keydown', function (event) {
+            if ((event.key == 'p' || event.key == 'P') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {// ctrl+p
+                event.preventDefault();
+                previewWindow.print()
+            }
+            else if ((event.key == 's' || event.key == 'S') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {//ctrl+s
+                event.preventDefault();
+                localStorage.setItem("myVitae", editorArea.innerHTML)
+            }
+        })
+        editorWindow.addEventListener('mouseover', function (event) {
+            scrollTarget = editorWindow;
+        })
+        previewWindow.addEventListener('mouseover', function (event) {
+            scrollTarget = previewWindow;
+        })
+
+        editorWindow.addEventListener('scroll', function (event) {
+
+            if (scrollLock && scrollTarget === editorWindow) {
+                previewWindow.scroll({
+                    top: editorWindow.scrollY * (previewDoc.body.scrollHeight - previewDoc.body.clientHeight) / (editorDoc.body.scrollHeight - editorDoc.body.clientHeight),
+                });
+            }
+        })
+        previewWindow.addEventListener('scroll', function (event) {
+            if (scrollLock && scrollTarget === previewWindow) {
+                console.log(editorDoc.body.scrollHeight)
+                editorWindow.scroll({
+                    top: previewWindow.scrollY * (editorDoc.body.scrollHeight - editorDoc.body.clientHeight) / (previewDoc.body.scrollHeight - previewDoc.body.clientHeight),
+                });
+            }
+        })
+        
+        editorArea.addEventListener('keyup', function () {
+            str = editorArea.innerHTML;
+            render(str)
+        })
+
+
+
+
+
+
+        editorDoc.body.appendChild(editorArea);
+
+        function render(str) {
+            previewDoc.body.innerHTML = "";
+            str = removeAnnotation(str)
+
+            previewDoc.body.appendChild(
+                personalInformation.render(
+                    personalInformation.parse(
+                        findPersonalInformation(str)[0]
                     )
                 )
             )
+
+            str = split(str)
+            let titleModelMap = {
+                "教育经历": educationExperience,
+                "获奖情况": award,
+                "个人技能": personalSkill,
+                "工作经历": workExperience,
+                "项目经历": projectExperience
+            }
+            for (let item of str) {
+                let title = findTitle(item)
+                if (titleModelMap[title] != null)
+                    previewDoc.body.appendChild(
+                        titleModelMap[title].render(
+                            titleModelMap[title].parse(
+                                item
+                            )
+                        )
+                    )
+            }
         }
+
     </script>
+
 </body>
 
 </html>
