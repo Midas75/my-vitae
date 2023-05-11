@@ -48,7 +48,7 @@
         let previewDoc = previewWindow.document;
 
         let editorArea = editorDoc.createElement('div');
-        editorArea.style = "width:100%;height:auto;white-space: pre-wrap;border:none;resize:none;"
+        editorArea.style = "width:100%;height:auto;white-space: pre-wrap;border:none;resize:none;padding:1vw"
         editorArea.setAttribute('contenteditable', true);
 
         window.addEventListener('load', async function () {
@@ -114,7 +114,7 @@
                 });
             }
         })
-        
+
         editorArea.addEventListener('keyup', function () {
             str = editorArea.innerHTML;
             render(str)
