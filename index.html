@@ -8,7 +8,7 @@
     <div id="container" style="display: flex;flex-direction: row;justify-content: center;height:100%">
         <iframe id="editor" style="width:49vw;">
         </iframe>
-        <div id="scrollLock" style="padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw">🔒</div>
+        <div id="scrollLock" style="padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw;width:1.4vw">🔒</div>
         <iframe id="preview" style="width:49vw;margin-left:auto">
         </iframe>
     </div>
@@ -50,7 +50,7 @@
         let editorArea = editorDoc.createElement('div');
         editorArea.style = "width:100%;height:auto;white-space: pre-wrap;border:none;resize:none;padding:1vw"
         editorArea.setAttribute('contenteditable', true);
-
+        editorArea.setAttribute('user-modify',"read-write-plaintext-only");
         window.addEventListener('load', async function () {
             if (localStorage.getItem("myVitae") != null && localStorage.getItem("myVitae") != undefined) {
                 str = localStorage.getItem("myVitae")
