@@ -72,7 +72,6 @@ let projectExperience = {
                     obj[key] = findValueByKeys(listItems, config.projectExperience[key].key);
                 }
             }
-            console.log(obj)
             if(obj["hide"]!=null){
                 continue;
             }
