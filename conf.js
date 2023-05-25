@@ -99,7 +99,7 @@ const config = {
         content: {
             key: ["内容", "content"],
             format:function(value){
-                return marked.parse(value)
+                return marked.parse(value).replace(/a href/g,"a target=\"_blank\" href")
             }
         },
         practice:{
@@ -127,7 +127,7 @@ const config = {
         url:{
             key:["地址","url"],
             format:function(value){
-                return "地址：<a href=\""+value+"\">"+value+"</a>"
+                return "地址：<a target=\"_blank\" href=\""+value+"\">"+value+"</a>"
             }
         },
         hide:{
@@ -136,7 +136,7 @@ const config = {
         content:{
             key:["内容","content"],
             format:function(value){
-                return marked.parse(value)
+                return marked.parse(value).replace(/a href/g,"a target=\"_blank\" href")
             }
         }
     }

@@ -10,6 +10,8 @@
 - 基于约定格式将markdown渲染为html
 - 基于localStorage的文档保存（ctrl+s）
 - 基于浏览器打印功能的pdf生成（ctrl+p）
+  注意，如果想要很好的打印体验，一定要选择这个选项！（其他pdf打印机也可以，但是它们会存在链接不能跳转、文字不能选中、文字选中错乱等种种问题）
+  ![printTip](pic/printTip.png)
 - 双向滚动
 - markdown在线编辑与实时渲染
 
