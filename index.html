@@ -8,7 +8,17 @@
     <div id="container" style="display: flex;flex-direction: row;justify-content: center;height:100%">
         <iframe id="editor" style="width:49vw;">
         </iframe>
-        <div id="scrollLock" style="padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw;width:1.4vw">🔒</div>
+        <div style="clear:both">
+            <div id="scrollLock"
+                style="margin-bottom:0.2vw;padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw;width:1.4vw">
+                🔒</div>
+            <div id="save"
+                style="margin-bottom:0.2vw;padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw;width:1.4vw">
+                💾</div>
+            <div id="print"
+                style="margin-bottom:0.2vw;padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw;width:1.4vw">
+                📃</div>
+        </div>
         <iframe id="preview" style="width:49vw;margin-left:auto">
         </iframe>
     </div>
@@ -33,16 +43,7 @@
         let scrollTarget = null;
         let scrollLock = true;
 
-        let scrollLockButton = document.getElementById("scrollLock");
-        scrollLockButton.addEventListener("click", function (event) {
-            if (scrollLock) {
-                scrollLockButton.innerText = "🔓";
-            }
-            else {
-                scrollLockButton.innerText = "🔒";
-            }
-            scrollLock = !scrollLock;
-        })
+
 
         let editorDoc = editorWindow.document;
         let previewDoc = previewWindow.document;
@@ -50,7 +51,7 @@
         let editorArea = editorDoc.createElement('div');
         editorArea.style = "height:auto;white-space: pre-wrap;border:none;resize:none;padding:1vw"
         editorArea.setAttribute('contenteditable', true);
-        editorArea.setAttribute('user-modify',"read-write-plaintext-only");
+        editorArea.setAttribute('user-modify', "read-write-plaintext-only");
         window.addEventListener('load', async function () {
             if (localStorage.getItem("myVitae") != null && localStorage.getItem("myVitae") != undefined) {
                 str = localStorage.getItem("myVitae")
@@ -120,10 +121,26 @@
             render(str)
         })
 
+        let scrollLockButton = document.getElementById("scrollLock");
+        scrollLockButton.addEventListener("click", function (event) {
+            if (scrollLock) {
+                scrollLockButton.innerText = "🔓";
+            }
+            else {
+                scrollLockButton.innerText = "🔒";
+            }
+            scrollLock = !scrollLock;
+        })
 
+        let saveButton = document.getElementById("save");
+        saveButton.addEventListener("click",function(event){
+            localStorage.setItem("myVitae", editorArea.innerHTML)
+        })
 
-
-
+        let printButton = document.getElementById("print");
+        printButton.addEventListener("click", function (event) {
+            previewWindow.print();
+        })
 
         editorDoc.body.appendChild(editorArea);
 

@@ -111,8 +111,9 @@ const config = {
         _titleLayerStyle:"font-size: 2vw;padding-right:2vw",
         _roleLayerStyle:"font-size:1.5vw;padding-right:2vw",
         _timeLayerStyle:"font-size: 1.5vw;margin-left:auto",
-        // _technologyContainerStyle:"align-items: baseline;display: flex;margin-bottom: 0.5vw;",
+        _technologyContainerStyle:"align-items: baseline;display: flex;margin-bottom: 0.5vw;",
         _technologyLayerStyle:"font-size: 1.5vw;",
+        _technologyTagStyle:"font-size:1.5vw;display:inline-table;background-color: #EEEEEE;margin-right: 1vw;padding-left: 0.5vw;padding-right: 0.5vw;",
         _urlLayerStyle:"font-size:1.5vw",
         _contentLayerStyle:"font-size:1.5vw;",
         role:{

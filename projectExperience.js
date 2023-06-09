@@ -34,8 +34,14 @@ let projectExperience = {
             }
             if (data[i]["technology"] != null) {
                 let technologyLayer = document.createElement('div');
-                technologyLayer.style = config.projectExperience._technologyLayerStyle;
-                technologyLayer.innerHTML = formatIfExists(config.projectExperience.technology.format, data[i]["technology"]);;
+                technologyLayer.style = config.projectExperience._technologyContainerStyle;
+                let tagArrary=formatIfExists(config.projectExperience.technology.format, data[i]["technology"]).split("、");
+                for(let item of tagArrary){
+                    let tag=document.createElement('div');
+                    tag.style=config.projectExperience._technologyTagStyle;
+                    tag.innerHTML=item;
+                    technologyLayer.appendChild(tag);
+                }
                 obj.contents[i].appendChild(technologyLayer);
             }
             if (data[i]["url"] != null) {

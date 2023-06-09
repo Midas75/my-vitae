@@ -44,7 +44,7 @@
     - 负责慧安蜂巢灵境人工智能算法中台的开发任务（新功能技术方案制定、java、python、前端对接、基于K8S的部署与运维）
     - 慧安蜂巢智能小站工业物联网模块开发（嵌入式C++开发）
     - 参与多个项目/课题/白皮书的标书、PPT撰写，与合作方/客户对接确认需求并制定方案
-    - 使用Dockerfile+Harbor为公司内部提供便捷的多个开发环境部署（交叉编译、前端、后端、Postgres+ZK+Kafka等）
+    - 使用Dockerfile+Harbor为公司内部提供便捷的多个开发环境组件部署（交叉编译、前端、后端、Postgres+ZK+Kafka等）
     - 多个其他项目的技术方案制定与Demo实现，指导后续开发
 
 
@@ -84,8 +84,9 @@
 - 技术栈：SpringCloud、SpringSecurity、Python、K8S、Mysql、ELK、Redis、Nacos、其他
 - 内容：
     - 负责部署、运维、故障排查，负责严格遵循项目规范与风格的新功能的开发
-    - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+稀疏矩阵转HashSet+倒排索引的算法，从而高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
-    - 排查并解决了关于NFS、K8S StorageClass、KubeSphere、SpringSecurity拦截等多方面问题
+    - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+稀疏矩阵转TreeSet+倒排索引的算法，从而高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
+    - 负责流媒体在线服务功能的产品设计与开发（Java、Python），接入慧安蜂巢物联网操作系统平台的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免报警接口对外暴露或被随意调用，利用了K8S的configmap+Java的HttpServletRequest进行接口鉴权。
+    - 排查并解决了关于NFS、K8S StorageClass、KubeSphere、SpringSecurity拦截、SpringCloud动态路由等多种问题
     - 撰写Dockerfile，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载）搭建，使开发环境能够快速部署
 ### 望极——慧安蜂巢数实融合仿真平台
 - 职责：方案设计、前后端开发
@@ -200,7 +201,7 @@
 - 技术栈：C++、JAVA、计算机图形学
 - 地址：https://gitee.com/sun-zhongjie-0426/3d-demo
 - 内容：
-    - 手动实现了以绘制像素为基础的三维立方体展示，内容包括2ddaline直线绘制、投影变换、透视变换、blinn-phong光照模型、纹理图片加载与渲染、裁剪等内容的完整渲染管线。
+    - 手动实现了以绘制像素为基础的三维立方体展示，内容包括2ddaline直线绘制、投影变换、透视变换、光栅化、blinn-phong光照模型、纹理图片加载与渲染、裁剪等内容的完整渲染管线。
     - 实现了Java/c++两个版本，java版本通过flightRecorder的焰形图进行分析并确定性能瓶颈从而进行优化
     - 使用知名算法实现快速求平方根倒数，用于向量归一化等场景
 
