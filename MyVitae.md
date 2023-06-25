@@ -4,6 +4,7 @@
 - 电话：15653564910
 - 邮箱：1326840837@qq.com
 - 经验：10年
+- 头像：![avatar](./avatar.png)
 ## 教育经历
 ### 北京航空航天大学
 - 时间：2022.09~2025.06
@@ -29,7 +30,7 @@
 - 熟悉HTTP、TCP、UDP、Websocket等常见网络通信协议
 - 接触过js/node、lua、C#、前端、Unity开发
 - 有基于Docker/K8S的分布式集群设计、部署、运维、开发经验，熟悉Dockerfile与shell脚本开发
-- 熟悉SpringCloud开发，熟悉的相关技术栈包括Nginx、Redis、MybatisPlus、MybatisNacos、Feign、ELK
+- 熟悉SpringCloud开发，熟悉的相关技术栈包括Nginx、Redis、MybatisPlus、Nacos、Feign、ELK
 - 重视技术文档书写，以Markdown+PlantUML为主
 - 重视数据结构与算法在开发中的应用，关注实际业务的时空复杂度
 - 熟悉toB工业互联网、物联网、数字孪生、大数据等业务
@@ -83,7 +84,7 @@
 - 时间：2022.10~至今
 - 技术栈：SpringCloud、SpringSecurity、Python、K8S、Mysql、ELK、Redis、Nacos、其他
 - 内容：
-    - 负责部署、运维、故障排查，负责严格遵循项目规范与风格的新功能的开发
+    - 负责部署、运维、故障排查，负责严格遵循项目规范与风格的新功能的开发，负责撰写与维护相关技术文档、开发文档
     - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+稀疏矩阵转TreeSet+倒排索引的算法，从而高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
     - 负责流媒体在线服务功能的产品设计与开发（Java、Python），接入慧安蜂巢物联网操作系统平台的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免报警接口对外暴露或被随意调用，利用了K8S的configmap+Java的HttpServletRequest进行接口鉴权。
     - 排查并解决了关于NFS、K8S StorageClass、KubeSphere、SpringSecurity拦截、SpringCloud动态路由等多种问题
@@ -111,7 +112,7 @@
 - 时间：2023.02~2023.03
 - 技术栈：C++、open62541、mongoose、eCharts、layui
 - 内容：
-    - B/S架构，实现了简单的MVC架构
+    - B/S架构，手动实现了简单的MVC架构
     - 利用宏定义将Controller层的小驼峰函数命名与rest风格的url进行对应
     - 基于小顶堆（优先队列）实现的单线程多延时任务分发
     - 自动重连、多设备管理、数据读取

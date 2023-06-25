@@ -1,4 +1,4 @@
-import { marked } from "./marked.esm.min.js"
+import { Lexer, marked } from "./marked.esm.min.js"
 
 const config = {
     baseModel: {
@@ -12,7 +12,7 @@ const config = {
     },
     personalInformation: {
         _tagStyle: "font-size:2vw;display:inline-table;background-color: #EEEEEE;margin-right: 1vw;padding-left: 0.5vw;padding-right: 0.5vw;",
-
+        _avatarStyle: "width:15vw;height:21vw;right:0.5vw;top:0vw;position:absolute;",
         gender: {
             key: ["性别", "gender"],
             format: function (value) {
@@ -41,6 +41,12 @@ const config = {
             key: ["邮箱", "email"],
             format: function (value) {
                 return "📧 " + value
+            }
+        },
+        avatar:{
+            key: ["头像","avatar"],
+            format: function(value){
+                return `<image style="width:99%;height:99%;object-fit:cover;" src="${Lexer.lex(value)[0].tokens[0].href}">`
             }
         }
     },

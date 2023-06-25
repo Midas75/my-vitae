@@ -18,6 +18,9 @@
             <div id="print"
                 style="margin-bottom:0.2vw;padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw;width:1.4vw">
                 📃</div>
+            <div id="clear"
+                style="margin-bottom:0.2vw;padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw;width:1.4vw">
+                🔃</div>
         </div>
         <iframe id="preview" style="width:49vw;margin-left:auto">
         </iframe>
@@ -133,13 +136,19 @@
         })
 
         let saveButton = document.getElementById("save");
-        saveButton.addEventListener("click",function(event){
+        saveButton.addEventListener("click", function (event) {
             localStorage.setItem("myVitae", editorArea.innerHTML)
         })
 
         let printButton = document.getElementById("print");
         printButton.addEventListener("click", function (event) {
             previewWindow.print();
+        })
+
+        let clearButton = document.getElementById("clear");
+        clearButton.addEventListener("click",async function(event){
+            localStorage.removeItem("myVitae");
+            render(await readAsStringAsync("./MyVitae.md"))
         })
 
         editorDoc.body.appendChild(editorArea);
