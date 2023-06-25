@@ -2,17 +2,19 @@ import { Lexer, marked } from "./marked.esm.min.js"
 
 const config = {
     baseModel: {
-        _containerStyle: "100vw;clear:both;margin-bottom:4vw",
-        _contentContainerStyle: "clear: both;margin-bottom: 2vw;font-size:1.5vw;padding-left:2vw",
-        _titleLayerStyle: "clear:both;font-size:3vw;width:90vw;margin-bottom:1vw",
+        _containerStyle: "clear:both;margin-bottom:4vw;",
+        _contentContainerStyle: "clear: both;margin-bottom: 2vw;font-size:1.5vw;padding-left:2vw;",
+        _titleLayerStyle: "clear:both;font-size:3vw;width:90vw;margin-bottom:1vw;",
         _splitLayerStyle: "clear:both;margin-bottom:2vw;",//align-items:flex-end;display:flex
         _leftSplitLineStyle: "width:10vw;background-color:#DFF;height:1vw;",
-        _rightSplitLineStyle: "width:auto;background-color:#0DD;height:0.3vw",
+        _rightSplitLineStyle: "width:auto;background-color:#0DD;height:0.3vw;",
 
     },
     personalInformation: {
-        _tagStyle: "font-size:2vw;display:inline-table;background-color: #EEEEEE;margin-right: 1vw;padding-left: 0.5vw;padding-right: 0.5vw;",
-        _avatarStyle: "width:15vw;height:21vw;right:0.5vw;top:0vw;position:absolute;",
+        _contentContainerAdditionStyle:"display:flex;align-items:flex-start;",
+        _tagLayerStyle: "padding-left:2vw;width:auto;",
+        _tagStyle: "font-size:2vw;display:inline-table;background-color: #EEEEEE;margin-right: 1vw;padding-left: 0.5vw;padding-right: 0.5vw;margin-bottom:1vw",
+        _avatarStyle: "width:15vw;height:21vw;margin-top:-8vw;margin-left:auto",
         gender: {
             key: ["性别", "gender"],
             format: function (value) {
@@ -43,6 +45,12 @@ const config = {
                 return "📧 " + value
             }
         },
+        address:{
+            key:["住址","address"],
+            format:function(value){
+                return "🏠 "+ value;
+            }
+        },
         avatar:{
             key: ["头像","avatar"],
             format: function(value){
@@ -53,11 +61,11 @@ const config = {
     educationExperience: {
         _mainContainerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;",
         _titleLayerStyle: "font-size: 2vw;font-weight: bold;padding-right:2vw",
-        _timeLayerStyle: "font-size: 1.5vw;color: #AAAAAA;padding-right:2vw",
+        _timeLayerStyle: "font-size: 1.5vw;color: #777;padding-right:2vw",
 
         _detailContainerStyle: "clear:both;align-items: baseline;display: flex;text-align: center;",
         _detailLayerStyle: "font-size:1.5vw;padding-right:1vw;padding-left:1vw",
-        _detailSeparatorStyle: "font-size:1.5vw;color:#AAAAAA",
+        _detailSeparatorStyle: "font-size:1.5vw;color:#777",
 
         college: {
             key: ["学院", "college"]
@@ -78,7 +86,7 @@ const config = {
     },
     award: {
         _containerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;",
-        _timeLayerStyle: "font-size: 1.5vw;color: #AAAAAA;padding-right:2vw",
+        _timeLayerStyle: "font-size: 1.5vw;color: #777;padding-right:2vw",
         _titleLayerStyle: "font-size: 1.5vw;padding-right:2vw",
 
         time: {

@@ -32,8 +32,6 @@ export function newBaseModel(title, subItemNumbers = 1) {
         container.appendChild(content);
     }
 
-
-
     return {
         container: container,
         contents: contents

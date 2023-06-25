@@ -8,6 +8,10 @@ let personalInformation = {
     render: function (data) {
         let obj = newBaseModel(data.name);
 
+        let tagLayer=document.createElement('div');
+        obj.contents[0].style+=";"+config.personalInformation._contentContainerAdditionStyle;
+        tagLayer.style=config.personalInformation._tagLayerStyle;
+
         for (let key in config.personalInformation) {
             if (!key.startsWith("_") && data[key] != null) {
                 if(key=="avatar"){
@@ -19,17 +23,19 @@ let personalInformation = {
                     config.personalInformation[key].format,
                     data[key]
                 )
-                obj.contents[0].appendChild(div);
+                tagLayer.appendChild(div);
             }
         }
+        obj.contents[0].appendChild(tagLayer);
         if(config.personalInformation["avatar"]&&data["avatar"]!=null){
+            obj.container.style.marginBottom="0vw";
             let div=document.createElement('div');
             div.style=config.personalInformation._avatarStyle;
             div.innerHTML=formatIfExists(
                 config.personalInformation["avatar"].format,
                 data["avatar"]
             )
-            obj.container.appendChild(div);
+            obj.contents[0].appendChild(div);
         }
         return obj.container;
     },

@@ -62,7 +62,7 @@
             else {
                 str = await readAsStringAsync("./MyVitae.md");
             }
-            editorArea.innerHTML = str;
+            editorArea.innerText = str;
             render(str)
         })
 
@@ -72,7 +72,7 @@
                 previewWindow.print()
             } else if ((event.key == 's' || event.key == 'S') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {//ctrl+s
                 event.preventDefault();
-                localStorage.setItem("myVitae", editorArea.innerHTML)
+                localStorage.setItem("myVitae", editorArea.innerText)
             }
         })
         previewDoc.addEventListener('keydown', function (event) {
@@ -82,7 +82,7 @@
             }
             else if ((event.key == 's' || event.key == 'S') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {//ctrl+s
                 event.preventDefault();
-                localStorage.setItem("myVitae", editorArea.innerHTML)
+                localStorage.setItem("myVitae", editorArea.innerText)
             }
         })
         document.addEventListener('keydown', function (event) {
@@ -92,7 +92,7 @@
             }
             else if ((event.key == 's' || event.key == 'S') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {//ctrl+s
                 event.preventDefault();
-                localStorage.setItem("myVitae", editorArea.innerHTML)
+                localStorage.setItem("myVitae", editorArea.innerText)
             }
         })
         editorWindow.addEventListener('mouseover', function (event) {
@@ -112,7 +112,6 @@
         })
         previewWindow.addEventListener('scroll', function (event) {
             if (scrollLock && scrollTarget === previewWindow) {
-                console.log(editorDoc.body.scrollHeight)
                 editorWindow.scroll({
                     top: previewWindow.scrollY * (editorDoc.body.scrollHeight - editorDoc.body.clientHeight) / (previewDoc.body.scrollHeight - previewDoc.body.clientHeight),
                 });
@@ -137,7 +136,7 @@
 
         let saveButton = document.getElementById("save");
         saveButton.addEventListener("click", function (event) {
-            localStorage.setItem("myVitae", editorArea.innerHTML)
+            localStorage.setItem("myVitae", editorArea.innerText)
         })
 
         let printButton = document.getElementById("print");
