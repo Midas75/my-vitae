@@ -26,13 +26,13 @@
 ### 山东省信息技术奥赛省二等奖
 - 时间：2017.05
 ## 个人技能
-- 熟悉（linux为主）的java/c/c++开发的相关技术栈
+- 熟悉基于linux的java/c/c++开发的相关技术栈
 - 熟悉MQTT、OPC UA、Modbus等物联网通信协议
 - 熟悉HTTP、TCP、UDP、Websocket等常见网络通信协议
 - 接触过js/node、lua、C#、前端、Unity开发
 - 有基于Docker/K8S的分布式集群设计、部署、运维、开发经验，熟悉Dockerfile与shell脚本开发
-- 熟悉SpringCloud开发，熟悉的相关技术栈包括Nginx、Redis、MybatisPlus、Nacos、Feign、ELK
-- 重视技术文档书写，以Markdown+PlantUML为主
+- 熟悉SpringCloud开发，熟悉相关技术栈：Nginx、Redis、MybatisPlus、Nacos、Feign、ELK、MinIO
+- 重视技术文档、方案书写，工具以Markdown+PlantUML为主
 - 重视数据结构与算法在开发中的应用，关注实际业务的时空复杂度
 - 熟悉toB工业互联网、物联网、数字孪生、大数据等业务
 - 了解计算机图形学、设计模式、多线程、嵌入式等技术
@@ -43,10 +43,10 @@
 - 时间：2022.05~至今
 - 内容：
     - java/c++开发、架构设计、产品经理、运维
-    - 负责慧安蜂巢灵境人工智能算法中台的开发任务（新功能技术方案制定、java、python、前端对接、基于K8S的部署与运维）
+    - 负责慧安蜂巢灵境人工智能算法中台的开发任务（新功能设计、技术方案制定、开发环境搭建、java、python、前端对接、部署与运维）
     - 慧安蜂巢智能小站工业物联网模块开发（嵌入式C++开发）
     - 参与多个项目/课题/白皮书的标书、PPT撰写，与合作方/客户对接确认需求并制定方案
-    - 使用Dockerfile+Harbor为公司内部提供便捷的多个开发环境组件部署（交叉编译、前端、后端、Postgres+ZK+Kafka等）
+    - 使用Dockerfile+Harbor为公司内部提供便捷的多个开发环境组件部署（交叉编译、前端、后端、Postgres+ZK+Kafka+Redis等）
     - 多个其他项目的技术方案制定与Demo实现，指导后续开发
 
 ### 紫龙游戏
@@ -84,11 +84,12 @@
 - 时间：2022.10~至今
 - 技术栈：SpringCloud、SpringSecurity、Python、K8S、Mysql、ELK、Redis、Nacos、其他
 - 内容：
-    - 负责部署、运维、故障排查，负责严格遵循项目规范与风格的新功能的开发，负责撰写与维护相关技术文档、开发文档
-    - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+稀疏矩阵转TreeSet+倒排索引的算法，从而高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
-    - 负责流媒体在线服务功能的产品设计与开发（Java、Python），接入慧安蜂巢物联网操作系统平台的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免报警接口对外暴露或被随意调用，利用了K8S的configmap+Java的HttpServletRequest进行接口鉴权。
+    - 负责部署、运维、故障排查；严格遵循项目规范与风格的新功能的开发；撰写与维护相关功能、技术、开发文档
+    - 负责在线服务功能重构，重新设计Python端、镜像端、Java端、Web端功能，撰写相关技术文档并重新搭建Python端架构
+    - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+二维差分矩阵+倒排索引的算法，从而高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
+    - 负责流媒体在线服务功能的功能设计与开发（Java、Python），接入慧安蜂巢物联网操作系统平台的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免接口被外部请求随意调用，利用configmap+HttpServletRequest进行接口鉴权。
     - 排查并解决了关于NFS、K8S StorageClass、KubeSphere、SpringSecurity拦截、SpringCloud动态路由等多种问题
-    - 撰写Dockerfile，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载）搭建，使开发环境能够快速部署
+    - 撰写Dockerfile，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载）搭建，加速团队开发
 ### 望极——慧安蜂巢数实融合仿真平台
 - 职责：方案设计、前后端开发
 - 时间：2023.03~2023.05
@@ -97,6 +98,7 @@
     - 设计并实现方案，将从Unity/ThreejsEditor导出的3D场景载入慧安蜂巢物联网操作系统平台，并将场景内数据与平台本身数据进行双向绑定
     - 设计基于知识图谱的数字孪生信息模型的建模方案
     - 设计基于ThreejsEditor的3D场景编辑平台的功能与技术方案
+    - 搭建连通公司其他平台产品的演示方案
 
 ### 浦镇数字孪生工厂
 - 职责：产品经理
@@ -151,10 +153,10 @@
         - 设计Connection与Device分离的架构，从而兼容连接复用的通信协议
         - 南向接入OPC UA/Modbus/串口设备并读取数据，使用sqlite存储至本地并转换为统一格式的JSON发往前端
         - 使用层序遍历+尾递归快速获取OPC UA信息模型
-        - 重写libmodbus的SDK函数实现引脚高低电平的手动设置，从而控制RS485的TX/RX模式
+        - 重写libmodbus库函数实现引脚高低电平的手动设置，从而控制RS485的TX/RX模式
         - 设计并实现小顶堆实现单线程轮询+线程池任务分发
         - 设计并实现lua脚本格式与解析、lua/c++交互方案，实现对于modbus/串口设备的自定义脚本上传与解析
-        - 设计并实现基于Sqlite3的数据库存储，通过历史数据表和最新数据表实现高效写入/查询/条目维护
+        - 设计并实现基于Sqlite3的数据库存储方案，通过历史数据表+最新数据表实现高效写入/查询/条目维护
         - 设计并实现包括延迟、回差等功能的复杂报警逻辑功能
         - 打通嵌入式设备与平台的交互，实现数据传输/反向控制等业务
 
@@ -181,7 +183,7 @@
 - 技术栈：SpringBoot、EclipseMilo、PahoMqtt、Swagger、GSON、WebSocket、HTTP
 - 内容：
     - 作为网络中间件，南向通过OPC UA协议连接设备，北向通过MQTT将数据发送到慧安蜂巢物联网操作系统平台，通过HTTP对接平台完成设备添加、查看、管理、RPC调用转OPC UA Method调用，向前端提供Restful接口进行配置
-    - 使用序列化+代理模式，不使用数据库地实现持久化、连接维护等功能
+    - 使用序列化+代理模式，在小规模项目中快速实现持久化、连接维护等功能
     - 涉及建造者模式、单例模式、代理模式等
     - 使用CompletableFuture实现部分异步/多线程操作，加锁以Synchronized与ConcurrentHashMap为主
     - 基于JwtToken的授权
