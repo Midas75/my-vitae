@@ -14,11 +14,10 @@
   ![printTip](pic/printTip.png)
 - 双向滚动
 - markdown在线编辑与实时渲染
-
+- 照片上传和显示
 ## TODO
 - 排序筛选优先级功能
 - 更多模块支持
 - 更多自选风格
 - css迁移
 - 更多attribute支持
-- 照片上传和显示

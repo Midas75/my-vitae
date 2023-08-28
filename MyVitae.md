@@ -29,12 +29,13 @@
 - 熟悉基于linux的java/c/c++开发的相关技术栈
 - 熟悉MQTT、OPC UA、Modbus等物联网通信协议
 - 熟悉HTTP、TCP、UDP、Websocket等常见网络通信协议
-- 接触过js/node、lua、C#、前端、Unity开发
+- 了解js/node、lua、前端、Unity开发
 - 有基于Docker/K8S的分布式集群设计、部署、运维、开发经验，熟悉Dockerfile与shell脚本开发
 - 熟悉SpringCloud开发，熟悉相关技术栈：Nginx、Redis、MybatisPlus、Nacos、Feign、ELK、MinIO
-- 重视技术文档、方案书写，工具以Markdown+PlantUML为主
+- 重视文档、方案书写，工具以Markdown+PlantUML为主
 - 重视数据结构与算法在开发中的应用，关注实际业务的时空复杂度
 - 熟悉toB工业互联网、物联网、数字孪生、大数据等业务
+- 擅长使用AIGC工具协助、加速工作
 - 了解计算机图形学、设计模式、多线程、嵌入式等技术
 ## 工作经历
 ### 慧之安信息技术股份有限公司
@@ -43,7 +44,7 @@
 - 时间：2022.05~至今
 - 内容：
     - java/c++开发、架构设计、产品经理、运维
-    - 负责慧安蜂巢灵境人工智能算法中台的开发任务（新功能设计、技术方案制定、开发环境搭建、java、python、前端对接、部署与运维）
+    - 负责慧安蜂巢灵境人工智能算法中台的开发任务（新功能设计、技术方案制定、开发环境搭建、java开发、python调试部署、前端对接、部署与运维）
     - 慧安蜂巢智能小站工业物联网模块开发（嵌入式C++开发）
     - 参与多个项目/课题/白皮书的标书、PPT撰写，与合作方/客户对接确认需求并制定方案
     - 使用Dockerfile+Harbor为公司内部提供便捷的多个开发环境组件部署（交叉编译、前端、后端、Postgres+ZK+Kafka+Redis等）
@@ -69,7 +70,7 @@
     - 
     -
 -->
-### 基于Markdown的简历生成
+### 基于Markdown的简历生成工具
 - 职责：前端开发
 - 时间：2023.5~至今
 - 技术栈：JavaScript、Markdown
@@ -77,18 +78,20 @@
 - 内容：
     - 对markdown文档约定部分格式，通过正则表达式与marked.js库提供的Lexer方法对文档进行解析，渲染为具有一定格式的html文档，利用浏览器的打印功能生成pdf
     - 包括个人信息、教育经历、个人技能、工作经历、项目经历等模块
-    - 处理了marked.js中自动的页面跳转带来的问题
+    - 改善了marked.js中链接跳转体验不佳的问题
     - **本简历由该项目生成**
 ### 灵境——慧安蜂巢人工智能算法中台
 - 职责：方案设计、后端开发、运维
 - 时间：2022.10~至今
-- 技术栈：SpringCloud、SpringSecurity、Python、K8S、Mysql、ELK、Redis、Nacos、其他
+- 技术栈：SpringCloud、SpringSecurity、Python、Kubernetes、Mysql、ELK、Redis、Nacos、其他
 - 内容：
     - 负责部署、运维、故障排查；严格遵循项目规范与风格的新功能的开发；撰写与维护相关功能、技术、开发文档
+    - 基于Shell设计部署流程、编写部署脚本自动执行流程，服务器单机部署时间<1小时。编写各组件于k8s集群中部署所需的yaml文件。基于nginx实现后端websocket服务、minio服务统一反代。
+    - 设计模型转换功能与架构，利用dfs实现模型转换有向图中转换路径（a-b-c）的自动计算。基于k8s jobs封装模型转换python进程，使用redis作为java/python进程间通信中间件。
     - 负责在线服务功能重构，重新设计Python端、镜像端、Java端、Web端功能，撰写相关技术文档并重新搭建Python端架构
-    - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+二维差分矩阵+倒排索引的算法，从而高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
-    - 负责流媒体在线服务功能的功能设计与开发（Java、Python），接入慧安蜂巢物联网操作系统平台的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免接口被外部请求随意调用，利用configmap+HttpServletRequest进行接口鉴权。
-    - 排查并解决了关于NFS、K8S StorageClass、KubeSphere、SpringSecurity拦截、SpringCloud动态路由等多种问题
+    - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+矩阵差分+倒排索引的算法，以高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
+    - 负责流媒体在线服务功能的功能设计与开发（Java、Python），接入慧安蜂巢物联网操作系统平台的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免接口被外部请求随意调用，利用configmap+HttpServletRequest进行接口校验。
+    - 排查并解决关于NFS、K8S StorageClass、KubeSphere、SpringSecurity拦截、SpringCloud动态路由等多种问题
     - 撰写Dockerfile，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载）搭建，加速团队开发
 ### 望极——慧安蜂巢数实融合仿真平台
 - 职责：方案设计、前后端开发
@@ -115,7 +118,7 @@
 - 技术栈：C++、open62541、mongoose、eCharts、layui
 - 内容：
     - B/S架构，手动实现了简单的MVC架构
-    - 利用宏定义将Controller层的小驼峰函数命名与rest风格的url进行对应
+    - 利用宏定义将Controller层的小驼峰函数命名与rest风格的url进行自动对应
     - 基于小顶堆（优先队列）实现的单线程多延时任务分发
     - 自动重连、多设备管理、数据读取
     - 前端基于http轮询实现的数据读取与图表显示
@@ -138,8 +141,7 @@
         - 使用两次RSA完成双向通信的分块加密，使用SHA256生成嵌入式设备的硬件指纹
     - [MQTT通信模块](https://gitee.com/sun-zhongjie-0426/mqtt-service)：
         - 基于构建mosquittopp的代理类设计并实现了设备的MQTT常驻服务，用于管理多个MQTT连接
-        - 通过线程池实现多个连接的维护，通过std::async+智能指针+多继承实现高性能的订阅回调
-    允许开发者通过继承MqttCallback接口进行回调函数的注入与开发
+        - 通过线程池实现多个连接的维护，通过std::async+智能指针+纯虚函数实现高性能的订阅回调，允许开发者通过继承MqttCallback接口进行回调函数的注入与开发
     - [RemoteShell模块](https://gitee.com/sun-zhongjie-0426/remote-shell-server)：
         - 通过forkpty、execl和poll构建一个终端，允许用户通过远程的任意网络连接（tcp/mqtt/websocket）访问设备而无需嵌入式设备具备ssh服务
         - 在慧安蜂巢物联网操作系统平台上基于x-term开发[基于MQTT的网页远程Shell功能](https://gitee.com/sun-zhongjie-0426/mqtt-rpc-shell)
@@ -219,6 +221,7 @@
 - 职责：后端开发
 - 时间：2021.11~2022.05
 - 技术栈：树莓派、FFmpeg、Nginx、Python、REID、TCP
+- 隐藏
 - 内容：
     - 实现了局域网视频传输方案，基于Nginx的流转发服务，通过flv格式传输RTMP视频流，由Python的Reid算法程序拉流并解析
     - 云端算法将目标识别框数据通过裸TCP传输至树莓派，通过Python程序控制云台转动始终追踪目标
@@ -236,7 +239,7 @@
 ### 安卓平台仿制网易云音乐
 - 职责：前端开发、后端开发、UI设计
 - 时间：2021.02~2021.05
-- 技术栈：Nodejs、AndroidStudio、JSON、HTTP
+- 技术栈：Nodejs、Android Studio、JSON、HTTP
 - 内容：
     - 调用开源API建立Node服务器将请求转发给网易云服务器
     - 设计并实现推荐歌单、心动模式、个人歌单、歌词滚动显示、通过URL播放音乐、查看歌单内容、收藏歌单、随机播放（fisher-yates shuffle）等功能，通过账号与密码登录
