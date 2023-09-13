@@ -1,4 +1,4 @@
-import { findValueByKeys,splitIntoListItems, findTitle } from "./baseMatcher.js";
+import { findValueByKeys, splitIntoListItems, findTitle } from "./baseMatcher.js";
 import { newBaseModel } from "./baseModel.js";
 import { config } from "./conf.js";
 import { formatIfExists } from "./utils.js";
@@ -7,49 +7,87 @@ import { Lexer } from "./marked.esm.min.js";
 let personalInformation = {
     render: function (data) {
         let obj = newBaseModel(data.name);
-
-        let tagLayer=document.createElement('div');
-        obj.contents[0].style+=";"+config.personalInformation._contentContainerAdditionStyle;
-        tagLayer.style=config.personalInformation._tagLayerStyle;
+        obj.container.dataset.position=data.position;
+        let tagLayer = document.createElement('div');
+        obj.contents[0].style += ";" + config.personalInformation._contentContainerAdditionStyle;
+        tagLayer.style = config.personalInformation._tagLayerStyle;
 
         for (let key in config.personalInformation) {
             if (!key.startsWith("_") && data[key] != null) {
-                if(key=="avatar"){
+                if (key == "avatar") {
                     continue;
                 }
                 let div = document.createElement('div');
+                div.dataset.position=data[key].position;
                 div.style = config.personalInformation._tagStyle;
                 div.innerHTML = formatIfExists(
                     config.personalInformation[key].format,
-                    data[key]
+                    data[key].value
                 )
                 tagLayer.appendChild(div);
             }
         }
         obj.contents[0].appendChild(tagLayer);
-        if(config.personalInformation["avatar"]&&data["avatar"]!=null){
-            obj.container.style.marginBottom="0vw";
-            let div=document.createElement('div');
-            div.style=config.personalInformation._avatarStyle;
-            div.innerHTML=formatIfExists(
+        if (config.personalInformation["avatar"] && data["avatar"] != null) {
+            obj.container.style.marginBottom = "0vw";
+            let div = document.createElement('div');
+            div.dataset.position=data["avatar"].position;
+            div.style = config.personalInformation._avatarStyle;
+            div.innerHTML = formatIfExists(
                 config.personalInformation["avatar"].format,
-                data["avatar"]
+                data["avatar"].value
             )
             obj.contents[0].appendChild(div);
         }
         return obj.container;
     },
-    parse: function (str) {
+    _parse: function (str) {
         let data = {};
         str.replace(/\n+\n/g, "\n");
 
         data.name = findTitle(str);
-        
-        let listItems=splitIntoListItems(str);
+
+        let listItems = splitIntoListItems(str);
 
         for (let key in config.personalInformation) {
             if (!key.startsWith("_")) {
                 data[key] = findValueByKeys(listItems, config.personalInformation[key].key);
+            }
+        }
+        return data;
+    },
+    parse: function (tokens) {
+        let data = {};
+        for (let token of tokens) {
+            if (token.type === 'heading' && token.depth === 1) {
+                data.name = token.text
+                data.position = token.position
+                break;
+            }
+        }
+        let listItems = {}
+        for (let token of tokens) {
+
+            if (token.type === 'list') {
+                let tokenPosition = token.position
+                for (let item of token.items) {
+                    let spiltArray = item.text.split(/：|:/)
+                    listItems[spiltArray[0]] = {
+                        position: tokenPosition
+                    }
+                    if (spiltArray.length == 1) {
+                        listItems[spiltArray[0]].value = spiltArray[0];
+                    }
+                    else {
+                        listItems[spiltArray[0]].value = item.text.substr(spiltArray[0].length + 1);
+                    }
+                    tokenPosition += item.raw.length
+                }
+            }
+        }
+        for (let key in config.personalInformation) {
+            if (!key.startsWith("_")) {
+                data[key] = findValueByKeys(listItems,config.personalInformation[key].key)
             }
         }
         return data;

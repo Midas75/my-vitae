@@ -34,7 +34,7 @@
         import { projectExperience } from "./projectExperience.js"
         import { readAsStringAsync } from "./fileReader.js"
         import { findTitle, split, removeAnnotation, findPersonalInformation } from "./baseMatcher.js"
-
+        import { bindJumperByPosition } from "./positionJumper.js"
         let str = "";
 
         let editor = document.getElementById('editor');
@@ -145,7 +145,7 @@
         })
 
         let clearButton = document.getElementById("clear");
-        clearButton.addEventListener("click",async function(event){
+        clearButton.addEventListener("click", async function (event) {
             localStorage.removeItem("myVitae");
             render(await readAsStringAsync("./MyVitae.md"))
         })
@@ -159,7 +159,7 @@
             previewDoc.body.appendChild(
                 personalInformation.render(
                     personalInformation.parse(
-                        findPersonalInformation(str)[0]
+                        findPersonalInformation(str)
                     )
                 )
             )
@@ -183,6 +183,7 @@
                         )
                     )
             }
+            bindJumperByPosition(editorArea,previewDoc);
         }
 
     </script>
