@@ -51,8 +51,9 @@
         let editorDoc = editorWindow.document;
         let previewDoc = previewWindow.document;
 
-        let editorArea = editorDoc.createElement('div');
-        editorArea.style = "height:auto;white-space: pre-wrap;border:none;resize:none;padding:1vw"
+        let editorArea = editorDoc.createElement('textarea');
+        // editorArea.style = "height:auto;white-space: pre-wrap;border:none;resize:none;padding:1vw"
+        editorArea.style = "width: 100%; height: 100%; resize: none; border: none; padding: 1vw;font-size:1.5vw; box-sizing: border-box;";
         editorArea.setAttribute('contenteditable', true);
         editorArea.setAttribute('user-modify', "read-write-plaintext-only");
         window.addEventListener('load', async function () {
@@ -62,7 +63,7 @@
             else {
                 str = await readAsStringAsync("./MyVitae.md");
             }
-            editorArea.innerText = str;
+            editorArea.value = str;
             render(str)
         })
 
@@ -72,7 +73,7 @@
                 previewWindow.print()
             } else if ((event.key == 's' || event.key == 'S') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {//ctrl+s
                 event.preventDefault();
-                localStorage.setItem("myVitae", editorArea.innerText)
+                localStorage.setItem("myVitae", editorArea.value)
             }
         })
         previewDoc.addEventListener('keydown', function (event) {
@@ -82,7 +83,7 @@
             }
             else if ((event.key == 's' || event.key == 'S') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {//ctrl+s
                 event.preventDefault();
-                localStorage.setItem("myVitae", editorArea.innerText)
+                localStorage.setItem("myVitae", editorArea.value)
             }
         })
         document.addEventListener('keydown', function (event) {
@@ -92,34 +93,33 @@
             }
             else if ((event.key == 's' || event.key == 'S') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {//ctrl+s
                 event.preventDefault();
-                localStorage.setItem("myVitae", editorArea.innerText)
+                localStorage.setItem("myVitae", editorArea.value)
             }
         })
-        editorWindow.addEventListener('mouseover', function (event) {
-            scrollTarget = editorWindow;
+        editorArea.addEventListener('mouseover', function (event) {
+            scrollTarget = editorArea;
         })
         previewWindow.addEventListener('mouseover', function (event) {
             scrollTarget = previewWindow;
         })
 
-        editorWindow.addEventListener('scroll', function (event) {
-
-            if (scrollLock && scrollTarget === editorWindow) {
+        editorArea.addEventListener('scroll', function (event) {
+            if (scrollLock && scrollTarget === editorArea) {
                 previewWindow.scroll({
-                    top: editorWindow.scrollY * (previewDoc.body.scrollHeight - previewDoc.body.clientHeight) / (editorDoc.body.scrollHeight - editorDoc.body.clientHeight),
+                    top: editorArea.scrollTop * (previewDoc.body.scrollHeight - previewDoc.body.clientHeight) / (editorArea.scrollHeight - editorArea.clientHeight),
                 });
             }
         })
         previewWindow.addEventListener('scroll', function (event) {
             if (scrollLock && scrollTarget === previewWindow) {
-                editorWindow.scroll({
-                    top: previewWindow.scrollY * (editorDoc.body.scrollHeight - editorDoc.body.clientHeight) / (previewDoc.body.scrollHeight - previewDoc.body.clientHeight),
+                editorArea.scroll({
+                    top: previewWindow.scrollY * (editorArea.scrollHeight - editorArea.clientHeight) / (previewDoc.body.scrollHeight - previewDoc.body.clientHeight),
                 });
             }
         })
 
         editorArea.addEventListener('keyup', function () {
-            str = editorArea.innerText;
+            str = editorArea.value;
             render(str)
         })
 
@@ -154,7 +154,7 @@
 
         function render(str) {
             previewDoc.body.innerHTML = "";
-            str = removeAnnotation(str)
+            // str = removeAnnotation(str)
 
             previewDoc.body.appendChild(
                 personalInformation.render(
@@ -183,7 +183,7 @@
                         )
                     )
             }
-            bindJumperByPosition(editorArea,previewDoc);
+            bindJumperByPosition(editorArea, previewDoc);
         }
 
     </script>

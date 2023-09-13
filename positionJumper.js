@@ -1,49 +1,36 @@
-function getTextNodesIn(node) {
-    let textNodes = [];
-    if (node.nodeType == 3) {
-        textNodes.push(node);
-    } else {
-        let children = node.childNodes;
-        for (let i = 0, len = children.length; i < len; ++i) {
-            textNodes.push.apply(textNodes, getTextNodesIn(children[i]));
-        }
-    }
-    return textNodes;
-}
 export function bindJumperByPosition(editorArea, previewDoc) {
     const tags = previewDoc.getElementsByTagName('*');
-    const totalLength = editorArea.innerText.length;
     for (let tag of tags) {
-        if (tag.attributes && tag.dataset.position) {
-            tag.addEventListener('click', function (e) {
+        if (tag.attributes && tag.dataset.position && tag.dataset.size) {
+            tag.style.userSelect='none'; // 避免在双击时触发默认的选择事件
+            tag.addEventListener('dblclick', function (e) {
                 e.stopPropagation();
-                editorArea.scroll({
-                    top: editorArea.scrollHeight * 100 / totalLength - editorArea.clientHeight / 2,
-                    behavior: 'smooth'
-                });
                 let position = parseInt(tag.dataset.position);
-                // editorArea.focus();
-                let range = document.createRange();
-                range.selectNodeContents(editorArea);
-                let textNodes = getTextNodesIn(editorArea);
-                let lCharCount = 0,rCharCount=0;
-                range.setStart(editorArea.firstChild,position);
-                range.setEnd(editorArea.firstChild,position+1);
-                // for (let textNode of textNodes) {
-                //     rCharCount=lCharCount+textNode.length;
-                //     if (lCharCount<position&&position <= rCharCount) {
-                //         range.setStart(textNode, position-lCharCount);
-                //         range.setEnd(textNode, position+1-lCharCount);
-                //         console.log(range)
-                //         let selection=window.getSelection();
-                //         selection.removeAllRanges();
-                //         selection.addRange(range);
-                //         break;
-                //     }
-                //     lCharCount=rCharCount;
-                // }
-                
+                let size = parseInt(tag.dataset.size);
+                setSelectionRange(editorArea,position,position+size)
+                editorArea.focus();
             })
         }
     }
+}
+function setSelectionRange(textarea, selectionStart, selectionEnd) {
+    // First scroll selection region to view
+    const fullText = textarea.value;
+    textarea.value = fullText.substring(0, selectionEnd);
+    // For some unknown reason, you must store the scollHeight to a variable
+    // before setting the textarea value. Otherwise it won't work for long strings
+    const scrollHeight = textarea.scrollHeight
+    textarea.value = fullText;
+    let scrollTop = scrollHeight;
+    const textareaHeight = textarea.clientHeight;
+    if (scrollTop > textareaHeight){
+        // scroll selection to center of textarea
+        scrollTop -= textareaHeight / 2;
+    } else{
+        scrollTop = 0;
+    }
+    textarea.scrollTop = scrollTop;
+
+    // Continue to set selection range
+    textarea.setSelectionRange(selectionStart, selectionEnd);
 }

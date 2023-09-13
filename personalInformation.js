@@ -8,6 +8,7 @@ let personalInformation = {
     render: function (data) {
         let obj = newBaseModel(data.name);
         obj.container.dataset.position=data.position;
+        obj.container.dataset.size=data.size;
         let tagLayer = document.createElement('div');
         obj.contents[0].style += ";" + config.personalInformation._contentContainerAdditionStyle;
         tagLayer.style = config.personalInformation._tagLayerStyle;
@@ -19,6 +20,7 @@ let personalInformation = {
                 }
                 let div = document.createElement('div');
                 div.dataset.position=data[key].position;
+                div.dataset.size=data[key].size;
                 div.style = config.personalInformation._tagStyle;
                 div.innerHTML = formatIfExists(
                     config.personalInformation[key].format,
@@ -32,6 +34,7 @@ let personalInformation = {
             obj.container.style.marginBottom = "0vw";
             let div = document.createElement('div');
             div.dataset.position=data["avatar"].position;
+            div.dataset.size=data["avatar"].size;
             div.style = config.personalInformation._avatarStyle;
             div.innerHTML = formatIfExists(
                 config.personalInformation["avatar"].format,
@@ -41,27 +44,13 @@ let personalInformation = {
         }
         return obj.container;
     },
-    _parse: function (str) {
-        let data = {};
-        str.replace(/\n+\n/g, "\n");
-
-        data.name = findTitle(str);
-
-        let listItems = splitIntoListItems(str);
-
-        for (let key in config.personalInformation) {
-            if (!key.startsWith("_")) {
-                data[key] = findValueByKeys(listItems, config.personalInformation[key].key);
-            }
-        }
-        return data;
-    },
     parse: function (tokens) {
         let data = {};
         for (let token of tokens) {
             if (token.type === 'heading' && token.depth === 1) {
                 data.name = token.text
                 data.position = token.position
+                data.size = token.raw.length
                 break;
             }
         }
@@ -73,7 +62,8 @@ let personalInformation = {
                 for (let item of token.items) {
                     let spiltArray = item.text.split(/：|:/)
                     listItems[spiltArray[0]] = {
-                        position: tokenPosition
+                        position: tokenPosition,
+                        size : item.raw.length
                     }
                     if (spiltArray.length == 1) {
                         listItems[spiltArray[0]].value = spiltArray[0];
