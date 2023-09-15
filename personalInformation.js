@@ -54,27 +54,27 @@ let personalInformation = {
                 break;
             }
         }
-        let listItems = {}
-        for (let token of tokens) {
+        let listItems = splitIntoListItems(tokens)
+        // for (let token of tokens) {
 
-            if (token.type === 'list') {
-                let tokenPosition = token.position
-                for (let item of token.items) {
-                    let spiltArray = item.text.split(/：|:/)
-                    listItems[spiltArray[0]] = {
-                        position: tokenPosition,
-                        size : item.raw.length
-                    }
-                    if (spiltArray.length == 1) {
-                        listItems[spiltArray[0]].value = spiltArray[0];
-                    }
-                    else {
-                        listItems[spiltArray[0]].value = item.text.substr(spiltArray[0].length + 1);
-                    }
-                    tokenPosition += item.raw.length
-                }
-            }
-        }
+        //     if (token.type === 'list') {
+        //         let tokenPosition = token.position
+        //         for (let item of token.items) {
+        //             let spiltArray = item.text.split(/：|:/)
+        //             listItems[spiltArray[0]] = {
+        //                 position: tokenPosition,
+        //                 size : item.raw.length
+        //             }
+        //             if (spiltArray.length == 1) {
+        //                 listItems[spiltArray[0]].value = spiltArray[0];
+        //             }
+        //             else {
+        //                 listItems[spiltArray[0]].value = item.text.substr(spiltArray[0].length + 1);
+        //             }
+        //             tokenPosition += item.raw.length
+        //         }
+        //     }
+        // }
         for (let key in config.personalInformation) {
             if (!key.startsWith("_")) {
                 data[key] = findValueByKeys(listItems,config.personalInformation[key].key)

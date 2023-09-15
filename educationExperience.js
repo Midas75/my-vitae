@@ -1,39 +1,40 @@
-import { findTitle, findValueByKeys,splitIntoListItems,splitSub } from "./baseMatcher.js";
+import { findTitle, findValueByKeys, split, splitIntoListItems, splitSub } from "./baseMatcher.js";
 import { config } from "./conf.js";
 import { formatIfExists } from "./utils.js";
 import { newBaseModel } from "./baseModel.js";
 let educationExperience = {
     render: function (data) {
-        let obj = newBaseModel("教育经历", data.length)
-
-        for (let i = 0; i < data.length; i++) {
-
-            let mainContainer = document.createElement('div');
+        let obj = newBaseModel("教育经历", data.contents.length)
+        obj.container.dataset.position = data.position;
+        obj.container.dataset.size = data.size;
+        let index = 0;
+        for (let item of data.contents) {
+            let mainContainer = document.createElement('div')
             mainContainer.style = config.educationExperience._mainContainerStyle;
-
-            if (data[i]["school"] != null) {
+            mainContainer.dataset.position = item.position
+            mainContainer.dataset.size = item.size
+            if (item["school"] != null) {
                 let schoolLayer = document.createElement('div');
                 schoolLayer.style = config.educationExperience._titleLayerStyle;
-                schoolLayer.innerHTML = data[i]["school"];
+                schoolLayer.innerHTML = item["school"].value;
+                schoolLayer.dataset.position = item["school"].position;
+                schoolLayer.dataset.size = item["school"].size;
                 mainContainer.appendChild(schoolLayer);
             }
-
-            if (data[i]["time"] != null) {
+            if (item["time"] != null) {
                 let timeLayer = document.createElement('div');
                 timeLayer.style = config.educationExperience._timeLayerStyle;
-                timeLayer.innerHTML = formatIfExists(config.educationExperience.time.format, data[i]["time"]);
+                timeLayer.innerHTML = formatIfExists(config.educationExperience.time.format, item["time"].value);
+                timeLayer.dataset.position = item["time"].position;
+                timeLayer.dataset.size = item["time"].size;
                 mainContainer.appendChild(timeLayer);
             }
-
-            obj.contents[i].appendChild(mainContainer);
-
+            obj.contents[index].appendChild(mainContainer);
             let detailContainer = document.createElement('div');
             detailContainer.style = config.educationExperience._detailContainerStyle;
-
             let isFirst = true;
             for (let key in config.educationExperience) {
-
-                if (!key.startsWith("_") && data[i][key] != null && key != "time") {
+                if (!key.startsWith("_") && item[key] != null && key != "time") {
                     if (!isFirst) {
                         let detailSeparator = document.createElement('div');
                         detailSeparator.style = config.educationExperience._detailSeparatorStyle;
@@ -42,36 +43,40 @@ let educationExperience = {
                     }
                     let detailLayer = document.createElement('div');
                     detailLayer.style = config.educationExperience._detailLayerStyle;
-                    detailLayer.innerHTML = formatIfExists(config.educationExperience[key].format, data[i][key]);
-
+                    detailLayer.innerHTML = formatIfExists(config.educationExperience[key].format, item[key].value);
+                    detailLayer.dataset.position=item[key].position;
+                    detailLayer.dataset.size=item[key].size;
                     detailContainer.appendChild(detailLayer);
-
                     isFirst = false;
                 }
             }
-
-            obj.contents[i].appendChild(detailContainer);
+            obj.contents[index++].appendChild(detailContainer);
         }
         return obj.container;
     },
-    parse: function (str) {
-        let data = [];
-
-        let subs = splitSub(str)
-
-        for (let item of subs) {
-
-            let obj = {}
-            obj["school"] = findTitle(item)
-            let listItems=splitIntoListItems(item)
-            for (let key in config.educationExperience) {
-                if (!key.startsWith("_")) {
-                    obj[key] = findValueByKeys(listItems, config.educationExperience[key].key);
+    parse: function (tokens) {
+        let data = {
+            position: tokens[0].position,
+            size: tokens[0].raw.length,
+            contents: []
+        };
+        let subs = splitSub(tokens)
+        for (let sub of subs) {
+            let obj = {
+                school: {
+                    value: sub[0].text,
+                    position: sub[0].position,
+                    size: sub[0].raw.length
                 }
             }
-            data.push(obj)
+            let listItems = splitIntoListItems(sub)
+            for (let key in config.educationExperience) {
+                if (!key.startsWith("_")) {
+                    obj[key] = findValueByKeys(listItems, config.educationExperience[key].key)
+                }
+            }
+            data.contents.push(obj)
         }
-
         return data
     }
 }

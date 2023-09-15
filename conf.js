@@ -14,7 +14,7 @@ const config = {
         _contentContainerAdditionStyle:"display:flex;align-items:flex-start;",
         _tagLayerStyle: "padding-left:2vw;width:auto;",
         _tagStyle: "font-size:2vw;display:inline-table;background-color: #EEEEEE;margin-right: 1vw;padding-left: 0.5vw;padding-right: 0.5vw;margin-bottom:1vw",
-        _avatarStyle: "width:15vw;height:21vw;margin-top:-8vw;margin-left:auto",
+        _avatarStyle: "width:15vw;height:21vw;margin-top:-8vw;margin-left:auto;",
         gender: {
             key: ["性别", "gender"],
             format: function (value) {
@@ -54,7 +54,7 @@ const config = {
         avatar:{
             key: ["头像","avatar"],
             format: function(value){
-                return `<image style="width:99%;height:99%;object-fit:cover;" src="${Lexer.lex(value)[0].tokens[0].href}">`
+                return `<image style="width:100%;height:100%;object-fit:cover;" src="${Lexer.lex(value)[0].tokens[0].href}">`
             }
         }
     },
