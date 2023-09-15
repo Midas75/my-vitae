@@ -5,7 +5,8 @@ import { formatIfExists } from "./utils.js";
 let projectExperience = {
     render: function (data) {
         let obj = newBaseModel("项目经历", data.contents.length)
-
+        obj.container.dataset.position = data.position;
+        obj.container.dataset.size = data.size;
         for (let i = 0; i < data.contents.length; i++) {
             let mainContainer = document.createElement('div');
             mainContainer.style = config.projectExperience._mainContainerStyle;
