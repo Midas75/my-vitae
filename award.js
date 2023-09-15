@@ -8,7 +8,6 @@ let award = {
         obj.container.dataset.position=data.position;
         obj.container.dataset.size=data.size;
         for (let i = 0; i < data.contents.length; i++) {
-            console.log(data.contents)
             let container = document.createElement('div');
             container.style = config.award._containerStyle;
 

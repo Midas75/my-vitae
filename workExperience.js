@@ -4,51 +4,65 @@ import { newBaseModel } from "./baseModel.js";
 import { formatIfExists } from "./utils.js";
 let workExperience = {
     render: function (data) {
-        let obj = newBaseModel("工作经历", data.length)
-
-        for (let i = 0; i < data.length; i++) {
+        let obj = newBaseModel("工作经历", data.contents.length)
+        obj.container.dataset.position = data.position;
+        obj.container.dataset.size = data.size;
+        for (let i = 0; i < data.contents.length; i++) {
             let mainContainer = document.createElement('div');
             mainContainer.style = config.workExperience._mainContainerStyle;
-
-            if (data[i]["company"] != null) {
+            mainContainer.dataset.position = data.contents[i].position;
+            mainContainer.dataset.position = data.contents[i].size;
+            if (data.contents[i]["company"] != null) {
                 let companyLayer = document.createElement('div');
                 companyLayer.style = config.workExperience._titleLayerStyle;
-                companyLayer.innerHTML = data[i]["company"];
+                companyLayer.innerHTML = data.contents[i]["company"].value;
+                companyLayer.dataset.position = data.contents[i]["company"].position;
+                companyLayer.dataset.size = data.contents[i]["company"].size;
                 mainContainer.appendChild(companyLayer);
             }
 
-            if (data[i]["department"] != null) {
+            if (data.contents[i]["department"] != null) {
                 let departmentLayer = document.createElement('div');
                 departmentLayer.style = config.workExperience._departmentLayerStyle;
-                departmentLayer.innerHTML = formatIfExists(config.workExperience.department.format,data[i]["department"]);
+                departmentLayer.innerHTML = formatIfExists(config.workExperience.department.format, data.contents[i]["department"].value);
+                departmentLayer.dataset.position = data.contents[i]["department"].position;
+                departmentLayer.dataset.size = data.contents[i]["department"].size;
                 mainContainer.appendChild(departmentLayer);
             }
 
-            if (data[i]["position"] != null) {
+            if (data.contents[i]["position"] != null) {
                 let positionLayer = document.createElement('div');
                 positionLayer.style = config.workExperience._positionLayerStyle;
-                positionLayer.innerHTML = formatIfExists(config.workExperience.position.format,data[i]["position"]);
+                positionLayer.innerHTML = formatIfExists(config.workExperience.position.format, data.contents[i]["position"].value);
+                positionLayer.dataset.position = data.contents[i]["position"].position;
+                positionLayer.dataset.size = data.contents[i]["position"].size;
                 mainContainer.appendChild(positionLayer);
             }
-            if (data[i]["practice"] != null) {
+            if (data.contents[i]["practice"] != null) {
                 let practiceLayer = document.createElement('div');
                 practiceLayer.style = config.workExperience._practiceLayerStyle;
-                practiceLayer.innerHTML = formatIfExists(config.workExperience.practice.format,"实习");;
+                practiceLayer.innerHTML = formatIfExists(config.workExperience.practice.format, "实习");
+                practiceLayer.dataset.position = data.contents[i]["practice"].position;
+                practiceLayer.dataset.size = data.contents[i]["practice"].size;
                 mainContainer.appendChild(practiceLayer);
             }
-            if (data[i]["time"] != null) {
+            if (data.contents[i]["time"] != null) {
                 let timeLayer = document.createElement('div');
                 timeLayer.style = config.workExperience._timeLayerStyle;
-                timeLayer.innerHTML = formatIfExists(config.workExperience.time.format,data[i]["time"]);
+                timeLayer.innerHTML = formatIfExists(config.workExperience.time.format, data.contents[i]["time"].value);
+                timeLayer.dataset.position = data.contents[i]["time"].position;
+                timeLayer.dataset.size = data.contents[i]["time"].size;
                 mainContainer.appendChild(timeLayer);
             }
 
             obj.contents[i].appendChild(mainContainer);
 
-            if (data[i]["content"] != null) {
+            if (data.contents[i]["content"] != null) {
                 let contentLayer = document.createElement('div');
                 contentLayer.style = config.workExperience._contentLayerStyle
-                contentLayer.innerHTML = formatIfExists(config.workExperience.content.format,data[i]["content"]);
+                contentLayer.innerHTML = formatIfExists(config.workExperience.content.format, data.contents[i]["content"].value);
+                contentLayer.dataset.position = data.contents[i]["content"].position;
+                contentLayer.dataset.size = data.contents[i]["content"].size;
                 obj.contents[i].appendChild(contentLayer);
             }
 
@@ -56,21 +70,30 @@ let workExperience = {
 
         return obj.container
     },
-    parse: function (str) {
-        let data = [];
-        let subs = splitSub(str)
+    parse: function (tokens) {
+        let data = {
+            position: tokens[0].position,
+            size: tokens[0].raw.length,
+            contents: []
+        };
+        let subs = splitSub(tokens)
 
-        for (let item of subs) {
-            let obj = {}
-            obj["company"] = findTitle(item)
+        for (let sub of subs) {
+            let obj = {
+                company: {
+                    value: sub[0].text,
+                    position: sub[0].position,
+                    size: sub[0].raw.length
+                }
+            }
 
-            let listItems = splitIntoListItems(item);
+            let listItems = splitIntoListItems(sub);
             for (let key in config.workExperience) {
                 if (!key.startsWith("_")) {
                     obj[key] = findValueByKeys(listItems, config.workExperience[key].key);
                 }
             }
-            data.push(obj)
+            data.contents.push(obj)
         }
 
         return data
