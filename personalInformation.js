@@ -6,11 +6,11 @@ import { formatIfExists } from "./utils.js";
 let personalInformation = {
     render: function (data) {
         let obj = newBaseModel(data.name);
-        obj.container.dataset.position=data.position;
-        obj.container.dataset.size=data.size;
+        obj.container.dataset.position = data.position;
+        obj.container.dataset.size = data.size;
         let tagLayer = document.createElement('div');
-        obj.contents[0].style += ";" + config.personalInformation._contentContainerAdditionStyle;
-        tagLayer.style = config.personalInformation._tagLayerStyle;
+        obj.contents[0].classList.add("content-container-addition");
+        tagLayer.classList.add("tag-layer");
 
         for (let key in config.personalInformation) {
             if (!key.startsWith("_") && data[key] != null) {
@@ -18,9 +18,9 @@ let personalInformation = {
                     continue;
                 }
                 let div = document.createElement('div');
-                div.dataset.position=data[key].position;
-                div.dataset.size=data[key].size;
-                div.style = config.personalInformation._tagStyle;
+                div.dataset.position = data[key].position;
+                div.dataset.size = data[key].size;
+                div.classList.add("tag");
                 div.innerHTML = formatIfExists(
                     config.personalInformation[key].format,
                     data[key].value
@@ -32,9 +32,9 @@ let personalInformation = {
         if (config.personalInformation["avatar"] && data["avatar"] != null) {
             obj.container.style.marginBottom = "0vw";
             let div = document.createElement('div');
-            div.dataset.position=data["avatar"].position;
-            div.dataset.size=data["avatar"].size;
-            div.style = config.personalInformation._avatarStyle;
+            div.dataset.position = data["avatar"].position;
+            div.dataset.size = data["avatar"].size;
+            div.classList.add("avatar");
             div.innerHTML = formatIfExists(
                 config.personalInformation["avatar"].format,
                 data["avatar"].value
@@ -56,7 +56,7 @@ let personalInformation = {
         let listItems = splitIntoListItems(tokens)
         for (let key in config.personalInformation) {
             if (!key.startsWith("_")) {
-                data[key] = findValueByKeys(listItems,config.personalInformation[key].key)
+                data[key] = findValueByKeys(listItems, config.personalInformation[key].key)
             }
         }
         return data;

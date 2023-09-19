@@ -58,7 +58,8 @@
             ])
             loadLinksTo(previewDoc, [
                 `css/${style}/preview/preview.css`,
-                `css/${style}/preview/personalInformation.css`
+                `css/${style}/preview/personalInformation.css`,
+                `css/${style}/preview/educationExperience.css`
             ])
         }
         loadStyle()
@@ -72,6 +73,8 @@
         editorArea.setAttribute('contenteditable', true);
         editorArea.setAttribute('user-modify', "read-write-plaintext-only");
         editorArea.className = "area";
+        editorDoc.body.appendChild(editorArea);
+
         let scrollLockButton = document.getElementById("scrollLock");
         let saveButton = document.getElementById("save");
         let printButton = document.getElementById("print");
@@ -185,7 +188,7 @@
             showLink = !showLink;
             render(str)
         })
-        editorDoc.body.appendChild(editorArea);
+
 
         function render(str, option) {
             if (!option) {

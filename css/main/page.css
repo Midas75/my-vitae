@@ -15,9 +15,11 @@
 
 .editor {
     width: 49vw;
+    border: solid;
 }
 
 .preview {
     width: 49vw;
+    border: solid;
     margin-left: auto;
 }
