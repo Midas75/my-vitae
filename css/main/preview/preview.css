@@ -1,0 +1,35 @@
+.container {
+    clear: both;
+    margin-bottom: 4vw;
+}
+
+.content-container {
+    clear: both;
+    margin-bottom: 2vw;
+    font-size: 1.5vw;
+    padding-left: 2vw;
+}
+
+.title-layer {
+    clear: both;
+    font-size: 3vw;
+    width: 90vw;
+    margin-bottom: 1vw;
+}
+
+.split-layer {
+    clear: both;
+    margin-bottom: 2vw;
+}
+
+.left-split-line {
+    width: 10vw;
+    background-color: #DFF;
+    height: 1vw;
+}
+
+.right-split-line {
+    width: auto;
+    background-color: #0DD;
+    height: 0.3vw;
+}

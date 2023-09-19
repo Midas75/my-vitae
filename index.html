@@ -1,28 +1,24 @@
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/main/icon.css" />
+    <link rel="stylesheet" type="text/css" href="css/main/page.css" />
 </head>
 
 <body>
-    <div id="container" style="display: flex;flex-direction: row;justify-content: center;height:100%">
-        <iframe id="editor" style="width:49vw;">
+    <div id="container" class="container">
+        <iframe id="editor" class="editor">
         </iframe>
         <div style="clear:both">
-            <div id="scrollLock"
-                style="margin-bottom:0.2vw;padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw;width:1.4vw">
-                🔒</div>
-            <div id="save"
-                style="margin-bottom:0.2vw;padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw;width:1.4vw">
-                💾</div>
-            <div id="print"
-                style="margin-bottom:0.2vw;padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw;width:1.4vw">
-                📃</div>
-            <div id="clear"
-                style="margin-bottom:0.2vw;padding:0.2vw;font-size: 1vw;border-radius: 0.7vw;background-color: #0DD;text-align: center;user-select: none;height:1.4vw;width:1.4vw">
-                🔃</div>
+            <div id="scrollLock" class="page-button"> </div>
+            <div id="save" class="page-button"></div>
+            <div id="print" class="page-button"></div>
+            <div id="clear" class="page-button"></div>
+            <div id="link" class="page-button"></div>
         </div>
-        <iframe id="preview" style="width:49vw;margin-left:auto">
+        <iframe id="preview" class="preview">
         </iframe>
     </div>
     <script type="module">
@@ -33,10 +29,10 @@
         import { workExperience } from "./workExperience.js"
         import { projectExperience } from "./projectExperience.js"
         import { readAsStringAsync } from "./fileReader.js"
-        import { findTitle, split, removeAnnotation, findPersonalInformation } from "./baseMatcher.js"
+        import { findTitle, split, removeAnnotation, findPersonalInformation, removeATag } from "./baseMatcher.js"
         import { bindJumperByPosition } from "./positionJumper.js"
+        import { loadLinksTo, createScrollLockIcon, createScrollUnlockIcon, createSaveIcon, createPrintIcon, createClearIcon, createLinkIcon, createHideLinkIcon } from "./uiCreator.js"
         let str = "";
-
         let editor = document.getElementById('editor');
         let preview = document.getElementById('preview');
 
@@ -45,17 +41,43 @@
 
         let scrollTarget = null;
         let scrollLock = true;
+        let showLink = true;
 
-
+        let style = "main"
 
         let editorDoc = editorWindow.document;
         let previewDoc = previewWindow.document;
 
+        function loadStyle() {
+            loadLinksTo(document, [
+                `css/${style}/icon.css`,
+                `css/${style}/page.css`
+            ])
+            loadLinksTo(editorDoc, [
+                `css/${style}/editor.css`
+            ])
+            loadLinksTo(previewDoc, [
+                `css/${style}/preview/preview.css`,
+                `css/${style}/preview/personalInformation.css`
+            ])
+        }
+        loadStyle()
+        let scrollLockHTML = ""
+        let scrollUnlockHTML = ""
+        let showLinkHTML = ""
+        let hideLinkHTML = ""
+
         let editorArea = editorDoc.createElement('textarea');
         // editorArea.style = "height:auto;white-space: pre-wrap;border:none;resize:none;padding:1vw"
-        editorArea.style = "width: 100%; height: 100%; resize: none; border: none; padding: 1vw;font-size:1.5vw; box-sizing: border-box;";
         editorArea.setAttribute('contenteditable', true);
         editorArea.setAttribute('user-modify', "read-write-plaintext-only");
+        editorArea.className = "area";
+        let scrollLockButton = document.getElementById("scrollLock");
+        let saveButton = document.getElementById("save");
+        let printButton = document.getElementById("print");
+        let clearButton = document.getElementById("clear");
+        let linkButton = document.getElementById("link");
+
         window.addEventListener('load', async function () {
             if (localStorage.getItem("myVitae") != null && localStorage.getItem("myVitae") != undefined) {
                 str = localStorage.getItem("myVitae")
@@ -63,6 +85,10 @@
             else {
                 str = await readAsStringAsync("./MyVitae.md");
             }
+            scrollLockHTML = await createScrollLockIcon(scrollLockButton)
+            scrollUnlockHTML = await createScrollUnlockIcon()
+            showLinkHTML = await createLinkIcon(linkButton)
+            hideLinkHTML = await createHideLinkIcon()
             editorArea.value = str;
             render(str)
         })
@@ -123,36 +149,50 @@
             render(str)
         })
 
-        let scrollLockButton = document.getElementById("scrollLock");
         scrollLockButton.addEventListener("click", function (event) {
             if (scrollLock) {
-                scrollLockButton.innerText = "🔓";
+                scrollLockButton.innerHTML = scrollUnlockHTML;
             }
             else {
-                scrollLockButton.innerText = "🔒";
+                scrollLockButton.innerHTML = scrollLockHTML;
             }
             scrollLock = !scrollLock;
         })
 
-        let saveButton = document.getElementById("save");
+        createSaveIcon(saveButton);
         saveButton.addEventListener("click", function (event) {
             localStorage.setItem("myVitae", editorArea.innerText)
         })
 
-        let printButton = document.getElementById("print");
+        createPrintIcon(printButton);
         printButton.addEventListener("click", function (event) {
             previewWindow.print();
         })
 
-        let clearButton = document.getElementById("clear");
+        createClearIcon(clearButton);
         clearButton.addEventListener("click", async function (event) {
             localStorage.removeItem("myVitae");
             render(await readAsStringAsync("./MyVitae.md"))
         })
 
+        linkButton.addEventListener("click", function (event) {
+            if (showLink) {
+                linkButton.innerHTML = hideLinkHTML;
+            }
+            else {
+                linkButton.innerHTML = showLinkHTML;
+            }
+            showLink = !showLink;
+            render(str)
+        })
         editorDoc.body.appendChild(editorArea);
 
-        function render(str) {
+        function render(str, option) {
+            if (!option) {
+                option = {
+                    showLink: showLink
+                }
+            }
             previewDoc.body.innerHTML = "";
             let subTokens = split(str)
             let titleModuleMap = {
@@ -177,10 +217,14 @@
                         titleModuleMap[key].render(
                             titleModuleMap[key].parse(
                                 subTokens[key]
-                            )
+                            ),
+                            option
                         )
                     )
                 }
+            }
+            if (!option.showLink) {
+                removeATag(previewDoc.body)
             }
             bindJumperByPosition(editorArea, previewDoc);
         }

@@ -1,0 +1,23 @@
+.page-button {
+    margin-bottom: 0.2vw;
+    height: 1.6vw;
+    width: 1.6vw;
+    padding: 0.2vw;
+    user-select: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 98vh;
+}
+
+.editor {
+    width: 49vw;
+}
+
+.preview {
+    width: 49vw;
+    margin-left: auto;
+}

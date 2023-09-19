@@ -3,7 +3,7 @@ import { config } from "./conf.js";
 import { newBaseModel } from "./baseModel.js";
 import { formatIfExists } from "./utils.js";
 let projectExperience = {
-    render: function (data) {
+    render: function (data,option={}) {
         let obj = newBaseModel("项目经历", data.contents.length)
         obj.container.dataset.position = data.position;
         obj.container.dataset.size = data.size;
@@ -54,7 +54,7 @@ let projectExperience = {
                 technologyLayer.dataset.size = data.contents[i]["technology"].size;
                 obj.contents[i].appendChild(technologyLayer);
             }
-            if (data.contents[i]["url"] != null) {
+            if (data.contents[i]["url"] != null&&option.showLink!=false) {
                 let urlLayer = document.createElement('div');
                 urlLayer.style = config.projectExperience._urlLayerStyle;
                 urlLayer.innerHTML = formatIfExists(config.projectExperience.url.format, data.contents[i]["url"].value);

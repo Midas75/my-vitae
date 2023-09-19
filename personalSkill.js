@@ -1,4 +1,3 @@
-import { findContent } from "./baseMatcher.js";
 import { newBaseModel } from "./baseModel.js";
 import { marked } from "./marked.esm.min.js"
 let personalSkill = {

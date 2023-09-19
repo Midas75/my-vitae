@@ -2,7 +2,6 @@ import { findValueByKeys, splitIntoListItems, findTitle } from "./baseMatcher.js
 import { newBaseModel } from "./baseModel.js";
 import { config } from "./conf.js";
 import { formatIfExists } from "./utils.js";
-import { Lexer } from "./marked.esm.min.js";
 
 let personalInformation = {
     render: function (data) {
@@ -55,26 +54,6 @@ let personalInformation = {
             }
         }
         let listItems = splitIntoListItems(tokens)
-        // for (let token of tokens) {
-
-        //     if (token.type === 'list') {
-        //         let tokenPosition = token.position
-        //         for (let item of token.items) {
-        //             let spiltArray = item.text.split(/：|:/)
-        //             listItems[spiltArray[0]] = {
-        //                 position: tokenPosition,
-        //                 size : item.raw.length
-        //             }
-        //             if (spiltArray.length == 1) {
-        //                 listItems[spiltArray[0]].value = spiltArray[0];
-        //             }
-        //             else {
-        //                 listItems[spiltArray[0]].value = item.text.substr(spiltArray[0].length + 1);
-        //             }
-        //             tokenPosition += item.raw.length
-        //         }
-        //     }
-        // }
         for (let key in config.personalInformation) {
             if (!key.startsWith("_")) {
                 data[key] = findValueByKeys(listItems,config.personalInformation[key].key)
