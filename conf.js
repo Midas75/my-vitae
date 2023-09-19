@@ -102,8 +102,8 @@ const config = {
         }
     },
     projectExperience: {
-        _mainContainerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;",
-        _titleLayerStyle: "font-size: 2vw;padding-right:2vw",
+        _mainContainerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;border-bottom-style:solid;border-color:#0DD;border-width:0.3vw",
+        _titleLayerStyle: "font-size: 2vw;padding-right:2vw;",
         _roleLayerStyle: "font-size:1.5vw;padding-right:2vw",
         _timeLayerStyle: "font-size: 1.5vw;margin-left:auto",
         _technologyContainerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;",

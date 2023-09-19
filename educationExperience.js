@@ -15,7 +15,7 @@ let educationExperience = {
             mainContainer.dataset.size = item.size
             if (item["school"] != null) {
                 let schoolLayer = document.createElement('div');
-                schoolLayer.classList.add("title-layer");
+                schoolLayer.classList.add("school-layer");
                 schoolLayer.innerHTML = item["school"].value;
                 schoolLayer.dataset.position = item["school"].position;
                 schoolLayer.dataset.size = item["school"].size;
