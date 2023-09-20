@@ -1,35 +1,35 @@
-.main-container {
+.ee-main-container {
     align-items: baseline;
     display: flex;
     margin-bottom: 0.5vw;
 }
 
-.school-layer {
+.ee-school-layer {
     font-size: 2vw;
     font-weight: bold;
     padding-right: 2vw
 }
 
-.time-layer {
+.ee-time-layer {
     font-size: 1.5vw;
     color: #777;
     padding-right: 2vw
 }
 
-.detail-container {
+.ee-detail-container {
     clear: both;
     align-items: baseline;
     display: flex;
     text-align: center;
 }
 
-.detail-layer {
+.ee-detail-layer {
     font-size: 1.5vw;
     padding-right: 1vw;
     padding-left: 1vw
 }
 
-.detail-separator {
+.ee-detail-separator {
     font-size: 1.5vw;
     color: #777
 }

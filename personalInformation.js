@@ -1,4 +1,4 @@
-import { findValueByKeys, splitIntoListItems, findTitle } from "./baseMatcher.js";
+import { findValueByKeys, splitIntoListItems } from "./baseMatcher.js";
 import { newBaseModel } from "./baseModel.js";
 import { config } from "./conf.js";
 import { formatIfExists } from "./utils.js";
@@ -9,8 +9,8 @@ let personalInformation = {
         obj.container.dataset.position = data.position;
         obj.container.dataset.size = data.size;
         let tagLayer = document.createElement('div');
-        obj.contents[0].classList.add("content-container-addition");
-        tagLayer.classList.add("tag-layer");
+        obj.contents[0].classList.add("pi-content-container-addition");
+        tagLayer.classList.add("pi-tag-layer");
 
         for (let key in config.personalInformation) {
             if (!key.startsWith("_") && data[key] != null) {
@@ -20,7 +20,7 @@ let personalInformation = {
                 let div = document.createElement('div');
                 div.dataset.position = data[key].position;
                 div.dataset.size = data[key].size;
-                div.classList.add("tag");
+                div.classList.add("pi-tag");
                 div.innerHTML = formatIfExists(
                     config.personalInformation[key].format,
                     data[key].value
@@ -34,7 +34,7 @@ let personalInformation = {
             let div = document.createElement('div');
             div.dataset.position = data["avatar"].position;
             div.dataset.size = data["avatar"].size;
-            div.classList.add("avatar");
+            div.classList.add("pi-avatar");
             div.innerHTML = formatIfExists(
                 config.personalInformation["avatar"].format,
                 data["avatar"].value

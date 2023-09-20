@@ -1,13 +1,13 @@
-.content-container-addition {
+.pi-content-container-addition {
     display: flex;
     align-items: flex-start;
 }
 
-.tag-layer {
+.pi-tag-layer {
     width: auto;
 }
 
-.tag {
+.pi-tag {
     font-size: 2vw;
     display: inline-table;
     background-color: #EEEEEE;
@@ -17,14 +17,14 @@
     margin-bottom: 1vw
 }
 
-.avatar {
+.pi-avatar {
     width: 15vw;
     height: 21vw;
     margin-top: -8vw;
     margin-left: auto;
 }
 
-.image {
+.pi-image {
     width: 100%;
     height: 100%;
     object-fit: cover;

@@ -1,0 +1,16 @@
+.a-container {
+    align-items: baseline;
+    display: flex;
+    margin-bottom: 0.5vw;
+}
+
+.a-time-layer {
+    font-size: 1.5vw;
+    color: #777;
+    padding-right: 2vw
+}
+
+.a-title-layer {
+    font-size: 1.5vw;
+    padding-right: 2vw
+}

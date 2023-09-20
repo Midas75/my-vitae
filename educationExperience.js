@@ -10,12 +10,12 @@ let educationExperience = {
         let index = 0;
         for (let item of data.contents) {
             let mainContainer = document.createElement('div')
-            mainContainer.classList.add("main-container");
+            mainContainer.classList.add("ee-main-container");
             mainContainer.dataset.position = item.position
             mainContainer.dataset.size = item.size
             if (item["school"] != null) {
                 let schoolLayer = document.createElement('div');
-                schoolLayer.classList.add("school-layer");
+                schoolLayer.classList.add("ee-school-layer");
                 schoolLayer.innerHTML = item["school"].value;
                 schoolLayer.dataset.position = item["school"].position;
                 schoolLayer.dataset.size = item["school"].size;
@@ -23,7 +23,7 @@ let educationExperience = {
             }
             if (item["time"] != null) {
                 let timeLayer = document.createElement('div');
-                timeLayer.classList.add("time-layer");
+                timeLayer.classList.add("ee-time-layer");
                 timeLayer.innerHTML = formatIfExists(config.educationExperience.time.format, item["time"].value);
                 timeLayer.dataset.position = item["time"].position;
                 timeLayer.dataset.size = item["time"].size;
@@ -31,18 +31,18 @@ let educationExperience = {
             }
             obj.contents[index].appendChild(mainContainer);
             let detailContainer = document.createElement('div');
-            detailContainer.classList.add("detail-container");
+            detailContainer.classList.add("ee-detail-container");
             let isFirst = true;
             for (let key in config.educationExperience) {
                 if (!key.startsWith("_") && item[key] != null && key != "time") {
                     if (!isFirst) {
                         let detailSeparator = document.createElement('div');
-                        detailSeparator.classList.add("detail-separator");
+                        detailSeparator.classList.add("ee-detail-separator");
                         detailSeparator.innerHTML = "\|";
                         detailContainer.appendChild(detailSeparator);
                     }
                     let detailLayer = document.createElement('div');
-                    detailLayer.classList.add("detail-layer");
+                    detailLayer.classList.add("ee-detail-layer");
                     detailLayer.innerHTML = formatIfExists(config.educationExperience[key].format, item[key].value);
                     detailLayer.dataset.position = item[key].position;
                     detailLayer.dataset.size = item[key].size;

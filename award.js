@@ -9,18 +9,18 @@ let award = {
         obj.container.dataset.size=data.size;
         for (let i = 0; i < data.contents.length; i++) {
             let container = document.createElement('div');
-            container.style = config.award._containerStyle;
+            container.classList.add("a-container");
 
             if (data.contents[i]["time"] != null && data.contents[i]["name"] != null) {
                 let timeLayer = document.createElement('div');
-                timeLayer.style = config.award._timeLayerStyle;
+                timeLayer.classList.add("a-time-layer");
                 timeLayer.innerHTML = formatIfExists(config.award.time.format, data.contents[i]["time"].value);
                 timeLayer.dataset.position=data.contents[i]["time"].position;
                 timeLayer.dataset.size=data.contents[i]["time"].size;
                 container.appendChild(timeLayer);
 
                 let awardLayer = document.createElement('div');
-                awardLayer.style = config.award._titleLayerStyle;
+                awardLayer.classList.add("a-title-layer");
                 awardLayer.innerHTML = data.contents[i]["name"].value;
                 awardLayer.dataset.position=data.contents[i]["name"].position;
                 awardLayer.dataset.size=data.contents[i]["name"].size;

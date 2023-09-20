@@ -6,6 +6,7 @@ let personalSkill = {
         obj.container.dataset.position = data.position;
         obj.container.dataset.size = data.size;
         for (let i = 0; i < data.contents.length; i++) {
+            obj.contents[i].classList.add("ps-content-layer")
             obj.contents[i].innerHTML = marked.parse(data.contents[i].raw)
             obj.contents[i].dataset.position = data.contents[i].position
             obj.contents[i].dataset.size = data.contents[i].raw.length

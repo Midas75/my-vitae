@@ -59,7 +59,11 @@
             loadLinksTo(previewDoc, [
                 `css/${style}/preview/preview.css`,
                 `css/${style}/preview/personalInformation.css`,
-                `css/${style}/preview/educationExperience.css`
+                `css/${style}/preview/educationExperience.css`,
+                `css/${style}/preview/award.css`,
+                `css/${style}/preview/workExperience.css`,
+                `css/${style}/preview/projectExperience.css`,
+                `css/${style}/preview/personalSkill.css`
             ])
         }
         loadStyle()
@@ -69,7 +73,6 @@
         let hideLinkHTML = ""
 
         let editorArea = editorDoc.createElement('textarea');
-        // editorArea.style = "height:auto;white-space: pre-wrap;border:none;resize:none;padding:1vw"
         editorArea.setAttribute('contenteditable', true);
         editorArea.setAttribute('user-modify', "read-write-plaintext-only");
         editorArea.className = "area";

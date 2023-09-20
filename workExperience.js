@@ -1,4 +1,4 @@
-import { findTitle, findValueByKeys, splitIntoListItems, splitSub } from "./baseMatcher.js";
+import { findValueByKeys, splitIntoListItems, splitSub } from "./baseMatcher.js";
 import { config } from "./conf.js";
 import { newBaseModel } from "./baseModel.js";
 import { formatIfExists } from "./utils.js";
@@ -9,12 +9,12 @@ let workExperience = {
         obj.container.dataset.size = data.size;
         for (let i = 0; i < data.contents.length; i++) {
             let mainContainer = document.createElement('div');
-            mainContainer.style = config.workExperience._mainContainerStyle;
+            mainContainer.classList.add("we-main-container");
             mainContainer.dataset.position = data.contents[i].position;
             mainContainer.dataset.position = data.contents[i].size;
             if (data.contents[i]["company"] != null) {
                 let companyLayer = document.createElement('div');
-                companyLayer.style = config.workExperience._titleLayerStyle;
+                companyLayer.classList.add("we-title-layer");
                 companyLayer.innerHTML = data.contents[i]["company"].value;
                 companyLayer.dataset.position = data.contents[i]["company"].position;
                 companyLayer.dataset.size = data.contents[i]["company"].size;
@@ -23,7 +23,7 @@ let workExperience = {
 
             if (data.contents[i]["department"] != null) {
                 let departmentLayer = document.createElement('div');
-                departmentLayer.style = config.workExperience._departmentLayerStyle;
+                departmentLayer.classList.add("we-department-layer");
                 departmentLayer.innerHTML = formatIfExists(config.workExperience.department.format, data.contents[i]["department"].value);
                 departmentLayer.dataset.position = data.contents[i]["department"].position;
                 departmentLayer.dataset.size = data.contents[i]["department"].size;
@@ -32,7 +32,7 @@ let workExperience = {
 
             if (data.contents[i]["position"] != null) {
                 let positionLayer = document.createElement('div');
-                positionLayer.style = config.workExperience._positionLayerStyle;
+                positionLayer.classList.add("we-position-layer");
                 positionLayer.innerHTML = formatIfExists(config.workExperience.position.format, data.contents[i]["position"].value);
                 positionLayer.dataset.position = data.contents[i]["position"].position;
                 positionLayer.dataset.size = data.contents[i]["position"].size;
@@ -40,7 +40,7 @@ let workExperience = {
             }
             if (data.contents[i]["practice"] != null) {
                 let practiceLayer = document.createElement('div');
-                practiceLayer.style = config.workExperience._practiceLayerStyle;
+                practiceLayer.classList.add("we-practice-layer");
                 practiceLayer.innerHTML = formatIfExists(config.workExperience.practice.format, "实习");
                 practiceLayer.dataset.position = data.contents[i]["practice"].position;
                 practiceLayer.dataset.size = data.contents[i]["practice"].size;
@@ -48,7 +48,7 @@ let workExperience = {
             }
             if (data.contents[i]["time"] != null) {
                 let timeLayer = document.createElement('div');
-                timeLayer.style = config.workExperience._timeLayerStyle;
+                timeLayer.classList.add("we-time-layer");
                 timeLayer.innerHTML = formatIfExists(config.workExperience.time.format, data.contents[i]["time"].value);
                 timeLayer.dataset.position = data.contents[i]["time"].position;
                 timeLayer.dataset.size = data.contents[i]["time"].size;
@@ -59,7 +59,7 @@ let workExperience = {
 
             if (data.contents[i]["content"] != null) {
                 let contentLayer = document.createElement('div');
-                contentLayer.style = config.workExperience._contentLayerStyle
+                contentLayer.classList.add("we-content-layer");
                 contentLayer.innerHTML = formatIfExists(config.workExperience.content.format, data.contents[i]["content"].value);
                 contentLayer.dataset.position = data.contents[i]["content"].position;
                 contentLayer.dataset.size = data.contents[i]["content"].size;

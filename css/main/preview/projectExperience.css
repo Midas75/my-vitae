@@ -1,0 +1,51 @@
+.pe-main-container {
+    align-items: baseline;
+    display: flex;
+    margin-bottom: 0.5vw;
+    border-bottom-style: solid;
+    border-color: #AEE;
+    border-width: 0.3vw
+}
+
+.pe-title-layer {
+    font-size: 2vw;
+    padding-right: 2vw;
+}
+
+.pe-role-layer {
+    font-size: 1.5vw;
+    padding-right: 2vw
+}
+
+.pe-time-layer {
+    font-size: 1.5vw;
+    margin-left: auto
+}
+
+.pe-technology-container {
+    align-items: baseline;
+    display: flex;
+    margin-bottom: 0.5vw;
+}
+
+.pe-technology-layer {
+    font-size: 1.5vw;
+}
+
+.pe-technology-tag {
+    font-size: 1.5vw;
+    display: inline-table;
+    background-color: #EEEEEE;
+    margin-right: 1vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+}
+
+.pe-url-layer {
+    font-size: 1.5vw;
+}
+
+.pe-content-layer {
+    font-size: 1.5vw;
+    line-height: 2.5vw;
+}

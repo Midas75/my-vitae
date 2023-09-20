@@ -66,22 +66,11 @@ const config = {
 
     },
     award: {
-        _containerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;",
-        _timeLayerStyle: "font-size: 1.5vw;color: #777;padding-right:2vw",
-        _titleLayerStyle: "font-size: 1.5vw;padding-right:2vw",
-
         time: {
             key: ["时间", "time"]
         }
     },
     workExperience: {
-        _mainContainerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;",
-        _titleLayerStyle: "font-size: 2vw;padding-right:2vw",
-        _departmentLayerStyle: "font-size: 1.5vw;padding-right:2vw",
-        _positionLayerStyle: "font-size: 1.5vw;padding-right:2vw",
-        _practiceLayerStyle: "font-size:1.5vw;border-radius: 0.4vw;background-color: #DFF;color:#0DD;padding-left: 0.5vw;padding-right: 0.5vw;margin-right:2vw",
-        _timeLayerStyle: "font-size: 1.5vw;margin-left:auto",
-        _contentLayerStyle: "font-size:1.5vw;",
         department: {
             key: ["部门", "department"]
         },
@@ -102,15 +91,6 @@ const config = {
         }
     },
     projectExperience: {
-        _mainContainerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;border-bottom-style:solid;border-color:#0DD;border-width:0.3vw",
-        _titleLayerStyle: "font-size: 2vw;padding-right:2vw;",
-        _roleLayerStyle: "font-size:1.5vw;padding-right:2vw",
-        _timeLayerStyle: "font-size: 1.5vw;margin-left:auto",
-        _technologyContainerStyle: "align-items: baseline;display: flex;margin-bottom: 0.5vw;",
-        _technologyLayerStyle: "font-size: 1.5vw;",
-        _technologyTagStyle: "font-size:1.5vw;display:inline-table;background-color: #EEEEEE;margin-right: 1vw;padding-left: 0.5vw;padding-right: 0.5vw;",
-        _urlLayerStyle: "font-size:1.5vw",
-        _contentLayerStyle: "font-size:1.5vw;",
         role: {
             key: ["职责", "role"]
         },
