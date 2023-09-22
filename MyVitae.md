@@ -73,7 +73,7 @@
 ### 基于Markdown的简历生成工具
 - 职责：前端开发
 - 时间：2023.5~至今
-- 技术栈：JavaScript、Markdown
+- 技术栈：JavaScript、HTML、CSS、Markdown
 - 地址：https://gitee.com/sun-zhongjie-0426/my-vitae
 - 内容：
     - 对markdown文档约定部分格式，通过正则表达式与marked.js库提供的Lexer方法对文档进行解析，渲染为具有一定格式的html文档，利用浏览器的打印功能生成pdf
@@ -81,7 +81,8 @@
     - 改善了marked.js中链接跳转体验不佳的问题
     - 基于Lexer实现从渲染结果向原始文本的跳转（双击div时选中原始文本）
     - 基于svg+emoji绘制矢量ui，封装为ui加载方法
-    - 基于css实现可切换的渲染风格
+    - 基于css实现可切换的渲染风格与多套简历模板
+    - 仿照ElementUI封装了message组件，并应用于编辑页面
     - **本简历由该项目生成**
 ### 灵境——慧安蜂巢人工智能算法中台
 - 职责：方案设计、后端开发、运维
