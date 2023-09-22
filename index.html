@@ -3,8 +3,6 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="css/main/icon.css" />
-    <link rel="stylesheet" type="text/css" href="css/main/page.css" />
 </head>
 
 <body>
@@ -17,9 +15,14 @@
             <div id="print" class="page-button"></div>
             <div id="clear" class="page-button"></div>
             <div id="link" class="page-button"></div>
+            <div id="style" class="page-button"></div>
         </div>
         <iframe id="preview" class="preview">
         </iframe>
+    </div>
+    <div id="messageListContainer" class="message-list-container">
+    </div>
+
     </div>
     <script type="module">
         import { personalInformation } from "./personalInformation.js"
@@ -31,7 +34,19 @@
         import { readAsStringAsync } from "./fileReader.js"
         import { findTitle, split, removeAnnotation, findPersonalInformation, removeATag } from "./baseMatcher.js"
         import { bindJumperByPosition } from "./positionJumper.js"
-        import { loadLinksTo, createScrollLockIcon, createScrollUnlockIcon, createSaveIcon, createPrintIcon, createClearIcon, createLinkIcon, createHideLinkIcon } from "./uiCreator.js"
+        import {
+            loadLinksTo,
+            createScrollLockIcon,
+            createScrollUnlockIcon,
+            createSaveIcon,
+            createPrintIcon,
+            createClearIcon,
+            createLinkIcon,
+            createHideLinkIcon,
+            createStyleIcon,
+            initMessageList,
+            showMessage
+        } from "./uiCreator.js"
         let str = "";
         let editor = document.getElementById('editor');
         let preview = document.getElementById('preview');
@@ -43,19 +58,17 @@
         let scrollLock = true;
         let showLink = true;
 
-        let style = "main"
+        let styles = ["main", "autumn"]
+        let styleIndex = 0
 
         let editorDoc = editorWindow.document;
         let previewDoc = previewWindow.document;
 
-        function loadStyle() {
-            loadLinksTo(document, [
-                `css/${style}/icon.css`,
-                `css/${style}/page.css`
-            ])
+        function loadStyle(style, clear) {
+
             loadLinksTo(editorDoc, [
                 `css/${style}/editor.css`
-            ])
+            ], clear)
             loadLinksTo(previewDoc, [
                 `css/${style}/preview/preview.css`,
                 `css/${style}/preview/personalInformation.css`,
@@ -64,9 +77,14 @@
                 `css/${style}/preview/workExperience.css`,
                 `css/${style}/preview/projectExperience.css`,
                 `css/${style}/preview/personalSkill.css`
-            ])
+            ], clear)
         }
-        loadStyle()
+        loadLinksTo(document, [
+            `css/main/icon.css`,
+            `css/main/page.css`,
+            `css/main/message.css`
+        ])
+        loadStyle(styles[styleIndex], true)
         let scrollLockHTML = ""
         let scrollUnlockHTML = ""
         let showLinkHTML = ""
@@ -83,6 +101,9 @@
         let printButton = document.getElementById("print");
         let clearButton = document.getElementById("clear");
         let linkButton = document.getElementById("link");
+        let styleButton = document.getElementById("style");
+
+        let messageList = initMessageList(document.getElementById('messageListContainer'))
 
         window.addEventListener('load', async function () {
             if (localStorage.getItem("myVitae") != null && localStorage.getItem("myVitae") != undefined) {
@@ -157,9 +178,11 @@
 
         scrollLockButton.addEventListener("click", function (event) {
             if (scrollLock) {
+                showMessage(messageList,"解锁同步滚动")
                 scrollLockButton.innerHTML = scrollUnlockHTML;
             }
             else {
+                showMessage(messageList,"锁定同步滚动")
                 scrollLockButton.innerHTML = scrollLockHTML;
             }
             scrollLock = !scrollLock;
@@ -167,6 +190,7 @@
 
         createSaveIcon(saveButton);
         saveButton.addEventListener("click", function (event) {
+            showMessage(messageList,"保存到localStorage")
             localStorage.setItem("myVitae", editorArea.innerText)
         })
 
@@ -177,6 +201,7 @@
 
         createClearIcon(clearButton);
         clearButton.addEventListener("click", async function (event) {
+            showMessage(messageList,"清除localStorage")
             localStorage.removeItem("myVitae");
             render(await readAsStringAsync("./MyVitae.md"))
         })
@@ -184,14 +209,24 @@
         linkButton.addEventListener("click", function (event) {
             if (showLink) {
                 linkButton.innerHTML = hideLinkHTML;
+                showMessage(messageList,"隐藏链接")
             }
             else {
                 linkButton.innerHTML = showLinkHTML;
+                showMessage(messageList,"展示链接")
             }
             showLink = !showLink;
             render(str)
         })
 
+        createStyleIcon(styleButton);
+        styleButton.addEventListener("click", function (event) {
+            styleIndex += 1;
+            styleIndex %= styles.length;
+            styleButton.getElementsByTagName('text')[0].innerHTML = styleIndex
+            loadStyle(styles[styleIndex], true)
+            showMessage(messageList, `风格切换到 ${styles[styleIndex]}`)
+        })
 
         function render(str, option) {
             if (!option) {

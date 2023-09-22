@@ -1,9 +1,9 @@
 .pe-main-container {
     align-items: baseline;
     display: flex;
-    margin-bottom: 0.5vw;
+    margin-bottom: -1px;
     border-bottom-style: solid;
-    border-color: #AEE;
+    border-color: #F55;
     border-width: 0.3vw;
     margin-right: 2vw;
 }
@@ -11,11 +11,13 @@
 .pe-title-layer {
     font-size: 2vw;
     padding-right: 2vw;
+    width: 40vw;
 }
 
 .pe-role-layer {
     font-size: 1.5vw;
-    padding-right: 2vw
+    padding-right: 2vw;
+    padding-left: 2vw;
 }
 
 .pe-time-layer {
@@ -27,6 +29,7 @@
     align-items: baseline;
     display: flex;
     margin-bottom: 0.5vw;
+    padding-left: 1vw;
 }
 
 .pe-technology-layer {
@@ -35,11 +38,12 @@
 
 .pe-technology-tag {
     font-size: 1.5vw;
+    font-weight: bold;
+    color:#FFF;
     display: inline-table;
-    background-color: #EEEEEE;
+    background-color: #F55;
     margin-right: 1vw;
-    padding-left: 0.5vw;
-    padding-right: 0.5vw;
+    padding: 0.5vw;
 }
 
 .pe-url-layer {

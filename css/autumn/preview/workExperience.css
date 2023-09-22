@@ -1,0 +1,48 @@
+.we-main-container {
+    align-items: baseline;
+    display: flex;
+    margin-bottom: 0.5vw;
+}
+
+.we-title-layer {
+    font-weight: bold;
+    font-size: 2vw;
+    padding-right: 2vw;
+    width: 30vw;
+}
+
+.we-department-layer {
+    font-weight: bold;
+    font-size: 1.5vw;
+    padding-right: 2vw;
+    width: 20vw;
+}
+
+.we-position-layer {
+    font-weight: bold;
+    font-size: 1.5vw;
+    padding-right: 2vw;
+    width: 15vw;
+}
+
+.we-practice-layer {
+    font-size: 1.5vw;
+    font-weight: bold;
+    border-radius: 0.4vw;
+    background-color: #F55;
+    color: #FFF;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    margin-right: 2vw
+}
+
+.we-time-layer {
+    font-weight: bold;
+    font-size: 1.5vw;
+    margin-left: auto
+}
+
+.we-content-layer {
+    font-size: 1.5vw;
+    line-height: 2.5vw;
+}

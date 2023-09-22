@@ -1,0 +1,28 @@
+.message-list {
+    width: 100%;
+    align-items: center;
+    position: absolute;
+    margin-top: 2vh;
+    height: 1vh;
+}
+
+.message.fade {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.message {
+    position: absolute;
+    align-items: baseline;
+    line-height: 2vw;
+    width: 100%;
+    height: auto;
+    background-color: #DDD;
+    pointer-events: all;
+    padding-left: 1vw;
+    opacity: 1;
+    transform: translate(0%);
+    transition: opacity 0.5s ease-in-out, transform 0.5s, top 0.5s;
+    font-size: 0.6vw;
+    border-radius: 0.4vw;
+}

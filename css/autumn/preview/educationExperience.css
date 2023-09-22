@@ -1,0 +1,38 @@
+.ee-main-container {
+    align-items: baseline;
+    margin-bottom: 0.5vw;
+    column-count: 2;
+}
+
+.ee-school-layer {
+    font-size: 2vw;
+    padding-right: 2vw;
+    margin-bottom: 2vw;
+}
+
+.ee-time-layer {
+    font-size: 2vw;
+    padding-right: 2vw;
+    color:#777;
+}
+
+.ee-detail-container {
+    clear: both;
+    column-count: 4;
+    text-align: left;
+}
+
+.ee-detail-layer {
+    font-size: 1.5vw;
+    padding-right: 1vw;
+    padding-left: 1vw;
+    border-left-style: solid;
+    border-left-color: #F55;
+    border-left-width: 0.3vw;
+}
+
+.ee-detail-separator {
+    font-size: 1.5vw;
+    color: #777;
+    visibility: hidden;
+}

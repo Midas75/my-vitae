@@ -1,0 +1,50 @@
+.container {
+    clear: both;
+    margin-bottom: 1vw;
+    position: relative;
+}
+
+.content-container {
+    clear: both;
+    margin-bottom: 2vw;
+    font-size: 1.5vw;
+    padding-left: 2vw;
+}
+
+.title-layer {
+    clear: both;
+    font-size: 3vw;
+    line-height: 4vw;
+    color: #FFF;
+    width:17vw;
+    background-color: #F55;
+    height:4vw;
+    font-weight: bold;
+    clip-path: polygon(0% 0%,85% 0%,100% 100%,0% 100%);
+    padding-left: 1vw;
+    position: relative;
+    top:0;
+    z-index: 1;
+}
+
+.split-layer {
+    position: relative;
+    top:-4vw;
+    margin-bottom: -3vw;
+}
+
+.left-split-line {
+    background-color: #FFF;
+    height: 4.2vw;
+    width: 19vw;
+    clip-path: polygon(0% 0%,85% 0%,100% 100%,0% 100%);
+}
+
+.right-split-line {
+    width: auto;
+    background-color: #F55;
+    height: 0.75vw;
+    z-index: -1;
+    position: relative;
+    top:-0.95vw;
+}

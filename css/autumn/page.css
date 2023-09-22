@@ -25,9 +25,9 @@
 }
 
 .message-list-container {
-    width: 15vw;
+    width: 20vw;
     position: fixed;
-    left: 17vw;
+    left: 15vw;
     top: 0vw;
     z-index: 100;
     pointer-events: none;
