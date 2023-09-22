@@ -34,3 +34,7 @@
     background-color: #0DD;
     height: 0.3vw;
 }
+html{
+    filter: grayscale(0%);
+    transition: filter 1s;
+}

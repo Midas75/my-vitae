@@ -5,6 +5,13 @@ export function removeATag(element){
         e.removeAttribute('href')
     }
 }
+export function expandATag(element){
+    let elements=element.getElementsByTagName('a')
+    for(let e of elements){
+        if(e.innerHTML!=e.href)
+        e.innerHTML+=`(${e.href})`
+    }
+}
 export function findValueByKeys(listItems, keys) {
     for (let key of keys) {
         if (listItems[key] != null) {

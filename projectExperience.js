@@ -54,7 +54,7 @@ let projectExperience = {
                 technologyLayer.dataset.size = data.contents[i]["technology"].size;
                 obj.contents[i].appendChild(technologyLayer);
             }
-            if (data.contents[i]["url"] != null&&option.showLink!=false) {
+            if (data.contents[i]["url"] != null&&option.showLink!=1) {
                 let urlLayer = document.createElement('div');
                 urlLayer.classList.add("pe-url-layer");
                 urlLayer.innerHTML = formatIfExists(config.projectExperience.url.format, data.contents[i]["url"].value);

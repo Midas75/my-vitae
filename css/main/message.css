@@ -17,12 +17,13 @@
     line-height: 2vw;
     width: 100%;
     height: auto;
-    background-color: #DDD;
+    background-color: #DFF;
     pointer-events: all;
     padding-left: 1vw;
+    color: black;
     opacity: 1;
     transform: translate(0%);
-    transition: opacity 0.5s ease-in-out, transform 0.5s, top 0.5s;
+    transition: opacity 0.5s ease-in-out, transform 0.5s, top 0.5s,background-color 0.5s,color 0.5s;
     font-size: 0.6vw;
     border-radius: 0.4vw;
 }

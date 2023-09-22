@@ -16,6 +16,7 @@
             <div id="clear" class="page-button"></div>
             <div id="link" class="page-button"></div>
             <div id="style" class="page-button"></div>
+            <div id="color" class="page-button"></div>
         </div>
         <iframe id="preview" class="preview">
         </iframe>
@@ -32,10 +33,11 @@
         import { workExperience } from "./workExperience.js"
         import { projectExperience } from "./projectExperience.js"
         import { readAsStringAsync } from "./fileReader.js"
-        import { findTitle, split, removeAnnotation, findPersonalInformation, removeATag } from "./baseMatcher.js"
+        import { findTitle, split, removeAnnotation, findPersonalInformation, removeATag, expandATag } from "./baseMatcher.js"
         import { bindJumperByPosition } from "./positionJumper.js"
         import {
             loadLinksTo,
+            removeLinksFrom,
             createScrollLockIcon,
             createScrollUnlockIcon,
             createSaveIcon,
@@ -43,7 +45,10 @@
             createClearIcon,
             createLinkIcon,
             createHideLinkIcon,
+            createDetailLinkIcon,
             createStyleIcon,
+            createFullColorIcon,
+            createGrayColorIcon,
             initMessageList,
             showMessage
         } from "./uiCreator.js"
@@ -56,7 +61,9 @@
 
         let scrollTarget = null;
         let scrollLock = true;
-        let showLink = true;
+        let showLink = 0;
+
+        let fullColor = true;
 
         let styles = ["main", "autumn"]
         let styleIndex = 0
@@ -65,7 +72,11 @@
         let previewDoc = previewWindow.document;
 
         function loadStyle(style, clear) {
-
+            loadLinksTo(document, [
+                `css/${style}/icon.css`,
+                `css/${style}/page.css`,
+                `css/${style}/message.css`
+            ], clear)
             loadLinksTo(editorDoc, [
                 `css/${style}/editor.css`
             ], clear)
@@ -76,19 +87,22 @@
                 `css/${style}/preview/award.css`,
                 `css/${style}/preview/workExperience.css`,
                 `css/${style}/preview/projectExperience.css`,
-                `css/${style}/preview/personalSkill.css`
+                `css/${style}/preview/personalSkill.css`,
             ], clear)
         }
-        loadLinksTo(document, [
-            `css/main/icon.css`,
-            `css/main/page.css`,
-            `css/main/message.css`
-        ])
-        loadStyle(styles[styleIndex], true)
+        // loadLinksTo(document, [
+        //     `css/main/icon.css`,
+        //     `css/main/page.css`,
+        //     `css/main/message.css`
+        // ])
+        loadStyle(styles[styleIndex])
         let scrollLockHTML = ""
         let scrollUnlockHTML = ""
         let showLinkHTML = ""
         let hideLinkHTML = ""
+        let detailLinkHTML = ""
+        let fullColorHTML = ""
+        let grayColorHTML = ""
 
         let editorArea = editorDoc.createElement('textarea');
         editorArea.setAttribute('contenteditable', true);
@@ -102,6 +116,7 @@
         let clearButton = document.getElementById("clear");
         let linkButton = document.getElementById("link");
         let styleButton = document.getElementById("style");
+        let colorButton = document.getElementById("color");
 
         let messageList = initMessageList(document.getElementById('messageListContainer'))
 
@@ -116,6 +131,9 @@
             scrollUnlockHTML = await createScrollUnlockIcon()
             showLinkHTML = await createLinkIcon(linkButton)
             hideLinkHTML = await createHideLinkIcon()
+            detailLinkHTML = await createDetailLinkIcon()
+            fullColorHTML = await createFullColorIcon(colorButton)
+            grayColorHTML = await createGrayColorIcon()
             editorArea.value = str;
             render(str)
         })
@@ -178,11 +196,11 @@
 
         scrollLockButton.addEventListener("click", function (event) {
             if (scrollLock) {
-                showMessage(messageList,"解锁同步滚动")
+                showMessage(messageList, "解锁同步滚动")
                 scrollLockButton.innerHTML = scrollUnlockHTML;
             }
             else {
-                showMessage(messageList,"锁定同步滚动")
+                showMessage(messageList, "锁定同步滚动")
                 scrollLockButton.innerHTML = scrollLockHTML;
             }
             scrollLock = !scrollLock;
@@ -190,7 +208,7 @@
 
         createSaveIcon(saveButton);
         saveButton.addEventListener("click", function (event) {
-            showMessage(messageList,"保存到localStorage")
+            showMessage(messageList, "保存到localStorage")
             localStorage.setItem("myVitae", editorArea.innerText)
         })
 
@@ -201,21 +219,28 @@
 
         createClearIcon(clearButton);
         clearButton.addEventListener("click", async function (event) {
-            showMessage(messageList,"清除localStorage")
+            showMessage(messageList, "清除localStorage")
             localStorage.removeItem("myVitae");
             render(await readAsStringAsync("./MyVitae.md"))
         })
 
         linkButton.addEventListener("click", function (event) {
-            if (showLink) {
-                linkButton.innerHTML = hideLinkHTML;
-                showMessage(messageList,"隐藏链接")
+            showLink += 1;
+            showLink %= 3;
+            switch (showLink) {
+                case 0:
+                    linkButton.innerHTML = showLinkHTML;
+                    showMessage(messageList, "显示链接")
+                    break;
+                case 1:
+                    linkButton.innerHTML = hideLinkHTML;
+                    showMessage(messageList, "隐藏链接");
+                    break;
+                case 2:
+                    linkButton.innerHTML = detailLinkHTML;
+                    showMessage(messageList, "显示详细链接");
+                    break;
             }
-            else {
-                linkButton.innerHTML = showLinkHTML;
-                showMessage(messageList,"展示链接")
-            }
-            showLink = !showLink;
             render(str)
         })
 
@@ -224,8 +249,21 @@
             styleIndex += 1;
             styleIndex %= styles.length;
             styleButton.getElementsByTagName('text')[0].innerHTML = styleIndex
-            loadStyle(styles[styleIndex], true)
+            loadStyle(styles[styleIndex])
             showMessage(messageList, `风格切换到 ${styles[styleIndex]}`)
+        })
+
+        colorButton.addEventListener("click", function (event) {
+            fullColor = !fullColor;
+            if (fullColor) {
+                colorButton.innerHTML = fullColorHTML;
+                showMessage(messageList, "彩色显示");
+                removeLinksFrom(previewDoc, `css/${styles[styleIndex]}/preview/gray.css`)
+            } else {
+                colorButton.innerHTML = grayColorHTML;
+                showMessage(messageList, "灰度显示");
+                loadLinksTo(previewDoc, `css/${styles[styleIndex]}/preview/gray.css`)
+            }
         })
 
         function render(str, option) {
@@ -264,8 +302,15 @@
                     )
                 }
             }
-            if (!option.showLink) {
-                removeATag(previewDoc.body)
+            switch (option.showLink) {
+                case 0:
+                    break;
+                case 1:
+                    removeATag(previewDoc);
+                    break;
+                case 2:
+                    expandATag(previewDoc);
+                    break;
             }
             bindJumperByPosition(editorArea, previewDoc);
         }

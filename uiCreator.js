@@ -16,7 +16,9 @@ export async function createLinkIcon(div) {
 export async function createHideLinkIcon(div) {
     return await loadContentTo(div, 'svg/main/hideLink.svg')
 }
-
+export async function createDetailLinkIcon(div) {
+    return await loadContentTo(div, 'svg/main/detailLink.svg')
+}
 export async function createScrollLockIcon(div) {
     return await loadContentTo(div, 'svg/main/scrollLock.svg')
 }
@@ -35,27 +37,59 @@ export async function createClearIcon(div) {
 export async function createStyleIcon(div) {
     return await loadContentTo(div, 'svg/main/style.svg')
 }
-function loadLinkTo(doc, linkPath) {
-    let link = doc.createElement('link')
-    link.href = linkPath
-    link.setAttribute('rel', 'stylesheet')
-    link.setAttribute('type', 'text/css')
-    doc.head.appendChild(link)
+export async function createFullColorIcon(div) {
+    return await loadContentTo(div, 'svg/main/fullColor.svg')
 }
-export function loadLinksTo(doc, linkPath, removeOldLink) {
-    if (removeOldLink) {
+export async function createGrayColorIcon(div) {
+    return await loadContentTo(div, 'svg/main/grayColor.svg')
+}
+function loadLinkTo(doc, linkPath) {
+    let lastIndex = linkPath.lastIndexOf('/');
+    let linkId = linkPath.substring(lastIndex + 1);
+    let existingLink = doc.getElementById(linkId);
+    if (existingLink) {
+        existingLink.href = linkPath
+    } else {
+        let link = doc.createElement('link')
+        link.href = linkPath
+        link.id = linkId
+        link.setAttribute('rel', 'stylesheet')
+        link.setAttribute('type', 'text/css')
+        doc.head.appendChild(link)
+    }
+}
+function removeLinkFrom(doc, linkPath) {
+    let lastIndex = linkPath.lastIndexOf('/');
+    let linkId = linkPath.substring(lastIndex + 1);
+    let existingLink = doc.getElementById(linkId);
+    if (existingLink) {
+        doc.head.removeChild(existingLink);
+    } else {
+    }
+}
+export function loadLinksTo(doc, linkPaths, clear) {
+    if (clear) {
         let links = doc.head.getElementsByTagName('link');
         while (links.length > 0) {
             doc.head.removeChild(links[links.length - 1])
         }
     }
-    if (linkPath instanceof Array) {
-        for (let item of linkPath) {
+    if (linkPaths instanceof Array) {
+        for (let item of linkPaths) {
             loadLinkTo(doc, item)
         }
     }
-    else if (typeof linkPath === "string") {
-        loadLinkTo(doc, linkPath)
+    else if (typeof linkPaths === "string") {
+        loadLinkTo(doc, linkPaths)
+    }
+}
+export function removeLinksFrom(doc, linkPaths) {
+    if (linkPaths instanceof Array) {
+        for (let item of linkPaths) {
+            removeLinkFrom(doc, item)
+        }
+    } else if (typeof linkPaths === "string") {
+        removeLinkFrom(doc, linkPaths)
     }
 }
 export function initMessageList(container) {
@@ -69,16 +103,16 @@ export function initMessageList(container) {
 function addToList(messageList, message) {
     let last = messageList.lastElementChild;
     let zIndex = last ? parseInt(last.style.zIndex) : 5000;
-    let top = last ? parseInt(last.style.top)+last.offsetHeight : 0;
+    let top = last ? parseInt(last.style.top) + last.offsetHeight : 0;
     message.classList.add("message");
     message.classList.add("fade");
     let offset = messageList.offsetHeight;
     message.style.top = top + offset + "px";
     messageList.appendChild(message);
     message.style.zIndex = (zIndex - 1) + "";
-    setTimeout(()=>{
+    setTimeout(() => {
         message.classList.remove("fade");
-    },10)
+    }, 10)
 }
 function removeFromList(messageList, message) {
     if (!messageList.contains(message)) return;
