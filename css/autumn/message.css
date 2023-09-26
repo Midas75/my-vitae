@@ -8,7 +8,7 @@
 
 .message.fade {
     opacity: 0;
-    transform: translateY(-100%);
+    transform: translateY(-30%);
 }
 
 .message {
@@ -26,4 +26,9 @@
     transition: opacity 0.5s ease-in-out, transform 0.5s, top 0.5s,background-color 0.5s,color 0.5s;
     font-size: 0.6vw;
     border-radius: 0.4vw;
+    user-select: none;
+}
+.message:active{
+    opacity: 0.8;
+    transform: scale(95%,95%);
 }

@@ -136,6 +136,9 @@ function removeFromList(messageList, message) {
 export function showMessage(messageList, messageHTML, delay) {
     let message = document.createElement('div');
     message.innerHTML = messageHTML;
+    message.addEventListener("click", (e) => {
+        removeFromList(messageList, message)
+    })
     addToList(messageList, message);
     setTimeout(() => {
         removeFromList(messageList, message)

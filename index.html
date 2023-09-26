@@ -221,7 +221,9 @@
         clearButton.addEventListener("click", async function (event) {
             showMessage(messageList, "清除localStorage")
             localStorage.removeItem("myVitae");
-            render(await readAsStringAsync("./MyVitae.md"))
+            let str=await readAsStringAsync("./MyVitae.md");
+            editorArea.value=str;
+            render(str)
         })
 
         linkButton.addEventListener("click", function (event) {
