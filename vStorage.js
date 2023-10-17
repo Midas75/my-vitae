@@ -1,61 +1,72 @@
 /**
  * vStorage存在的目的是实现文件的浏览器端存储
  */
-export async function init(dbName, dbVersion,tableName,keyPath) {
+async function executeInDB(f, dbName, dbVersion, tableName, keyPath) {
     return new Promise((resolve, reject) => {
-        const request = indexedDB.open(dbName ?? "MyVitaeDB", dbVersion ?? 1);
-        const tableName=tableName??"files";
-        const keyPath=keyPath??"path";
+        dbVersion = dbVersion ?? 1;
+        const request = indexedDB.open(dbName, dbVersion);
         request.onupgradeneeded = function (e) {
             const db = e.target.result;
-
-            // 创建一个存储对象，如果不存在的话
             if (!db.objectStoreNames.contains(tableName)) {
                 db.createObjectStore(tableName, { keyPath: keyPath });
             }
-        };
+        }
         request.onerror = function (e) {
             reject(e.target.error);
         }
         request.onsuccess = function (e) {
             const db = e.target.result;
-            resolve(db);
+            resolve(f(db));
         }
     })
-}
-export async function upload(db, file, path) {
-    const db = db ?? await init();
-    const transaction=db.transaction(["files"],"readwrite");
-    const store=transaction.objectStore("files");
-    request.onsuccess = function (e) {
-        const db = e.target.result;
-
-        const transaction = db.transaction(["files"], "readwrite");
-        const store = transaction.objectStore("files");
-
-        const fileData = {
-            id: path ?? file.name,
-            name: file.name,
-            type: file.type,
-            data: file,
-        };
-        const addRequest = store.add(fileData);
-
-        addRequest.onsuccess = function (e) {
-            console.log(e);
-        }
-        addRequest.onerror = function (event) {
-            console.error("存储文件到IndexedDB出错:", event.target.error);
-        };
-
-        transaction.oncomplete = function () {
-            db.close();
-        };
-    }
 
 }
-export function getStorageUsage() {
-    navigator.storage.estimate().then(function (estimate) {
-        console.log(estimate.quota / 1024 / 1024 + " MB");
+async function setItemInDB(key, value, dbName, dbVersion, tableName) {
+    return new Promise((resolve, reject) => {
+        const mode = "readwrite";
+        const keyPath = 'key';
+        executeInDB(
+            (db) => {
+                const transaction = db.transaction(tableName, mode);
+                const store = transaction.objectStore(tableName);
+                const data = {}
+                data[keyPath] = key;
+                data['value'] = value;
+                const addRequest = store.add(data);
+                addRequest.onsuccess = function (e) {
+                    resolve(key);
+                }
+                addRequest.onerror = function (e) {
+                    reject(e.target.error);
+                }
+            },
+            dbName,
+            dbVersion,
+            tableName,
+            keyPath
+        )
+    })
+}
+export async function getItemFromDB(key, dbName, dbVersion, tableName) {
+    return new Promise((resolve, reject) => {
+        const mode = "readonly";
+        const keyPath = 'key';
+        executeInDB((db) => {
+            const transaction = db.transaction(tableName, mode);
+            const store = transaction.objectStore(tableName);
+            const getRequest = store.get(key);
+            getRequest.onsuccess = function (e) {
+                resolve(e.target.result.value);
+            }
+            getRequest.onerror = function (e) {
+                reject(e.target.error);
+            }
+        }, dbName, dbVersion, tableName, keyPath
+        )
+    })
+}
+export async function upload(file, path) {
+    return new Promise(async (resolve, reject) => {
+        resolve(await setItemInDB(path ?? file.name, file, "my_vitae", 1, "file"));
     })
 }

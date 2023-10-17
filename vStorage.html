@@ -8,15 +8,22 @@
 
 <body>
     <input type="file" id="fileInput">
+    <img id="img">
     <script type="module">
-        import { upload,getStorageUsage } from "./vStorage.js"
+        import { getItemFromDB, upload} from "./vStorage.js"
         const inputElement = document.getElementById("fileInput");
-
         inputElement.addEventListener("change", function () {
             const selectedFile = inputElement.files[0];
-            upload(selectedFile);
+            upload(selectedFile).then(async() => {
+                let result = await getItemFromDB(selectedFile.name, "my_vitae", 1, "file");
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('img').src = e.target.result;
+                }
+                reader.readAsDataURL(result);
+            });
         });
-        getStorageUsage();
+
     </script>
 </body>
 
