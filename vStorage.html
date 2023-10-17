@@ -1,0 +1,23 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" id="fileInput">
+    <script type="module">
+        import { upload,getStorageUsage } from "./vStorage.js"
+        const inputElement = document.getElementById("fileInput");
+
+        inputElement.addEventListener("change", function () {
+            const selectedFile = inputElement.files[0];
+            upload(selectedFile);
+        });
+        getStorageUsage();
+    </script>
+</body>
+
+</html>
