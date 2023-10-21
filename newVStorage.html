@@ -1,0 +1,81 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .node {
+        position: absolute;
+        transition: 0.3s;
+        width: 100px;
+        height: 20px;
+        border: solid;
+        opacity: 1;
+    }
+
+    .node.hidden {
+        opacity: 0;
+    }
+</style>
+
+<body>
+    <script type="module">
+        import { _dir, diff } from "./vStorage.js"
+        const paddingWidth = 20;
+        const paddingHeight = 40;
+        function drawDiv(diffAfter, index) {
+            index = index ?? 0;
+            for (let key in diffAfter) {
+                if (!diffAfter[key].item) {
+                    let div = document.createElement("div");
+                    div.classList.add("node");
+                    if (!diffAfter[key].node[index]) {
+                        div.classList.add("hidden");
+                    }
+                    document.body.append(div);
+                    diffAfter[key].item = div;
+                }
+                if (diffAfter[key].node[index]) {
+                    diffAfter[key].item.innerText = diffAfter[key].node[index].name;
+                    diffAfter[key].item.style.left = `${paddingWidth * diffAfter[key].col[index]}px`;
+                    diffAfter[key].item.style.top = `${paddingHeight * diffAfter[key].row[index]}px`
+                    diffAfter[key].item.classList.remove("hidden");
+                }
+
+            }
+        }
+        let keys = [
+            "0::d:zero",
+            "1::d:dir1",
+            "2:0:f:file2",
+            "3:0:f:file3",
+            "4:1:f:file4"
+        ]
+        let result = _dir(keys)
+        // console.log(JSON.stringify(result, null, 2))
+        let diffBefore = diff(result)
+        // drawDiv(diffBefore)
+        // console.log(diffBefore)
+        // console.log(JSON.stringify(diffBefore, null, 2))
+        keys = [
+            "0:1:d:zero",
+            "1::d:dir1",
+            "2:0:f:file2",
+            "3:0:f:file3",
+            "4:1:f:file4",
+            "5::f:file5",
+            "6::d:dir0"
+        ]
+        result = _dir(keys)
+        let diffAfter = diff(result, true, diffBefore)
+        drawDiv(diffAfter)
+        setTimeout(() => {
+            drawDiv(diffAfter, 1)
+        }, 2000)
+        // console.log(JSON.stringify(diffAfter,null,2))
+    </script>
+</body>
+
+</html>
