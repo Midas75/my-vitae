@@ -250,11 +250,30 @@ export function _dir(keys) {
     }
     return result;
 }
+/**
+ * 更新visit表，将新值滚动给旧值，清理不存在的key（所谓不存在的key就是该key在0位、不在1位、不在tree中）
+ * @param {*} tree 新的表 
+ * @param {*} visit 具备新旧状态的visit表
+ */
+export function updateDiff(tree, visit) {
+    for (let id in visit) {
+        if (visit[id].node[0]
+            && !visit[id].node[1]
+            && !tree[id]) {
+            visit[id] = null;
+        }
+        else {
+            visit[id].node = [visit[id].node[1]]
+            visit[id].col = [visit[id].col[1]]
+            visit[id].row = [visit[id].row[1]]
+        }
+    }
+}
 export function diff(tree, isNew, visit, id, col, row) {
     id = id ?? "";
     visit = visit ?? {}
     col = col ?? 0;
-    row = row ?? { value: 0 };
+    row = row ?? { value: -1 };
     row.value += 1;
     let node = tree[id];
     let index = isNew ? 1 : 0;
@@ -265,12 +284,17 @@ export function diff(tree, isNew, visit, id, col, row) {
             row: []
         }
     }
-    
+    if (isNew) {
+        visit[id].node[0] = visit[id].node[1]
+        visit[id].col[0] = visit[id].col[1]
+        visit[id].row[0] = visit[id].row[1]
+    }
     visit[id].node[index] = node;
     visit[id].col[index] = col;
     visit[id].row[index] = row.value;
     for (let i = 0; i < node.children.length; i++) {
         diff(tree, isNew, visit, node.children[i], col + 1, row)
     }
+    visit[id].maxRow=row.value;
     return visit;
 }
