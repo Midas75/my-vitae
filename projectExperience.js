@@ -84,7 +84,6 @@ let projectExperience = {
             contents: []
         };
         let subs = splitSub(tokens)
-
         for (let sub of subs) {
             let obj = {
                 name: {

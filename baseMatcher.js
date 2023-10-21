@@ -101,32 +101,6 @@ export function split(str) {
 export function removeAnnotation(str) {
     return str.replace(/<!--[\s\S]*?-->/g, "")
 }
-export function findPersonalInformation(str) {
-    let tokens = Lexer.lex(str)
-    let length = 0
-    let tokenLength = []
-    for (let token of tokens) {
-        tokenLength.push(length)
-        length += token.raw.length
-    }
-    let firstHeadingIndex = -1
-    for (let i = 0; i < tokens.length; i++) {
-        if (tokens[i].type === 'heading' && tokens[i].depth == 1) {
-            firstHeadingIndex = i;
-            break;
-        }
-    }
-    let lastHeadingIndex = firstHeadingIndex
-    for (let i = firstHeadingIndex + 1; i < tokens.length && tokens[i].type != 'heading'; i++) {
-        lastHeadingIndex = i;
-    }
-    let resultTokens = [];
-    for (let i = firstHeadingIndex; i <= lastHeadingIndex; i++) {
-        resultTokens.push(tokens[i])
-        tokens[i].position = tokenLength[i];
-    }
-    return resultTokens;
-}
 export function splitSub(tokens) {
     let result = []
     let l = 0

@@ -33,7 +33,7 @@
         import { workExperience } from "./workExperience.js"
         import { projectExperience } from "./projectExperience.js"
         import { readAsStringAsync } from "./fileReader.js"
-        import { findTitle, split, removeAnnotation, findPersonalInformation, removeATag, expandATag } from "./baseMatcher.js"
+        import { findTitle, split, removeAnnotation, removeATag, expandATag } from "./baseMatcher.js"
         import { bindJumperByPosition } from "./positionJumper.js"
         import {
             loadLinksTo,
@@ -276,7 +276,7 @@
             }
             previewDoc.body.innerHTML = "";
             let subTokens = split(str)
-            let titleModuleMap = {
+                        let titleModuleMap = {
                 "个人信息": personalInformation,
                 "教育经历": educationExperience,
                 "获奖经历": award,

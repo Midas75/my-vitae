@@ -19,16 +19,13 @@
     border-width: 0.3vw;
     border-color: #F55;
 }
-/* .pi-tag:first-child{
-    border-left-style: none;
-} */
 
 .pi-avatar {
     width: 15vw;
-    /* height: 21vw; */
+    height: 21vw;
     margin-top: -6.5vw;
     margin-left: auto;
-    border-style: solid;
+    border-style:solid;
     border-color: #DDD;
     border-width: 0.5vw;
 }

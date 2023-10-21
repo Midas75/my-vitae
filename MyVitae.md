@@ -96,7 +96,7 @@
     - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+矩阵差分+倒排索引的算法，以高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
     - 负责流媒体在线服务功能的功能设计与开发（Java、Python），接入慧安蜂巢物联网操作系统平台的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免接口被外部请求随意调用，利用configmap+HttpServletRequest进行接口校验。
     - 排查并解决关于NFS、K8S StorageClass、KubeSphere、SpringSecurity拦截、SpringCloud动态路由等多种问题
-    - 撰写Dockerfile，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载）搭建，加速团队开发
+    - 撰写Dockerfile，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载、添加路由）搭建，加速团队开发
 ### 望极——慧安蜂巢数实融合仿真平台
 - 职责：方案设计、前后端开发
 - 时间：2023.03~2023.05
