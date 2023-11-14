@@ -70,6 +70,7 @@
     - 
     -
 -->
+
 ### 基于Markdown的简历生成工具
 - 职责：前端开发
 - 时间：2023.5~至今
@@ -79,11 +80,30 @@
     - 对markdown文档约定部分格式，通过正则表达式与marked.js库提供的Lexer方法对文档进行解析，渲染为具有一定格式的html文档，利用浏览器的打印功能生成pdf
     - 包括个人信息、教育经历、个人技能、工作经历、项目经历等模块
     - 在编辑页面实现锁定同步滚动、本地存储、打印、展示/隐藏链接、模板与风格切换、彩色/灰度设置等功能
-    - 改善了marked.js中链接跳转体验不佳的问题
-    - 基于Lexer实现从渲染结果向原始文本的跳转（双击div时选中原始文本）
+    - 改善了marked.js中链接跳转体验不佳的问题，基于Lexer实现从渲染结果向原始文本的跳转（双击div时选中原始文本）
     - 基于css实现可切换的渲染风格与多套简历模板
     - 基于svg+emoji绘制矢量ui，封装为ui加载方法；仿照ElementUI封装了message组件（css-transition），并应用于编辑页面
     - **本简历由该项目生成**
+### PyScdl：基于python构建的配置·服务发现·日志收集中心
+- 职责：后端开发
+- 时间：2023.10~至今
+- 技术栈：python、fastapi、aiohttp、asyncio
+- 地址：https://gitee.com/sun-zhongjie-0426/py-scdl
+- 内容：
+  - 基于python实现的配置、服务发现、日志收集中心，功能设计参考Nacos，网络io完全使用异步实现。组件间实现解耦，可以仅启用部分功能。
+  - 服务端前端使用vanilla-jsoneditor实现json配置编辑，支持动态修改与提交，客户端可通过向服务端请求的方式载入配置
+  - 基于stdout重定向的方式，在日志收集组件创建后无侵入式地异步从网络发送日志而不影响本地输出
+  - 服务端异步websocket基于fastapi实现，客户端异步websocket基于aiohttp实现，支持断线重连
+### 聚言——慧安蜂巢应用商店
+- 职责：方案设计、后端开发
+- 时间：2023.10~至今
+- 技术栈：Kubernetes、SpringBoot、Websocket、xterm
+- 内容：
+  - 使用Fabric8 API操作kubernetes集群，以kubernetes的Deployment+Service为基础单位构建应用
+  - 考虑了多种类型应用的访问、授权、安装、卸载等行为，设计完整的开发者指南
+  - 使用ingress-nginx-controller实现可配置的反向代理，面向前端仅开放单个端口，多个应用使用iframe渲染到同一页面
+  - 实现浏览器端基于websocket+xterm的kubectl exec命令交互，基于offsetHeight实现终端行列数自适应
+  - 继承ByteArrayOutputStream实现线程安全的read+reset操作，基于CommandLineRunner+单线程轮询+CompletableFuture维护多个exec命令执行
 ### 灵境——慧安蜂巢人工智能算法中台
 - 职责：方案设计、后端开发、运维
 - 时间：2022.10~至今
@@ -96,7 +116,7 @@
     - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+矩阵差分+倒排索引的算法，以高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
     - 负责流媒体在线服务功能的功能设计与开发（Java、Python），接入慧安蜂巢物联网操作系统平台的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免接口被外部请求随意调用，利用configmap+HttpServletRequest进行接口校验。
     - 排查并解决关于NFS、K8S StorageClass、KubeSphere、SpringSecurity拦截、SpringCloud动态路由等多种问题
-    - 撰写Dockerfile，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载、添加路由）搭建，加速团队开发
+    - 撰写Dockerfile与yaml，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载、添加路由）搭建，加速团队开发
 ### 望极——慧安蜂巢数实融合仿真平台
 - 职责：方案设计、前后端开发
 - 时间：2023.03~2023.05
