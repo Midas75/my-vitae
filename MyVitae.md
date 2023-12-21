@@ -5,6 +5,7 @@
 - 邮箱：1326840837@qq.com
 - 经验：1年
 - 住址：北京市海淀区
+- 期望岗位：Java开发/全栈开发
 - 头像：![avatar](./avatar.png)
 ## 教育经历
 ### 北京航空航天大学
@@ -72,15 +73,16 @@
 ### 应用于某项目的拉流-取帧-推理框架
 - 职责：方案设计、后端开发
 - 时间：2023.11~2023.11
-- 技术栈：Python、Redis、ffmpeg、Kubernetes
+- 技术栈：Python、FastAPI、Redis、ffmpeg、Kubernetes
 - 内容：
   - 在单机（8张RTX30600、20核40线程CPU）上对200路rtsp视频流拉取，每路视频流允许开启最多10个算法，同时允许算法动态添加与装卸载
   - 基于Python构建项目，利用importlib实现对符合格式（继承抽象类）的算法进行动态加载，将拉流进程与推理进程拆分从而允许多实例与高可用，利用Redis实现进程间通信，引入Kubernetes快速实现进程多实例、负载均衡、宕机进程自动拉起
+  - 利用FastAPI封装，对外开放服务并自动生成文档
   - 利用ffmpeg子进程进行取帧，在python侧通过管道连接并读取帧信息，将帧数据编码为jpeg并推送至Redis，在jpeg bytes的EOI后附加json元数据的同时不影响jpeg查看，在取帧频率低于0.5fps时改为仅提取I帧，大幅提升性能
   - 支持各类基于pytorch的框架，单进程加载多个模型，按需推理，避免框架反复占用显存
   - 利用Redis作为基于内存的消息队列，通过lua实现入队出队的原子性、实现帧数据自动过期与队列长度上限控制
   - 进行性能测试与负载计算，确保性能足够支撑服务
-### 基于Markdown的简历生成工具
+### MyVitae：基于Markdown的简历生成工具
 - 职责：前端开发
 - 时间：2023.5~至今
 - 技术栈：JavaScript、HTML、CSS、Markdown
@@ -164,7 +166,7 @@
 - 内容：
     - 低轨侦察卫星与整体系统交互方案的部分编写
 
-### 慧安蜂巢智能小站
+### 慧安蜂巢智能小站软件系统
 - 职责：方案设计、后端开发
 - 时间：2022.06~2022.12
 - 技术栈：C++、openssl、mosquittopp、正则表达式、open62541、libmodbus、sqlite3、lua
@@ -217,7 +219,7 @@
 - 时间：2022.06~2022.07
 - 技术栈：SpringBoot、EclipseMilo、PahoMqtt、Swagger、GSON、WebSocket、HTTP
 - 内容：
-    - 作为网络中间件，南向通过OPC UA协议连接设备，北向通过MQTT将数据发送到慧安蜂巢物联网操作系统平台，通过HTTP对接平台完成设备添加、查看、管理、RPC调用转OPC UA Method调用，向前端提供Restful接口进行配置
+    - 作为网络中间件，南向通过OPC UA协议连接设备，北向通过MQTT将数据发送到物联网平台，通过HTTP对接平台完成设备添加、查看、管理、RPC调用转OPC UA Method调用，向前端提供Restful接口进行配置
     - 使用序列化+代理模式，在小规模项目中快速实现持久化、连接维护等功能
     - 涉及建造者模式、单例模式、代理模式等
     - 使用CompletableFuture实现部分异步/多线程操作，加锁以Synchronized与ConcurrentHashMap为主
@@ -255,6 +257,7 @@
 - 职责：后端开发
 - 时间：2021.11~2022.05
 - 技术栈：树莓派、FFmpeg、Nginx、Python、REID、TCP
+- 隐藏
 - 内容：
     - 实现了局域网视频传输方案，基于Nginx的流转发服务，通过flv格式传输RTMP视频流，由Python的Reid算法程序拉流并解析
     - 云端算法将目标识别框数据通过裸TCP传输至树莓派，通过Python程序控制云台转动始终追踪目标

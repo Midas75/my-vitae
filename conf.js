@@ -16,12 +16,7 @@ const config = {
                 return "🎂 " + value
             }
         },
-        work: {
-            key: ["经验", "work"],
-            format: function (value) {
-                return "💼 " + value + " 工作经验"
-            }
-        },
+
         phone: {
             key: ["电话", "phone"],
             format: function (value) {
@@ -38,6 +33,18 @@ const config = {
             key: ["住址", "address"],
             format: function (value) {
                 return "🏠 " + value;
+            }
+        },
+        expection: {
+            key: ["期望岗位", "expection"],
+            format: function (value) {
+                return "🖥️ " + value;
+            }
+        },
+        work: {
+            key: ["经验", "work"],
+            format: function (value) {
+                return "💼 " + value + " 工作经验"
             }
         },
         avatar: {
