@@ -65,7 +65,7 @@
 
         let fullColor = true;
 
-        let styles = ["main", "autumn"]
+        let styles = [ "main", "autumn","simple"]
         let styleIndex = 0
 
         let editorDoc = editorWindow.document;
@@ -221,8 +221,8 @@
         clearButton.addEventListener("click", async function (event) {
             showMessage(messageList, "清除localStorage")
             localStorage.removeItem("myVitae");
-            let str=await readAsStringAsync("./MyVitae.md");
-            editorArea.value=str;
+            let str = await readAsStringAsync("./MyVitae.md");
+            editorArea.value = str;
             render(str)
         })
 
@@ -276,7 +276,7 @@
             }
             previewDoc.body.innerHTML = "";
             let subTokens = split(str)
-                        let titleModuleMap = {
+            let titleModuleMap = {
                 "个人信息": personalInformation,
                 "教育经历": educationExperience,
                 "获奖经历": award,

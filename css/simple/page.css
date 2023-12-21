@@ -1,0 +1,34 @@
+.page-button {
+    margin-bottom: 0.2vw;
+    height: 1.6vw;
+    width: 1.6vw;
+    padding: 0.2vw;
+    user-select: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 98vh;
+}
+
+.editor {
+    width: 49vw;
+    border: solid;
+}
+
+.preview {
+    width: 49vw;
+    border: solid;
+    margin-left: auto;
+}
+
+.message-list-container {
+    width: 15vw;
+    position: fixed;
+    left: 17vw;
+    top: 0vw;
+    z-index: 100;
+    pointer-events: none;
+}

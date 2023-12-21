@@ -1,0 +1,36 @@
+.ee-main-container {
+    align-items: baseline;
+    display: flex;
+    margin-bottom: 0.5vw;
+}
+
+.ee-school-layer {
+    font-size: 1.75vw;
+    padding-right: 2vw;
+    display: inline-table;
+}
+
+.ee-time-layer {
+    font-size: 1.75vw;
+    display: inline-table;
+    padding-right: 2vw;
+    margin-left: auto;
+}
+
+.ee-detail-container {
+    clear: both;
+    column-count: 4;
+    /* display: flex; */
+    /* text-align: center; */
+    margin-bottom: 0vw;
+}
+
+.ee-detail-layer {
+    font-size: 1.5vw;
+}
+
+.ee-detail-separator {
+    visibility: hidden;
+    font-size: 1.5vw;
+    color: #777
+}

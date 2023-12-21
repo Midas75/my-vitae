@@ -1,37 +1,39 @@
 
 .container {
     clear: both;
-    margin-bottom: 1vw;
+    /* margin-bottom: 1vw; */
 }
 
 .content-container {
     clear: both;
-    margin-bottom: 2vw;
+    /* margin-bottom: 2vw; */
     font-size: 1.5vw;
     padding-left: 2vw;
 }
 
 .title-layer {
     clear: both;
-    font-size: 3vw;
+    font-size: 2.5vw;
     width: 90vw;
-    margin-bottom: 1vw;
+    font-weight: bold;
+    /* margin-bottom: 1vw; */
 }
 
 .split-layer {
     clear: both;
-    margin-bottom: 2vw;
+    margin-bottom: 1vw;
 }
 
 .left-split-line {
     width: 10vw;
-    background-color: #DFF;
-    height: 1vw;
+    background-color: #000;
+    height: 0.3vw;
+    visibility: hidden;
 }
 
 .right-split-line {
     width: auto;
-    background-color: #0DD;
+    background-color: #000;
     height: 0.3vw;
 }
 html{

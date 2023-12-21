@@ -7,7 +7,7 @@ const config = {
         gender: {
             key: ["性别", "gender"],
             format: function (value) {
-                return "⚧ " + value
+                return "&nbsp;⚧&nbsp;" + value
             }
         },
         age: {
@@ -43,7 +43,7 @@ const config = {
         avatar: {
             key: ["头像", "avatar"],
             format: function (value) {
-                return `<image class="pi-image" style="width:100%;height:100%;object-fit:cover;" src="${Lexer.lex(value)[0].tokens[0].href}">`
+                return `<image class="pi-image" src="${Lexer.lex(value)[0].tokens[0].href}">`
             }
         }
     },

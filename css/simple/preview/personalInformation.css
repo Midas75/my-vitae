@@ -4,20 +4,17 @@
 }
 
 .pi-tag-layer {
-    width: 85vw;
-    display: flex;
-    flex-wrap: wrap;
+    width: auto;
+    column-count: 2;
+    filter: grayscale(100%);
 }
 
 .pi-tag {
     font-size: 2vw;
-    /* display: inline-table; */
-    background-color: #EEEEEE;
     margin-right: 1vw;
-    padding: 0.4vw;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    margin-bottom: 1vw;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    margin-bottom: 1vw
 }
 
 .pi-avatar {
