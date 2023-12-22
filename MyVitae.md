@@ -27,28 +27,27 @@
 ### 山东省信息技术奥赛省二等奖
 - 时间：2017.05
 ## 个人技能
-- 熟悉基于linux的java/c/c++开发的相关技术栈
-- 熟悉MQTT、OPC UA、Modbus等物联网通信协议
-- 熟悉HTTP、TCP、UDP、Websocket等常见网络通信协议
+- 熟悉基于linux的Java/C/C++/Python开发的相关技术栈
+- 有基于Docker/K8S的分布式集群设计、部署、开发经验，熟悉Dockerfile与shell脚本开发
+- 熟悉MQTT、OPC UA、Modbus等物联网通信协议，熟悉HTTP、TCP、UDP、Websocket等常见网络通信协议
 - 了解js/node、lua、前端、Unity开发
-- 有基于Docker/K8S的分布式集群设计、部署、运维、开发经验，熟悉Dockerfile与shell脚本开发
-- 熟悉SpringCloud开发，熟悉相关技术栈：Nginx、Redis、MybatisPlus、Nacos、Feign、ELK、MinIO
+- 熟悉SpringCloud开发，熟悉相关技术栈：Nginx、Redis、Mybatis-Plus、Nacos、Feign、ELK、MinIO
 - 重视文档、方案书写，工具以Markdown+PlantUML为主
 - 重视数据结构与算法在开发中的应用，关注实际业务的时空复杂度
 - 熟悉toB工业互联网、物联网、数字孪生、大数据等业务
 - 擅长使用AIGC工具协助、加速工作
-- 了解计算机图形学、设计模式、多线程、嵌入式等技术
+- 了解计算机图形学、设计模式、多线程、异步IO等技术
 ## 工作经历
 ### 慧之安信息技术股份有限公司
 - 部门：产品与研发中心创新部
 - 职位：研发工程师
 - 时间：2022.05~至今
 - 内容：
-    - 负责慧安蜂巢灵境人工智能算法中台的开发任务（新功能设计、技术方案制定、开发环境搭建、java开发、python调试部署、前端对接、部署与运维）
-    - 慧安蜂巢智能小站工业物联网模块开发（嵌入式C++开发）
+    - 负责慧安蜂巢灵境人工智能算法中台的开发任务（新功能设计、技术方案制定、开发环境搭建、Java开发、Python调试部署、前端对接、部署与集成）
+    - 多个其他项目的技术方案制定、评审、Demo实现，指导后续开发
+    - 慧安蜂巢智能小站软件系统工业物联网模块开发（边缘设备C++开发）
     - 参与多个项目/课题/白皮书的标书、PPT撰写，与合作方/客户对接确认需求并制定方案
-    - 使用Dockerfile+Harbor为公司内部提供便捷的多个开发环境组件部署（交叉编译、前端、后端、Postgres+ZK+Kafka+Redis等）
-    - 多个其他项目的技术方案制定与Demo实现，指导后续开发
+    - 使用Kubernetes&Docker为研发内部提供多个开发环境组件部署（交叉编译、前端、后端、Postgres+ZK+Kafka+Redis等），改进开发效率
 
 ### 紫龙游戏
 - 部门：北京龙之国物语研发部
@@ -60,16 +59,6 @@
     - 学习Unity+C#+lua开发模式，熟悉Unity，熟悉并手动设计实现支持热重载的lua面向对象编程形式
 
 ## 项目经历
-<!-- 
-### 标题
-- 职责：
-- 时间：
-- 技术栈：
-- 地址：
-- 内容：
-    - 
-    -
--->
 ### 应用于某项目的拉流-取帧-推理框架
 - 职责：方案设计、后端开发
 - 时间：2023.11~2023.11
@@ -98,7 +87,7 @@
 ### PyScdl：基于python构建的配置·服务发现·日志收集中心
 - 职责：后端开发
 - 时间：2023.10~至今
-- 技术栈：python、fastapi、aiohttp、asyncio
+- 技术栈：Python、FastAPI、aiohttp、asyncio
 - 地址：https://gitee.com/sun-zhongjie-0426/py-scdl
 - 内容：
   - 基于python实现的配置、服务发现、日志收集中心，功能设计参考Nacos，网络io完全使用异步实现。组件间实现解耦，可以仅启用部分功能。
@@ -110,18 +99,19 @@
 - 时间：2023.10~至今
 - 技术栈：Kubernetes、SpringBoot、Websocket、xterm
 - 内容：
-  - 使用Fabric8 API操作kubernetes集群，以kubernetes的Deployment+Service为基础单位构建应用
+  - 使用Fabric8 API操作Kubernetes集群，以kubernetes的Deployment+Service为基础单位构建应用
   - 考虑了多种类型应用的访问、授权、安装、卸载等行为，设计完整的开发者指南
   - 使用ingress-nginx-controller实现可配置的反向代理，面向前端仅开放单个端口，多个应用使用iframe渲染到同一页面
   - 实现浏览器端基于websocket+xterm的kubectl exec命令交互，基于offsetHeight实现终端行列数自适应
   - 继承ByteArrayOutputStream实现线程安全的read+reset操作，基于CommandLineRunner+单线程轮询+CompletableFuture维护多个exec命令执行
 ### 灵境——慧安蜂巢人工智能算法中台
-- 职责：方案设计、后端开发、运维
+- 职责：方案设计、后端开发
 - 时间：2022.10~至今
-- 技术栈：SpringCloud、SpringSecurity、Python、Kubernetes、Mysql、ELK、Redis、Nacos、其他
+- 技术栈：SpringCloud、SpringSecurity、Python、Kubernetes、Mysql、ELK、Redis、Nacos
 - 内容：
-    - 负责部署、运维、故障排查；严格遵循项目规范与风格的新功能的开发；撰写与维护相关功能、技术、开发文档
-    - 基于Shell设计部署流程、编写部署脚本自动执行流程，服务器单机部署时间<1小时。编写各组件于k8s集群中部署所需的yaml文件。基于nginx实现后端websocket服务、minio服务统一反代。
+    - 负责部署、集成、故障排查；严格遵循项目规范与风格的新功能的开发；撰写与维护相关功能、技术、开发文档
+    - 基于Shell设计部署流程、编写部署脚本自动执行流程，服务器单机部署时间<30分钟，版本迭代时间＜10分钟。编写各组件于k8s集群中部署所需的yaml文件。基于nginx实现后端websocket服务、minio服务统一反代。
+    - 在部署脚本中基于Shell实现Harbor自动化部署，实现本地镜像的层分析算法，并利用该算法自动完成镜像复用打包，部署包体积减少40%，在部署过程中引入pigz实现并行解压缩，引入pv实现进度可视化
     - 设计模型转换功能与架构，利用dfs实现模型转换有向图中转换路径（a-b-c）的自动计算。基于k8s jobs封装模型转换python进程，使用redis作为java/python进程间通信中间件。
     - 负责在线服务功能重构，重新设计Python端、镜像端、Java端、Web端功能，撰写相关技术文档并重新搭建Python端架构
     - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+矩阵差分+倒排索引的算法，以高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)

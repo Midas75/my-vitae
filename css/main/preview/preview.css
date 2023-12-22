@@ -39,5 +39,5 @@ html{
     transition: filter 1s;
 }
 a{
-    color:#000;
+    color:inherit;
 }

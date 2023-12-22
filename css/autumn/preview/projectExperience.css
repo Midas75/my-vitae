@@ -39,7 +39,7 @@
 .pe-technology-tag {
     font-size: 1.5vw;
     font-weight: bold;
-    color:#FFF;
+    color: #FFF;
     display: inline-table;
     background-color: #F55;
     margin-right: 1vw;
@@ -48,6 +48,7 @@
 
 .pe-url-layer {
     font-size: 1.5vw;
+    margin-left: 1vw;
 }
 
 .pe-content-layer {
