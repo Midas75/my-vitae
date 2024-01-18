@@ -7,7 +7,7 @@ const config = {
         gender: {
             key: ["性别", "gender"],
             format: function (value) {
-                return "&nbsp;⚧&nbsp;" + value
+                return "⚤ " + value
             }
         },
         age: {
@@ -16,7 +16,20 @@ const config = {
                 return "🎂 " + value
             }
         },
-
+        wechat: {
+            key: ["微信", "wechat"],
+            format: function (value) {
+                let span = document.createElement('span');
+                span.style.fontSize = "85%";
+                span.style.color = "white";
+                span.style.background = "linear-gradient(to bottom,#00D50D,#00B70C)";
+                span.style.borderRadius = "35%";
+                span.innerHTML = "&nbsp;🗪&nbsp;";
+                span.style.display = "inline-block";
+                span.style.transform = "scaleX(-0.85)";
+                return `${span.outerHTML}&nbsp;${value}`;
+            }
+        },
         phone: {
             key: ["电话", "phone"],
             format: function (value) {
