@@ -7,7 +7,7 @@ const config = {
         gender: {
             key: ["性别", "gender"],
             format: function (value) {
-                return "&nbsp;⚤ " + value
+                return "&nbsp;<b>⚤</b> " + value
             }
         },
         age: {
