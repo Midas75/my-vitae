@@ -43,6 +43,9 @@ export async function createFullColorIcon(div) {
 export async function createGrayColorIcon(div) {
     return await loadContentTo(div, 'svg/main/grayColor.svg')
 }
+export async function createHelpIcon(div) {
+    return await loadContentTo(div, 'svg/main/help.svg')
+}
 function loadLinkTo(doc, linkPath) {
     let lastIndex = linkPath.lastIndexOf('/');
     let linkId = linkPath.substring(lastIndex + 1);
@@ -140,8 +143,13 @@ export function showMessage(messageList, messageHTML, delay) {
         removeFromList(messageList, message)
     })
     addToList(messageList, message);
-    setTimeout(() => {
-        removeFromList(messageList, message)
-    }, delay ? delay : 5000)
+    if (delay === -1) {
+
+    } else {
+        setTimeout(() => {
+            removeFromList(messageList, message)
+        }, delay ? delay : 5000)
+    }
+
     return message;
 }

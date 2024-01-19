@@ -17,6 +17,7 @@
             <div id="link" class="page-button"></div>
             <div id="style" class="page-button"></div>
             <div id="color" class="page-button"></div>
+            <div id="help" class="page-button"></div>
         </div>
         <iframe id="preview" class="preview">
         </iframe>
@@ -34,7 +35,7 @@
         import { projectExperience } from "./projectExperience.js"
         import { readAsStringAsync } from "./fileReader.js"
         import { findTitle, split, removeATag, expandATag } from "./baseMatcher.js"
-        import { bindJumperByPosition,setLinkBehavior } from "./postRenderer.js"
+        import { bindJumperByPosition, setLinkBehavior } from "./postRenderer.js"
         import {
             loadLinksTo,
             removeLinksFrom,
@@ -49,6 +50,7 @@
             createStyleIcon,
             createFullColorIcon,
             createGrayColorIcon,
+            createHelpIcon,
             initMessageList,
             showMessage
         } from "./uiCreator.js"
@@ -65,7 +67,7 @@
 
         let fullColor = true;
 
-        let styles = [ "main", "autumn","simple"]
+        let styles = ["main", "autumn", "simple"]
         let styleIndex = 0
 
         let editorDoc = editorWindow.document;
@@ -117,6 +119,7 @@
         let linkButton = document.getElementById("link");
         let styleButton = document.getElementById("style");
         let colorButton = document.getElementById("color");
+        let helpButton = document.getElementById("help");
 
         let messageList = initMessageList(document.getElementById('messageListContainer'))
 
@@ -145,9 +148,9 @@
             } else if ((event.key == 's' || event.key == 'S') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {//ctrl+s
                 event.preventDefault();
                 localStorage.setItem("myVitae", editorArea.value)
-            }else if ((event.key==='/') && (event.ctrlKey || event.metaKey)){
+            } else if ((event.key === '/') && (event.ctrlKey || event.metaKey)) {
                 event.preventDefault();
-                showMessage(messageList,"按下了注释，此功能未实现")
+                showMessage(messageList, "按下了注释，此功能未实现")
             }
         })
         previewDoc.addEventListener('keydown', function (event) {
@@ -227,6 +230,45 @@
             let str = await readAsStringAsync("./MyVitae.md");
             editorArea.value = str;
             render(str)
+        })
+
+        createHelpIcon(helpButton);
+        helpButton.addEventListener("click", function (event) {
+            const helpTextList = [
+                `点击我显示各种提示`,
+                `点击气泡可以将其消除`,
+                `点击 🔒/🔓 以锁定/解锁双向滚动`,
+                `双击右侧渲染内容可看到对应的原始markdown内容`,
+                `点击 💾 可以保存内容到localStorage`,
+                `点击 📃 可以打印简历为pdf`,
+                `点击 🔃 可以清除localStorage的缓存`,
+                `多次点击 🔗 可以切换简历中对链接的显示策略`,
+                `点击 数字按钮 可以切换渲染风格`,
+                `点击 🌈 可以切换彩色/灰度显示`
+            ]
+            let targetIndex = 0;
+            if (helpButton.dataset.previousIndex) {
+                let randomIndex = parseInt(Math.floor(Math.random() * (helpTextList.length - 1))) + 1;
+                let previousIndex = parseInt(helpButton.dataset.previousIndex);
+                if (randomIndex == previousIndex) {
+                    randomIndex += 1;
+                    if (randomIndex == helpTextList.length) {
+                        randomIndex = 1;
+                    }
+                }
+                helpButton.dataset.previousIndex = randomIndex;
+                targetIndex = randomIndex;
+            } else {
+                helpButton.dataset.previousIndex = targetIndex;
+            }
+            switch (event.button) {
+                case 0://lclick
+                    showMessage(messageList, `❓ ${helpTextList[targetIndex]}`, 10)
+                    break;
+                case 2://rclick
+                    break;
+            }
+
         })
 
         linkButton.addEventListener("click", function (event) {
