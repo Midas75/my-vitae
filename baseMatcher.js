@@ -9,7 +9,7 @@ export function expandATag(element){
     let elements=element.getElementsByTagName('a')
     for(let e of elements){
         if(e.innerHTML!=e.href)
-        e.innerHTML+=`(${e.href})`
+        e.innerHTML+=`(${decodeURIComponent(e.href)})`
     }
 }
 export function findValueByKeys(listItems, keys) {
@@ -97,9 +97,6 @@ export function split(str) {
         }
     }
     return result
-}
-export function removeAnnotation(str) {
-    return str.replace(/<!--[\s\S]*?-->/g, "")
 }
 export function splitSub(tokens) {
     let result = []
