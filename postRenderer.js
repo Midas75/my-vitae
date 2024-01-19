@@ -34,3 +34,9 @@ function setSelectionRange(textarea, selectionStart, selectionEnd) {
     // Continue to set selection range
     textarea.setSelectionRange(selectionStart, selectionEnd);
 }
+export function setLinkBehavior(previewDoc){
+    let elements = previewDoc.getElementsByTagName('a')
+    for (let e of elements){
+        e.setAttribute('target','_blank');
+    }
+}

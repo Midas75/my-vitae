@@ -33,8 +33,8 @@
         import { workExperience } from "./workExperience.js"
         import { projectExperience } from "./projectExperience.js"
         import { readAsStringAsync } from "./fileReader.js"
-        import { findTitle, split, removeAnnotation, removeATag, expandATag } from "./baseMatcher.js"
-        import { bindJumperByPosition } from "./positionJumper.js"
+        import { findTitle, split, removeATag, expandATag } from "./baseMatcher.js"
+        import { bindJumperByPosition,setLinkBehavior } from "./postRenderer.js"
         import {
             loadLinksTo,
             removeLinksFrom,
@@ -145,6 +145,9 @@
             } else if ((event.key == 's' || event.key == 'S') && (navigator.platform.match("Mac") ? event.metaKey : event.ctrlKey)) {//ctrl+s
                 event.preventDefault();
                 localStorage.setItem("myVitae", editorArea.value)
+            }else if ((event.key==='/') && (event.ctrlKey || event.metaKey)){
+                event.preventDefault();
+                showMessage(messageList,"按下了注释，此功能未实现")
             }
         })
         previewDoc.addEventListener('keydown', function (event) {
@@ -315,6 +318,7 @@
                     break;
             }
             bindJumperByPosition(editorArea, previewDoc);
+            setLinkBehavior(previewDoc);
         }
 
     </script>

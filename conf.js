@@ -24,9 +24,9 @@ const config = {
                 span.style.color = "white";
                 span.style.background = "linear-gradient(to bottom,#00D50D,#00B70C)";
                 span.style.borderRadius = "35%";
-                span.innerHTML = "&nbsp;🗪&nbsp;";
                 span.style.display = "inline-block";
                 span.style.transform = "scaleX(-0.85)";
+                span.innerHTML = "&nbsp;🗪&nbsp;";
                 return `${span.outerHTML}&nbsp;${value}`;
             }
         },
@@ -103,7 +103,7 @@ const config = {
         content: {
             key: ["内容", "content"],
             format: function (value) {
-                return marked.parse(value).replace(/a href/g, "a target=\"_blank\" href")
+                return marked.parse(value)
             }
         },
         practice: {
@@ -123,7 +123,7 @@ const config = {
         url: {
             key: ["地址", "url"],
             format: function (value) {
-                return "地址：<a target=\"_blank\" href=\"" + value + "\">" + value + "</a>"
+                return `地址：<a href="${value}">${value}</a>`
             }
         },
         hide: {
@@ -132,7 +132,7 @@ const config = {
         content: {
             key: ["内容", "content"],
             format: function (value) {
-                return marked.parse(value).replace(/a href/g, "a target=\"_blank\" href")
+                return marked.parse(value)
             }
         }
     }
