@@ -209,7 +209,7 @@
         createSaveIcon(saveButton);
         saveButton.addEventListener("click", function (event) {
             showMessage(messageList, "保存到localStorage")
-            localStorage.setItem("myVitae", editorArea.innerText)
+            localStorage.setItem("myVitae", editorArea.value)
         })
 
         createPrintIcon(printButton);
