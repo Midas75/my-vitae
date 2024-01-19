@@ -2,6 +2,7 @@ import { findTitle, findValueByKeys, splitIntoListItems, splitSub } from "./base
 import { config } from "./conf.js";
 import { formatIfExists } from "./utils.js";
 import { newBaseModel } from "./baseModel.js";
+import { marked } from "./marked.esm.min.js";
 let award = {
     render: function (data) {
         let obj = newBaseModel("获奖经历", data.contents.length);
@@ -43,7 +44,7 @@ let award = {
         for (let sub of subs) {
             let obj = {
                 name: {
-                    value: sub[0].text,
+                    value: marked.parse(sub[0].text).replace(/<p>/g,"").replace(/<\/p>/g,""),
                     position: sub[0].position,
                     size: sub[0].raw.length
                 }
