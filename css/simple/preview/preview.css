@@ -36,10 +36,13 @@
     background-color: #000;
     height: 0.3vw;
 }
-html{
-    filter: grayscale(0%);
-    transition: filter 1s;
+@media screen {
+    html {
+        filter: grayscale(0%);
+        transition: filter 1s;
+    }
 }
+
 a{
     color:inherit;
 }

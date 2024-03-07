@@ -14,21 +14,22 @@
 .message {
     position: absolute;
     align-items: baseline;
-    line-height: 2vw;
+    /* line-height: 2vw; */
     width: 100%;
     height: auto;
+    color: black;
     background-color: #DDD;
     pointer-events: all;
-    padding-left: 1vw;
-    color: black;
+    padding: 1vw;
     opacity: 1;
     transform: translate(0%);
-    transition: opacity 0.5s ease-in-out, transform 0.5s, top 0.5s,background-color 0.5s,color 0.5s;
+    transition: opacity 0.5s ease-in-out, transform 0.5s, top 0.5s, background-color 0.5s, color 0.5s;
     font-size: 0.6vw;
     border-radius: 0.4vw;
     user-select: none;
 }
-.message:active{
+
+.message:active {
     opacity: 0.8;
-    transform: scale(95%,95%);
+    transform: scale(95%, 95%);
 }

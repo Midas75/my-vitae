@@ -308,7 +308,7 @@
                 removeLinksFrom(previewDoc, `css/${styles[styleIndex]}/preview/gray.css`)
             } else {
                 colorButton.innerHTML = grayColorHTML;
-                showMessage(messageList, "灰度显示");
+                showMessage(messageList, "灰度显示，注意该显示仅供黑白打印机的纸质打印效果预览，不能作用到pdf文件");
                 loadLinksTo(previewDoc, `css/${styles[styleIndex]}/preview/gray.css`)
             }
         })

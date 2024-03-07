@@ -88,7 +88,7 @@
     - **本简历由该项目生成**
 ### PyScdl：基于python构建的配置·服务发现·日志收集中心
 - 职责：后端开发
-- 时间：2023.10~至今
+- 时间：2023.10~2023.11
 - 技术栈：Python、FastAPI、aiohttp、asyncio
 - 地址：https://gitee.com/sun-zhongjie-0426/py-scdl
 - 内容：

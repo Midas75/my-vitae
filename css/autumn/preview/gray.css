@@ -1,3 +1,5 @@
-html {
-    filter: grayscale(100%);
+@media screen {
+    html {
+        filter: grayscale(100%);
+    }
 }
