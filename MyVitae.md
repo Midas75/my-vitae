@@ -3,7 +3,7 @@
 - 年龄：23岁
 - 电话：15653564910
 - 邮箱：1326840837@qq.com
-- 经验：1年
+- 经验：2年
 - 微信：sunzhongjie0426
 - 住址：北京市海淀区
 - 期望岗位：Java开发/全栈开发
@@ -98,7 +98,7 @@
   - 服务端异步websocket基于fastapi实现，客户端异步websocket基于aiohttp实现，支持断线重连
 ### 聚言——慧安蜂巢应用商店
 - 职责：方案设计、后端开发
-- 时间：2023.10~至今
+- 时间：2023.10~2024.3
 - 技术栈：Kubernetes、SpringBoot、Websocket、xterm
 - 内容：
   - 使用Fabric8 API操作Kubernetes集群，以kubernetes的Deployment+Service为基础单位构建应用
@@ -108,7 +108,7 @@
   - 继承ByteArrayOutputStream实现线程安全的read+reset操作，基于CommandLineRunner+单线程轮询+CompletableFuture维护多个exec命令执行
 ### 灵境——慧安蜂巢人工智能算法中台
 - 职责：方案设计、后端开发
-- 时间：2022.10~至今
+- 时间：2022.10~2024.3
 - 技术栈：SpringCloud、SpringSecurity、Python、Kubernetes、Mysql、ELK、Redis、Nacos
 - 内容：
     - 负责部署、集成、故障排查；严格遵循项目规范与风格的新功能的开发；撰写与维护相关功能、技术、开发文档
