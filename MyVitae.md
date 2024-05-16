@@ -49,6 +49,7 @@
     - 项目的技术方案制定、评审、Demo实现，指导后续开发
     - 参与多个项目/课题/白皮书的标书、PPT撰写，与合作方/客户对接确认需求并制定方案
     - 使用Kubernetes&Docker为研发内部提供多个开发环境组件部署（交叉编译、前端、后端、PostgreSQL+ZK+Kafka+Redis等），改进开发效率
+    - 中英文论文撰写（物联网、系统设计方向）
 ### 紫龙游戏
 - 部门：北京龙之国物语研发部
 - 职位：游戏开发实习生
@@ -60,13 +61,13 @@
 
 ## 项目经历
 ### 某无人机仿真项目
-- 职责：设计、Unity开发
+- 职责：设计、开发
 - 时间：2024.4~2024.5
 - 技术栈：Unity、AirSim、Python、C、C++、Shader、D3D11、CUDA
 - 内容：
   - 负责前期方案撰写、技术选型、与甲方对接
   - 在Unity中引入AirSim完成无人机仿真，接入Python的AirSim客户端完成分布式控制
-  - 编写Shader，实现利用Shader进行的线性深度图计算，以供强化学习算法使用
+  - 编写Shader，实现[利用Shader进行的线性深度图计算](https://gitee.com/sun-zhongjie-0426/distance-effect-shader)，以供强化学习算法使用
   - 接入强化学习SAC算法，设计奖励函数与采样方法，基于深度信息在Unity城市场景中实现固定单目无人机的自主避障与寻路，利用[PyScdl](https://gitee.com/sun-zhongjie-0426/py-scdl)的日志拦截器将标准输出分流到企业微信机器人以进行实时观测
   - 接入Yolov5完成实时图像推理，选用VisDrone数据集训练目标检测模型以提升识别效果
   - 在Unity中接入[自行开发的动态链接库](https://gitee.com/sun-zhongjie-0426/unity-native-rendering-plugin-d3-d11-cuda)，利用GPU完成将Unity中的图像编码为JPEG，相比经典解决方案性能最多提升2700%
