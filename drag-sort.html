@@ -1,0 +1,74 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .list-item {
+            /* 添加您的样式属性和值 */
+            font-size: 16px;
+            /* 字体大小 */
+            color: #fff;
+            /* 文本颜色 */
+            background-color: #999;
+            /* 背景颜色 */
+            padding: 10px;
+            height:10vw;
+            /* 边框 */
+            margin: 5px 0;
+            /* 外边距 */
+            user-select: none;
+        }
+
+        .list-item.moving {
+            background-color: transparent;
+            color: transparent;
+            border: 1px dashed #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list">
+        <div draggable="true" class="list-item">1</div>
+        <div draggable="true" class="list-item">2</div>
+        <div draggable="true" class="list-item">3</div>
+        <div draggable="true" class="list-item">4</div>
+        <div draggable="true" class="list-item">5</div>
+        <div draggable="true" class="list-item">6</div>
+    </div>
+    <script>
+        const list = document.querySelector('.list');
+        let draggingNode;
+        list.addEventListener('dragstart', function (e) {
+            setTimeout(function () {
+                e.target.classList.add('moving')
+            })
+            draggingNode = e.target;
+            e.dataTransfer.effectAllowed = 'move';
+        })
+        list.addEventListener('dragover', function (e) {
+            e.preventDefault()
+        })
+        list.addEventListener('dragenter', function (e) {
+            e.preventDefault()
+            if (e.target === list || e.target === draggingNode) {
+                return;
+            }
+            const children = Array.from(list.children);
+            const sourceIndex = children.indexOf(draggingNode);
+            const targetIndex = children.indexOf(e.target);
+            if (sourceIndex < targetIndex) {
+                list.insertBefore(draggingNode, e.target.nextElementSibling)
+            } else {
+                list.insertBefore(draggingNode, e.target)
+            }
+        })
+        list.addEventListener('dragend', function (e) {
+            e.target.classList.remove('moving');
+        })
+    </script>
+</body>
+
+</html>

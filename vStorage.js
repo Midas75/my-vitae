@@ -248,6 +248,7 @@ export function _dir(keys) {
             )
         }
     }
+    console.log(result);
     return result;
 }
 /**

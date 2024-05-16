@@ -7,7 +7,7 @@
 - 微信：sunzhongjie0426
 - 住址：北京市海淀区
 - 期望岗位：Java开发/全栈开发
-- 头像：![avatar](./avatar.png)
+<!-- - 头像：![avatar](./avatar.png) -->
 ## 教育经历
 ### 北京航空航天大学
 - 时间：2022.09~2025.06
@@ -29,7 +29,7 @@
 - 时间：2017.05
 ## 个人技能
 - 熟悉基于linux的Java/C/C++/Python开发的相关技术栈
-- 有基于Docker/K8S的分布式集群设计、部署、开发经验，熟悉Dockerfile与shell脚本开发
+- 有基于Docker/Kubernetes的分布式集群设计、部署、开发经验，熟悉Dockerfile与Shell脚本开发
 - 熟悉MQTT、OPC UA、Modbus等物联网通信协议，熟悉HTTP、TCP、UDP、Websocket等常见网络通信协议
 - 了解js/node、lua、前端、Unity开发
 - 熟悉SpringCloud开发，熟悉相关技术栈：Nginx、Redis、Mybatis-Plus、Nacos、Feign、ELK、MinIO
@@ -44,13 +44,11 @@
 - 职位：研发工程师
 - 时间：2022.05~至今
 - 内容：
-    - 负责慧安蜂巢灵境人工智能算法中台的开发任务（新功能设计、技术方案制定、开发环境搭建、Java开发、Python调试部署、前端对接、部署与集成）
-    - 把控多个项目进度，指导协助其他同事工作开展
-    - 多个其他项目的技术方案制定、评审、Demo实现，指导后续开发
-    - 慧安蜂巢智能小站软件系统工业物联网模块开发（C++）
+    - 项目开发（包括Java、Python、C/C++、Docker、Kubernetes、Unity、JavaScript）
+    - 项目进度把控，指导协助其他同事工作开展
+    - 项目的技术方案制定、评审、Demo实现，指导后续开发
     - 参与多个项目/课题/白皮书的标书、PPT撰写，与合作方/客户对接确认需求并制定方案
     - 使用Kubernetes&Docker为研发内部提供多个开发环境组件部署（交叉编译、前端、后端、PostgreSQL+ZK+Kafka+Redis等），改进开发效率
-
 ### 紫龙游戏
 - 部门：北京龙之国物语研发部
 - 职位：游戏开发实习生
@@ -61,18 +59,18 @@
     - 学习Unity+C#+lua开发模式，熟悉Unity，熟悉并手动设计实现支持热重载的lua面向对象编程形式
 
 ## 项目经历
-### 应用于某项目的拉流-取帧-推理框架
-- 职责：方案设计、后端开发
-- 时间：2023.11~2023.11
-- 技术栈：Python、FastAPI、Redis、ffmpeg、Kubernetes
+### 某无人机仿真项目
+- 职责：设计、Unity开发
+- 时间：2024.4~2024.5
+- 技术栈：Unity、AirSim、Python、C、C++、Shader、D3D11、CUDA
 - 内容：
-  - 在单机（8张RTX30600、20核40线程CPU）上对200路rtsp视频流拉取，每路视频流允许开启最多10个算法，同时允许算法动态添加与装卸载
-  - 基于Python构建项目，利用importlib实现对符合格式（继承抽象类）的算法进行动态加载，将拉流进程与推理进程拆分从而允许多实例与高可用，利用Redis实现进程间通信，引入Kubernetes快速实现进程多实例、负载均衡、宕机进程自动拉起
-  - 利用FastAPI封装，对外开放服务并自动生成文档
-  - 利用ffmpeg子进程进行取帧，在python侧通过管道连接并读取帧信息，将帧数据编码为jpeg并推送至Redis，在jpeg bytes的EOI后附加json元数据的同时不影响jpeg查看，在取帧频率低于0.5fps时改为仅提取I帧，大幅提升性能
-  - 支持各类基于pytorch的框架，单进程加载多个模型，按需推理，避免框架反复占用显存
-  - 利用Redis作为基于内存的消息队列，通过lua实现入队出队的原子性、实现帧数据自动过期与队列长度上限控制
-  - 进行性能测试与负载计算，确保性能足够支撑服务
+  - 负责前期方案撰写、技术选型、与甲方对接
+  - 在Unity中引入AirSim完成无人机仿真，接入Python的AirSim客户端完成分布式控制
+  - 编写Shader，实现利用Shader进行的线性深度图计算，以供强化学习算法使用
+  - 接入强化学习SAC算法，设计奖励函数与采样方法，基于深度信息在Unity城市场景中实现固定单目无人机的自主避障与寻路，利用[PyScdl](https://gitee.com/sun-zhongjie-0426/py-scdl)的日志拦截器将标准输出分流到企业微信机器人以进行实时观测
+  - 接入Yolov5完成实时图像推理，选用VisDrone数据集训练目标检测模型以提升识别效果
+  - 在Unity中接入[自行开发的动态链接库](https://gitee.com/sun-zhongjie-0426/unity-native-rendering-plugin-d3-d11-cuda)，利用GPU完成将Unity中的图像编码为JPEG，相比经典解决方案性能最多提升2700%
+
 ### MyVitae：基于Markdown的简历生成工具
 - 职责：前端开发
 - 时间：2023.5~至今
@@ -86,18 +84,30 @@
     - 基于css实现可切换的渲染风格与多套简历模板
     - 基于svg+emoji绘制矢量ui，封装为ui加载方法；仿照ElementUI封装了message组件（css-transition），并应用于编辑页面
     - **本简历由该项目生成**
+### 应用于某项目的拉流-取帧-推理框架
+- 职责：设计、后端开发
+- 时间：2023.11~2023.11
+- 技术栈：Python、FastAPI、Redis、ffmpeg、Kubernetes
+- 内容：
+  - 在单机（8张RTX30600、20核40线程CPU）上对200路rtsp视频流拉取，每路视频流允许开启最多10个算法，同时允许算法动态添加与装卸载
+  - 基于Python构建项目，利用importlib实现对符合格式（继承抽象类）的算法进行动态加载，将拉流进程与推理进程拆分从而允许多实例与高可用，利用Redis实现进程间通信，引入Kubernetes快速实现进程多实例、负载均衡、宕机进程自动拉起
+  - 利用FastAPI封装，对外开放服务并自动生成文档
+  - 利用ffmpeg子进程进行取帧，在python侧通过管道连接并读取帧信息，将帧数据编码为jpeg并推送至Redis，在jpeg bytes的EOI后附加json元数据的同时不影响jpeg查看，在取帧频率低于0.5fps时改为仅提取I帧，大幅提升性能
+  - 支持各类基于pytorch的框架，单进程加载多个模型，按需推理，避免框架反复占用显存
+  - 利用Redis作为基于内存的消息队列，通过lua实现入队出队的原子性、实现帧数据自动过期与队列长度上限控制
+  - 进行性能测试与负载计算，确保性能足够支撑服务
 ### PyScdl：基于python构建的配置·服务发现·日志收集中心
 - 职责：后端开发
 - 时间：2023.10~2023.11
 - 技术栈：Python、FastAPI、aiohttp、asyncio
 - 地址：https://gitee.com/sun-zhongjie-0426/py-scdl
 - 内容：
-  - 基于python实现的配置、服务发现、日志收集中心，功能设计参考Nacos，网络io完全使用异步实现。组件间实现解耦，可以仅启用部分功能。
+  - 基于python实现的配置、服务发现、日志收集中心，功能设计参考Nacos，网络io完全使用异步实现。组件间实现解耦，可以仅启用部分功能
   - 服务端前端使用vanilla-jsoneditor实现json配置编辑，支持动态修改与提交，客户端可通过向服务端请求的方式载入配置
   - 基于stdout重定向的方式，在日志收集组件创建后无侵入式地异步从网络发送日志而不影响本地输出
   - 服务端异步websocket基于fastapi实现，客户端异步websocket基于aiohttp实现，支持断线重连
 ### 聚言——慧安蜂巢应用商店
-- 职责：方案设计、后端开发
+- 职责：设计、后端开发
 - 时间：2023.10~2024.3
 - 技术栈：Kubernetes、SpringBoot、Websocket、xterm
 - 内容：
@@ -107,7 +117,7 @@
   - 实现浏览器端基于websocket+xterm的kubectl exec命令交互，基于offsetHeight实现终端行列数自适应
   - 继承ByteArrayOutputStream实现线程安全的read+reset操作，基于CommandLineRunner+单线程轮询+CompletableFuture维护多个exec命令执行
 ### 灵境——慧安蜂巢人工智能算法中台
-- 职责：方案设计、后端开发
+- 职责：设计、后端开发
 - 时间：2022.10~2024.3
 - 技术栈：SpringCloud、SpringSecurity、Python、Kubernetes、Mysql、ELK、Redis、Nacos
 - 内容：
@@ -122,8 +132,9 @@
     - 排查并解决关于NFS、K8S StorageClass、KubeSphere、SpringSecurity拦截、SpringCloud动态路由等多种问题
     - 撰写Dockerfile与yaml，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载、添加路由）搭建，加速团队开发
 ### 望极——慧安蜂巢数实融合仿真平台
-- 职责：方案设计、前后端开发
+- 职责：设计、后端开发、前端开发
 - 时间：2023.03~2023.05
+- 隐藏
 - 技术栈：Unity、C#、Threejs、HTML
 - 内容：
     - 设计并实现方案，将从Unity/ThreejsEditor导出的3D场景载入慧安蜂巢物联网操作系统平台，并将场景内数据与平台本身数据进行双向绑定
@@ -143,6 +154,7 @@
 ### OPC UA软件网关
 - 职责：前端开发、后端开发
 - 时间：2023.02~2023.03
+- 隐藏
 - 技术栈：C++、open62541、mongoose、eCharts、layui
 - 内容：
     - B/S架构，手动实现了简单的MVC架构
@@ -159,7 +171,7 @@
     - 低轨侦察卫星与整体系统交互方案的部分编写
 
 ### 慧安蜂巢智能小站软件系统
-- 职责：方案设计、后端开发
+- 职责：设计、后端开发
 - 时间：2022.06~2022.12
 - 技术栈：C++、openssl、mosquittopp、正则表达式、open62541、libmodbus、sqlite3、lua
 - 内容：
@@ -173,8 +185,7 @@
     - [RemoteShell模块](https://gitee.com/sun-zhongjie-0426/remote-shell-server)：
         - 通过forkpty、execl和poll构建一个终端，允许用户通过远程的任意网络连接（tcp/mqtt/websocket）访问设备而无需嵌入式设备具备ssh服务
         - 在慧安蜂巢物联网操作系统平台上基于x-term开发[基于MQTT的网页远程Shell功能](https://gitee.com/sun-zhongjie-0426/mqtt-rpc-shell)
-    - 性能收集模块：
-        - 读取/proc/文件夹下的内容，基于正则表达式处理后，收集内存信息、CPU各核心/总占用率、npu占用率
+    - 性能收集模块：读取/proc/文件夹下的内容，基于正则表达式处理后，收集内存信息、CPU各核心/总占用率、npu占用率
     - AT指令封装库：
         - 封装并编译为静态库，基于串口读写AT指令，为上层开发者提供与FM650、NL668等蜂窝模块的交互能力
         - 实现了拨号上网、SIM卡信息读取、短信收发
@@ -208,7 +219,7 @@
     - 负责路演PPT内容设计与修改
 
 ### OPC UA中间件
-- 职责：方案设计、后端开发
+- 职责：设计、后端开发
 - 时间：2022.06~2022.07
 - 技术栈：SpringBoot、EclipseMilo、PahoMqtt、Swagger、GSON、WebSocket、HTTP
 - 内容：
@@ -249,6 +260,7 @@
 ### 基于树莓派的摄像头识别+追踪
 - 职责：后端开发
 - 时间：2021.11~2022.05
+- 隐藏
 - 技术栈：树莓派、FFmpeg、Nginx、Python、REID、TCP
 - 内容：
     - 实现了局域网视频传输方案，基于Nginx的流转发服务，通过flv格式传输RTMP视频流，由Python的Reid算法程序拉流并解析
@@ -276,6 +288,7 @@
 
 ### 微信背单词小程序
 - 职责：小程序开发
+- 隐藏
 - 时间：2020.04~2020.04
 - 技术栈：微信小程序、微信云数据库
 - 内容：
