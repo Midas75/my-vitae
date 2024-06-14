@@ -61,9 +61,9 @@
 
 ## 项目经历
 ### 某无人机仿真项目
-- 职责：设计、开发
-- 时间：2024.4~2024.5
-- 技术栈：Unity、AirSim、Python、C、C++、Shader、D3D11、CUDA
+- 职责：项目负责人
+- 时间：2024.4~至今
+- 技术栈：Unity、AirSim、Python、C、C++、Shader、NS3、D3D11、CUDA
 - 内容：
   - 负责前期方案撰写、技术选型、与甲方对接
   - 在Unity中引入AirSim完成无人机仿真，接入Python的AirSim客户端完成分布式控制
@@ -71,6 +71,8 @@
   - 接入强化学习SAC算法，设计奖励函数与采样方法，基于深度信息在Unity城市场景中实现固定单目无人机的自主避障与寻路，利用[PyScdl](https://gitee.com/sun-zhongjie-0426/py-scdl)的日志拦截器将标准输出分流到企业微信机器人以进行实时观测
   - 接入Yolov5完成实时图像推理，选用VisDrone数据集训练目标检测模型以提升识别效果
   - 在Unity中接入[自行开发的动态链接库](https://gitee.com/sun-zhongjie-0426/unity-native-rendering-plugin-d3-d11-cuda)，利用GPU完成将Unity中的图像编码为JPEG，相比经典解决方案性能最多提升2700%
+  - 基于JPEG帧特征，开发基于C的工具以实现[JPEG快速切分](https://gitee.com/sun-zhongjie-0426/jpeg-spliter)，业务场景下性能为libjpeg-turbo的52倍，并撰写了详尽的文档与测试数据（包括Python、C#、SIMD、opencv等多版本）
+  - 基于NS3构建网络仿真框架，允许以多种应用协议接入框架并在内部通过NS3完成对延迟、乱序、组网等业务的仿真，业务基于python构建，利用cppdef实时编译cpp代码并集成到内部
 
 ### MyVitae：基于Markdown的简历生成工具
 - 职责：前端开发
@@ -90,7 +92,7 @@
 - 时间：2023.11~2023.11
 - 技术栈：Python、FastAPI、Redis、ffmpeg、Kubernetes
 - 内容：
-  - 在单机（8张RTX30600、20核40线程CPU）上对200路rtsp视频流拉取，每路视频流允许开启最多10个算法，同时允许算法动态添加与装卸载
+  - 在单机（8张RTX3060、20核40线程CPU）上对200路rtsp视频流拉取，每路视频流允许开启最多10个算法，同时允许算法动态添加与装卸载
   - 基于Python构建项目，利用importlib实现对符合格式（继承抽象类）的算法进行动态加载，将拉流进程与推理进程拆分从而允许多实例与高可用，利用Redis实现进程间通信，引入Kubernetes快速实现进程多实例、负载均衡、宕机进程自动拉起
   - 利用FastAPI封装，对外开放服务并自动生成文档
   - 利用ffmpeg子进程进行取帧，在python侧通过管道连接并读取帧信息，将帧数据编码为jpeg并推送至Redis，在jpeg bytes的EOI后附加json元数据的同时不影响jpeg查看，在取帧频率低于0.5fps时改为仅提取I帧，大幅提升性能
