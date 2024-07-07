@@ -65,11 +65,12 @@
 - 技术栈：Unity、AirSim、Python、C、C++、Shader、NS3、D3D11、CUDA
 - 内容：
   - 负责前期方案撰写、技术选型、与甲方对接
-  - 在Unity中引入AirSim完成无人机仿真，接入Python的AirSim客户端完成分布式控制
+  - 在Unity中引入AirSim完成无人机仿真，接入Python的AirSim客户端完成分布式控制，选用dotnetty进行多节点间TCP传输
   - 编写Shader，实现[利用Shader进行的线性深度图计算](https://gitee.com/sun-zhongjie-0426/distance-effect-shader)，以供强化学习算法使用
   - 接入强化学习SAC算法，设计奖励函数与采样方法，基于深度信息在[Unity城市场景中实现无人机的自主避障](https://gitee.com/sun-zhongjie-0426/sac-airsim-obstacle-avoid)，利用[PyScdl](https://gitee.com/sun-zhongjie-0426/py-scdl)的日志拦截器将标准输出分流到企业微信机器人以进行实时观测
   - 接入Yolov5完成实时图像推理，选用VisDrone数据集训练目标检测模型以提升识别效果。为衡量识别效果，基于顶点实现[Unity中计算目标检测矩形轮廓](https://gitee.com/sun-zhongjie-0426/unity-rect-outline)的多种方案
   - 在Unity中接入[基于CUDA的动态链接库](https://gitee.com/sun-zhongjie-0426/unity-native-rendering-plugin-d3-d11-cuda)，利用GPU完成将Unity中的图像编码为JPEG，相比经典解决方案帧数最多提升27倍
+  - 在Unity中实现日志收集，小地图等组件，其中日志收集组件利用preferredHeight+累计求和思想，在Scroll滑动时利用二分查找显示目标日志项
   - 基于JPEG帧特征，开发基于C的工具以实现[JPEG快速切分](https://gitee.com/sun-zhongjie-0426/jpeg-spliter)，业务场景下性能为libjpeg-turbo的42倍，并撰写了详尽的文档与测试数据（包括Python、C#、SIMD、opencv等多版本）
   - 基于NS3构建网络仿真框架，允许以多种应用协议接入框架并在内部通过NS3完成对延迟、乱序、组网等业务的仿真，业务基于python构建，利用cppdef实时编译cpp代码并集成到内部
 
