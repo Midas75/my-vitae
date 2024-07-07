@@ -28,7 +28,7 @@
 ### 山东省信息技术奥赛省二等奖
 - 时间：2017.05
 ## 个人技能
-- 熟悉基于linux的Java/C/C++/Python开发的相关技术栈
+- 熟悉基于linux的Java/Python/C/C++开发的相关技术栈
 - 有基于Docker/Kubernetes的分布式集群设计、部署、开发经验，熟悉Dockerfile与Shell脚本开发
 - 熟悉MQTT、OPC UA、Modbus等物联网通信协议，熟悉HTTP、TCP、UDP、Websocket等常见网络通信协议
 - 了解js/node、lua、前端、Unity开发
@@ -36,7 +36,6 @@
 - 重视文档、方案书写，工具以Markdown+PlantUML为主
 - 重视数据结构与算法在开发中的应用，关注实际业务的时空复杂度
 - 熟悉toB工业互联网、物联网、数字孪生、大数据等业务
-- 擅长使用AIGC工具协助、加速工作
 - 了解计算机图形学、设计模式、多线程、异步IO等技术
 ## 工作经历
 ### 慧之安信息技术股份有限公司
@@ -49,7 +48,7 @@
     - 项目的技术方案制定、评审、Demo实现，指导后续开发
     - 参与多个项目/课题/白皮书的标书、PPT撰写，与合作方/客户对接确认需求并制定方案
     - 使用Kubernetes&Docker为研发内部提供多个开发环境组件部署（交叉编译、前端、后端、PostgreSQL+ZK+Kafka+Redis等），改进开发效率
-    - 中英文论文撰写（物联网、系统设计方向）
+    - 中英文论文撰写（物联网、无人机仿真、系统设计方向，两篇三作论文见刊）
 ### 紫龙游戏
 - 部门：北京龙之国物语研发部
 - 职位：游戏开发实习生
@@ -68,10 +67,10 @@
   - 负责前期方案撰写、技术选型、与甲方对接
   - 在Unity中引入AirSim完成无人机仿真，接入Python的AirSim客户端完成分布式控制
   - 编写Shader，实现[利用Shader进行的线性深度图计算](https://gitee.com/sun-zhongjie-0426/distance-effect-shader)，以供强化学习算法使用
-  - 接入强化学习SAC算法，设计奖励函数与采样方法，基于深度信息在Unity城市场景中实现固定单目无人机的自主避障与寻路，利用[PyScdl](https://gitee.com/sun-zhongjie-0426/py-scdl)的日志拦截器将标准输出分流到企业微信机器人以进行实时观测
-  - 接入Yolov5完成实时图像推理，选用VisDrone数据集训练目标检测模型以提升识别效果
-  - 在Unity中接入[自行开发的动态链接库](https://gitee.com/sun-zhongjie-0426/unity-native-rendering-plugin-d3-d11-cuda)，利用GPU完成将Unity中的图像编码为JPEG，相比经典解决方案性能最多提升2700%
-  - 基于JPEG帧特征，开发基于C的工具以实现[JPEG快速切分](https://gitee.com/sun-zhongjie-0426/jpeg-spliter)，业务场景下性能为libjpeg-turbo的52倍，并撰写了详尽的文档与测试数据（包括Python、C#、SIMD、opencv等多版本）
+  - 接入强化学习SAC算法，设计奖励函数与采样方法，基于深度信息在[Unity城市场景中实现无人机的自主避障](https://gitee.com/sun-zhongjie-0426/sac-airsim-obstacle-avoid)，利用[PyScdl](https://gitee.com/sun-zhongjie-0426/py-scdl)的日志拦截器将标准输出分流到企业微信机器人以进行实时观测
+  - 接入Yolov5完成实时图像推理，选用VisDrone数据集训练目标检测模型以提升识别效果。为衡量识别效果，基于顶点实现[Unity中计算目标检测矩形轮廓](https://gitee.com/sun-zhongjie-0426/unity-rect-outline)的多种方案
+  - 在Unity中接入[基于CUDA的动态链接库](https://gitee.com/sun-zhongjie-0426/unity-native-rendering-plugin-d3-d11-cuda)，利用GPU完成将Unity中的图像编码为JPEG，相比经典解决方案帧数最多提升27倍
+  - 基于JPEG帧特征，开发基于C的工具以实现[JPEG快速切分](https://gitee.com/sun-zhongjie-0426/jpeg-spliter)，业务场景下性能为libjpeg-turbo的42倍，并撰写了详尽的文档与测试数据（包括Python、C#、SIMD、opencv等多版本）
   - 基于NS3构建网络仿真框架，允许以多种应用协议接入框架并在内部通过NS3完成对延迟、乱序、组网等业务的仿真，业务基于python构建，利用cppdef实时编译cpp代码并集成到内部
 
 ### MyVitae：基于Markdown的简历生成工具
@@ -120,20 +119,20 @@
   - 实现浏览器端基于websocket+xterm的kubectl exec命令交互，基于offsetHeight实现终端行列数自适应
   - 继承ByteArrayOutputStream实现线程安全的read+reset操作，基于CommandLineRunner+单线程轮询+CompletableFuture维护多个exec命令执行
 ### 灵境——慧安蜂巢人工智能算法中台
-- 职责：设计、后端开发
+- 职责：项目负责人
 - 时间：2022.10~2024.3
 - 技术栈：SpringCloud、SpringSecurity、Python、Kubernetes、Mysql、ELK、Redis、Nacos
 - 内容：
     - 负责部署、集成、故障排查；严格遵循项目规范与风格的新功能的开发；撰写与维护相关功能、技术、开发文档
     - 基于Shell设计部署流程、编写部署脚本自动执行流程，服务器单机部署时间<30分钟，版本迭代时间＜10分钟。编写各组件于k8s集群中部署所需的yaml文件。基于nginx实现后端websocket服务、minio服务统一反代。
     - 在部署脚本中基于Shell实现Harbor自动化部署，实现本地镜像的层分析算法，并利用该算法自动完成镜像复用打包，部署包体积减少40%，在部署过程中引入pigz实现并行解压缩，引入pv实现进度可视化
-    - 设计模型转换功能与架构，利用dfs实现模型转换有向图中转换路径（a-b-c）的自动计算。基于k8s jobs封装模型转换python进程，使用redis作为java/python进程间通信中间件。
+    <!-- - 设计模型转换功能与架构，利用dfs实现模型转换有向图中转换路径（a-b-c）的自动计算。基于k8s jobs封装模型转换python进程，使用redis作为java/python进程间通信中间件。 -->
     - 负责后端压缩功能开发与实现，基于ZipOutputStream实现流式压缩，考虑实际业务场景与性能瓶颈，进行了zip压缩等级的选型，使用redis存储临时下载token，在分布式场景下避免无鉴权的恶意下载请求。
     - 负责在线服务功能重构，重新设计Python端、镜像端、Java端、Web端功能，撰写相关技术文档并重新搭建Python端架构
     - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+矩阵差分+倒排索引的算法，以高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
-    - 负责流媒体在线服务功能的功能设计与开发（Java、Python），接入慧安蜂巢物联网操作系统平台的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免接口被外部请求随意调用，利用configmap+HttpServletRequest进行接口校验。
+    <!-- - 负责流媒体在线服务功能的功能设计与开发（Java、Python），接入慧安蜂巢物联网操作系统平台的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免接口被外部请求随意调用，利用configmap+HttpServletRequest进行接口校验。 -->
     - 排查并解决关于NFS、K8S StorageClass、KubeSphere、SpringSecurity拦截、SpringCloud动态路由等多种问题
-    - 撰写Dockerfile与yaml，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载、添加路由）搭建，加速团队开发
+    - 撰写Dockerfile与yaml，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载、添加路由）搭建
 ### 望极——慧安蜂巢数实融合仿真平台
 - 职责：设计、后端开发、前端开发
 - 时间：2023.03~2023.05
@@ -174,35 +173,26 @@
     - 低轨侦察卫星与整体系统交互方案的部分编写
 
 ### 慧安蜂巢智能小站软件系统
-- 职责：设计、后端开发
+- 职责：后端开发
 - 时间：2022.06~2022.12
 - 技术栈：C++、openssl、mosquittopp、正则表达式、open62541、libmodbus、sqlite3、lua
 - 内容：
-    - 嵌入式设备授权：
-        - 设计了基于两次RSA的嵌入式设备授权方案并实现了Demo以指导后续C++/Java开发，向授权平台发送认证文件并解析响应的授权文件，根据授权启用/关闭对应功能
-        - 综合考虑了硬件伪造、请求篡改、DNS欺骗、响应篡改、磁盘修改等可能的破解场景
-        - 使用两次RSA完成双向通信的分块加密，使用SHA256生成嵌入式设备的硬件指纹
-    - [MQTT通信模块](https://gitee.com/sun-zhongjie-0426/mqtt-service)：
-        - 基于构建mosquittopp的代理类设计并实现了设备的MQTT常驻服务，用于管理多个MQTT连接
-        - 通过线程池实现多个连接的维护，通过std::async+智能指针+纯虚函数实现高性能的订阅回调，允许开发者通过继承MqttCallback接口进行回调函数的注入与开发
+    - 设备授权：设计了基于两次RSA的嵌入式设备授权方案并实现了Demo以指导后续C++/Java开发，向授权平台发送认证文件并解析响应的授权文件，根据授权启用/关闭对应功能，综合考虑了硬件伪造、请求篡改、DNS欺骗、响应篡改、磁盘修改等可能的破解场景
+    - [MQTT通信模块](https://gitee.com/sun-zhongjie-0426/mqtt-service)：基于构建mosquittopp的代理类设计并实现了设备的MQTT常驻服务，用于管理多个MQTT连接
     - [RemoteShell模块](https://gitee.com/sun-zhongjie-0426/remote-shell-server)：
         - 通过forkpty、execl和poll构建一个终端，允许用户通过远程的任意网络连接（tcp/mqtt/websocket）访问设备而无需嵌入式设备具备ssh服务
         - 在慧安蜂巢物联网操作系统平台上基于x-term开发[基于MQTT的网页远程Shell功能](https://gitee.com/sun-zhongjie-0426/mqtt-rpc-shell)
     - 性能收集模块：读取/proc/文件夹下的内容，基于正则表达式处理后，收集内存信息、CPU各核心/总占用率、npu占用率
-    - AT指令封装库：
-        - 封装并编译为静态库，基于串口读写AT指令，为上层开发者提供与FM650、NL668等蜂窝模块的交互能力
-        - 实现了拨号上网、SIM卡信息读取、短信收发
-        - 手动实现PDU格式长文本的短信编解码
+    - AT指令封装库：封装并编译为静态库，基于串口读写AT指令，为上层开发者提供与FM650、NL668等蜂窝模块的交互能力。实现了拨号上网、SIM卡信息读取、短信收发，PDU格式长文本的短信编解码
     - 工业协议通信模块：
-        - 设计Connection与Device分离的架构，从而兼容连接复用的通信协议
+        - Connection与Device分离的架构，从而兼容连接复用的通信协议
         - 南向接入OPC UA/Modbus/串口设备并读取数据，使用sqlite存储至本地并转换为统一格式的JSON发往前端
-        - 使用层序遍历+尾递归快速获取OPC UA信息模型
         - 重写libmodbus库函数实现引脚高低电平的手动设置，从而控制RS485的TX/RX模式
-        - 设计并实现小顶堆实现单线程轮询+线程池任务分发
-        - 设计并实现lua脚本格式与解析、lua/c++交互方案，实现对于modbus/串口设备的自定义脚本上传与解析
-        - 设计并实现基于Sqlite3的数据库存储方案，通过历史数据表+最新数据表实现高效写入/查询/条目维护
-        - 设计并实现包括延迟、回差等功能的复杂报警逻辑功能
-        - 打通嵌入式设备与平台的交互，实现数据传输/反向控制等业务
+        - 小顶堆实现单线程轮询+线程池任务分发
+        - lua脚本格式与解析、lua/c++交互方案，实现对于modbus/串口设备的自定义脚本上传与解析
+        - 基于Sqlite3的数据库存储方案，通过历史数据表+最新数据表实现高效写入/查询/条目维护
+        - 包括延迟、回差等功能的复杂报警逻辑功能
+        - 打通设备与公司平台的交互，实现数据传输/反向控制等业务
 
 ### 新基建园区白皮书
 - 职责：产品经理
@@ -218,12 +208,12 @@
 - 内容：
     - 北京赛站（智慧园区方向）领军组第一名（36支队伍），奖金10万
     - [全国总决赛最具发展潜力奖](https://guanwang-1257541758.obs.cn-north-4.myhuaweicloud.com/%E8%8E%B7%E5%A5%96%E8%AF%81%E4%B9%A6/%E7%AC%AC%E5%9B%9B%E5%B1%8A/%E9%A2%86%E5%86%9B%E7%BB%84%E5%A5%96%E7%8A%B6/%E6%9C%80%E5%85%B7%E5%8F%91%E5%B1%95%E6%BD%9C%E5%8A%9B%E5%A5%96/CII-C520220133.jpg)
-    - 负责解决方案中园区技术底座、园区功能设计内容撰写
-    - 负责路演PPT内容设计与修改
+    - 负责解决方案中园区技术底座、园区功能设计内容撰写，负责路演PPT内容设计与修改
 
 ### OPC UA中间件
 - 职责：设计、后端开发
 - 时间：2022.06~2022.07
+- 隐藏：此项目目前看来技术点过少，没有意义
 - 技术栈：SpringBoot、EclipseMilo、PahoMqtt、Swagger、GSON、WebSocket、HTTP
 - 内容：
     - 作为网络中间件，南向通过OPC UA协议连接设备，北向通过MQTT将数据发送到物联网平台，通过HTTP对接平台完成设备添加、查看、管理、RPC调用转OPC UA Method调用，向前端提供Restful接口进行配置
@@ -287,7 +277,7 @@
     - 调用开源API建立Node服务器将请求转发给网易云服务器
     - 设计并实现推荐歌单、心动模式、个人歌单、歌词滚动显示、通过URL播放音乐、查看歌单内容、收藏歌单、随机播放（fisher-yates shuffle）等功能，通过账号与密码登录
     - 设计与绘制UI界面与风格，基于代码实现UI交互的视觉效果
-    - 密码使用MD5摘要后传输，大量信息压缩后传输
+    <!-- - 密码使用MD5摘要后传输，大量信息压缩后传输 -->
 
 ### 微信背单词小程序
 - 职责：小程序开发
