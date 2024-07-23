@@ -329,26 +329,29 @@
                 "工作经历": workExperience,
                 "项目经历": projectExperience,
             }
-            let moduleOrder = [
-                "个人信息",
-                "教育经历",
-                "获奖经历",
-                "个人技能",
-                "工作经历",
-                "项目经历"
-            ]
-            for (let key of moduleOrder) {
-                if (titleModuleMap[key] != null && subTokens[key] != null) {
+            // TODO: 排序与别名的适配
+            // let moduleOrder = [
+            //     "个人信息",
+            //     "教育经历",
+            //     "获奖经历",
+            //     "个人技能",
+            //     "工作经历",
+            //     "项目经历"
+            // ]
+            // for (let key of moduleOrder) {
+            for (let item of subTokens) {
+                if (titleModuleMap[item.type] != null) {
                     previewDoc.body.appendChild(
-                        titleModuleMap[key].render(
-                            titleModuleMap[key].parse(
-                                subTokens[key]
+                        titleModuleMap[item.type].render(
+                            titleModuleMap[item.type].parse(
+                                item.tokens
                             ),
                             option
                         )
                     )
                 }
             }
+            // }
             switch (option.showLink) {
                 case 0:
                     break;

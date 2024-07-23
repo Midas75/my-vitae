@@ -61,7 +61,7 @@ export function split(str) {
     let tokens = Lexer.lex(str)
     let length = 0
     let tokenLength = []
-    let result = {}
+    let result = []
     for (let token of tokens) {
         token.position = length;
         tokenLength.push(length);
@@ -84,12 +84,14 @@ export function split(str) {
                 r += 1;
             }
             let subTokens = tokens.slice(l, r)
-            if (subTokens[0].tokens[0].type == "link") {
-                result[subTokens[0].tokens[0].href] = subTokens;
-            } else if(subTokens[0].tokens[0].type == "text"){
-                result[subTokens[0].tokens[0].text] = subTokens
+            let item = {
+                type:subTokens[0].tokens[0].text,
+                tokens:subTokens
             }
-
+            if (subTokens[0].tokens[0].type == "link") {
+               item.type = subTokens[0].tokens[0].href
+            }
+            result.push(item)
             l = r;
         }
         else {
