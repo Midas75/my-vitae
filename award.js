@@ -5,7 +5,7 @@ import { newBaseModel } from "./baseModel.js";
 import { marked } from "./marked.esm.min.js";
 let award = {
     render: function (data) {
-        let obj = newBaseModel("获奖经历", data.contents.length);
+        let obj = newBaseModel(data.title, data.contents.length);
         obj.container.dataset.position=data.position;
         obj.container.dataset.size=data.size;
         for (let i = 0; i < data.contents.length; i++) {
@@ -36,7 +36,8 @@ let award = {
         let data = {
             position: tokens[0].position,
             size: tokens[0].raw.length,
-            contents: []
+            contents: [],
+            title: tokens[0].tokens[0].text
         };
 
         let subs = splitSub(tokens)

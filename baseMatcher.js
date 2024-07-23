@@ -1,15 +1,15 @@
 import { Lexer } from "./marked.esm.min.js"
-export function removeATag(element){
+export function removeATag(element) {
     let elements = element.getElementsByTagName('a')
-    for(let e of elements){
+    for (let e of elements) {
         e.removeAttribute('href')
     }
 }
-export function expandATag(element){
-    let elements=element.getElementsByTagName('a')
-    for(let e of elements){
-        if(e.innerHTML!=e.href)
-        e.innerHTML+=`(${decodeURIComponent(e.href)})`
+export function expandATag(element) {
+    let elements = element.getElementsByTagName('a')
+    for (let e of elements) {
+        if (e.innerHTML != e.href)
+            e.innerHTML += `(${decodeURIComponent(e.href)})`
     }
 }
 export function findValueByKeys(listItems, keys) {
@@ -84,12 +84,12 @@ export function split(str) {
                 r += 1;
             }
             let subTokens = tokens.slice(l, r)
-            if (subTokens[0].depth == 1) {
-                result["个人信息"] = subTokens;
+            if (subTokens[0].tokens[0].type == "link") {
+                result[subTokens[0].tokens[0].href] = subTokens;
+            } else if(subTokens[0].tokens[0].type == "text"){
+                result[subTokens[0].tokens[0].text] = subTokens
             }
-            else {
-                result[subTokens[0].text] = subTokens
-            }
+
             l = r;
         }
         else {

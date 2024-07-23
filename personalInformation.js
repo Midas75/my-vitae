@@ -49,8 +49,8 @@ let personalInformation = {
     parse: function (tokens) {
         let data = {};
         for (let token of tokens) {
-            if (token.type === 'heading' && token.depth === 1) {
-                data.name = token.text
+            if (token.type === 'heading') {
+                data.name = token.tokens[0].text
                 data.position = token.position
                 data.size = token.raw.length
                 break;

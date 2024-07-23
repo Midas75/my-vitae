@@ -4,7 +4,7 @@ import { formatIfExists } from "./utils.js";
 import { newBaseModel } from "./baseModel.js";
 let educationExperience = {
     render: function (data) {
-        let obj = newBaseModel("教育经历", data.contents.length)
+        let obj = newBaseModel(data.title, data.contents.length)
         obj.container.dataset.position = data.position;
         obj.container.dataset.size = data.size;
         let index = 0;
@@ -58,7 +58,8 @@ let educationExperience = {
         let data = {
             position: tokens[0].position,
             size: tokens[0].raw.length,
-            contents: []
+            contents: [],
+            title: tokens[0].tokens[0].text
         };
         let subs = splitSub(tokens)
         for (let sub of subs) {
