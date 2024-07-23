@@ -17,6 +17,9 @@ let personalInformation = {
                 if (key == "avatar") {
                     continue;
                 }
+                if (key == "birthday" && data["age"] != null) {
+                    continue;
+                }
                 let div = document.createElement('div');
                 div.dataset.position = data[key].position;
                 div.dataset.size = data[key].size;

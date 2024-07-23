@@ -16,6 +16,18 @@ const config = {
                 return "🎂 " + value
             }
         },
+        birthday: {
+            key: ["生日", "birthday"],
+            format: function (value) {
+                let birth = new Date(value);
+                let now = new Date();
+                let year = now.getFullYear() - birth.getFullYear();
+                if (now < birth || now.getMonth() < birth.getMonth()) {
+                    year -= 1;
+                }
+                return `🎂 ${year}岁`;
+            }
+        },
         wechat: {
             key: ["微信", "wechat"],
             format: function (value) {
