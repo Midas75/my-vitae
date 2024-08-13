@@ -6,8 +6,8 @@ import { marked } from "./marked.esm.min.js";
 let award = {
     render: function (data) {
         let obj = newBaseModel(data.title, data.contents.length);
-        obj.container.dataset.position=data.position;
-        obj.container.dataset.size=data.size;
+        obj.container.dataset.position = data.position;
+        obj.container.dataset.size = data.size;
         for (let i = 0; i < data.contents.length; i++) {
             let container = document.createElement('div');
             container.classList.add("a-container");
@@ -16,19 +16,27 @@ let award = {
                 let timeLayer = document.createElement('div');
                 timeLayer.classList.add("a-time-layer");
                 timeLayer.innerHTML = formatIfExists(config.award.time.format, data.contents[i]["time"].value);
-                timeLayer.dataset.position=data.contents[i]["time"].position;
-                timeLayer.dataset.size=data.contents[i]["time"].size;
+                timeLayer.dataset.position = data.contents[i]["time"].position;
+                timeLayer.dataset.size = data.contents[i]["time"].size;
                 container.appendChild(timeLayer);
 
                 let awardLayer = document.createElement('div');
                 awardLayer.classList.add("a-title-layer");
                 awardLayer.innerHTML = data.contents[i]["name"].value;
-                awardLayer.dataset.position=data.contents[i]["name"].position;
-                awardLayer.dataset.size=data.contents[i]["name"].size;
+                awardLayer.dataset.position = data.contents[i]["name"].position;
+                awardLayer.dataset.size = data.contents[i]["name"].size;
                 container.appendChild(awardLayer);
             }
-
             obj.contents[i].appendChild(container);
+            if (data.contents[i]["content"] != null) {
+                let contentLayer = document.createElement('div');
+                contentLayer.classList.add("a-content-layer");
+                contentLayer.innerHTML = formatIfExists(config.award.content.format, data.contents[i]["content"].value);
+                contentLayer.dataset.position = data.contents[i]["content"].position;
+                contentLayer.dataset.size = data.contents[i]["content"].size;
+                obj.contents[i].appendChild(contentLayer);
+            }
+
         }
         return obj.container;
     },
@@ -45,7 +53,7 @@ let award = {
         for (let sub of subs) {
             let obj = {
                 name: {
-                    value: marked.parse(sub[0].text).replace(/<p>/g,"").replace(/<\/p>/g,""),
+                    value: marked.parse(sub[0].text).replace(/<p>/g, "").replace(/<\/p>/g, ""),
                     position: sub[0].position,
                     size: sub[0].raw.length
                 }

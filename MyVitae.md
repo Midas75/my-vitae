@@ -28,8 +28,13 @@
 - 时间：2021.08
 ### 山东省信息技术奥赛省二等奖
 - 时间：2017.05
-## [自我评价](个人技能)
-能吃能睡，身体倍儿棒
+## [论文发表](获奖经历)
+### [IoT OS Platform: Software Infrastructure for Next-Gen Industrial IoT](https://www.mdpi.com/2076-3417/14/13/5370)
+- 时间：2024.06
+- 内容：Applied Sciences（IF2.5，JCI SCI Q2），三作（约占全文80%工作量）
+### [基于物联网操作系统平台的无人机战术仿真系统](https://www.jc2.org.cn/CN/10.3969/j.issn.2096-0204.2024.03.0347)
+- 时间：2024.03
+- 内容：指挥与控制学报（IF 2.56，北大核心），三作（独立撰写）
 ## 个人技能
 - 熟悉基于linux的Java/Python/C/C++开发的相关技术栈
 - 有基于Docker/Kubernetes的分布式集群设计、部署、开发经验，熟悉Dockerfile与Shell脚本开发
@@ -67,14 +72,16 @@
 - 时间：2024.4~至今
 - 技术栈：Unity、AirSim、Python、C、C++、Shader、NS3、D3D11、CUDA
 - 内容：
-  - 负责前期方案撰写、技术选型、与甲方对接
+  - 负责方案撰写、技术选型、与甲方对接、参与专家评审
   - 在Unity中引入AirSim完成无人机仿真，接入Python的AirSim客户端完成分布式控制，选用dotnetty进行多节点间TCP传输
   - 编写Shader，实现[利用Shader进行的线性深度图计算](https://gitee.com/sun-zhongjie-0426/distance-effect-shader)，以供强化学习算法使用
   - 接入强化学习SAC算法，设计奖励函数与采样方法，基于深度信息在[Unity城市场景中实现无人机的自主避障](https://gitee.com/sun-zhongjie-0426/sac-airsim-obstacle-avoid)，利用[PyScdl](https://gitee.com/sun-zhongjie-0426/py-scdl)的日志拦截器将标准输出分流到企业微信机器人以进行实时观测
   - 接入Yolov5完成实时图像推理，选用VisDrone数据集训练目标检测模型以提升识别效果。为衡量识别效果，基于顶点实现[Unity中计算目标检测矩形轮廓](https://gitee.com/sun-zhongjie-0426/unity-rect-outline)的多种方案
   - 在Unity中接入[基于CUDA的动态链接库](https://gitee.com/sun-zhongjie-0426/unity-native-rendering-plugin-d3-d11-cuda)，利用GPU完成将Unity中的图像编码为JPEG，相比经典解决方案帧数最多提升27倍
-  - 在Unity中实现日志收集，小地图等组件，其中日志收集组件利用preferredHeight+累计求和思想，在Scroll滑动时利用二分查找显示目标日志项
+  - Unity中实现日志收集，小地图等组件，日志收集组件利用preferredHeight+数列求和，Scroll滑动时基于二分查找动态渲染目标日志项
   - 基于JPEG帧特征，开发基于C的工具以实现[JPEG快速切分](https://gitee.com/sun-zhongjie-0426/jpeg-spliter)，业务场景下性能为libjpeg-turbo的42倍，并撰写了详尽的文档与测试数据（包括Python、C#、SIMD、opencv等多版本）
+  - 基于RayCast完成激光雷达仿真，结合目标识别算法，输入测距信息、无人机自身姿态信息与图像信息，推算目标实际空间坐标
+  - 设计并实现基于asyncio.Queue\[typing.Coroutine\]的单线程无人机逻辑处理框架，利于手动控制无人机复杂业务逻辑
   - 基于NS3构建网络仿真框架，允许以多种应用协议接入框架并在内部通过NS3完成对延迟、乱序、组网等业务的仿真，业务基于python构建，利用cppdef实时编译cpp代码并集成到内部
 
 ### MyVitae：基于Markdown的简历生成工具
@@ -95,7 +102,7 @@
 - 时间：2023.11~2023.11
 - 技术栈：Python、FastAPI、Redis、ffmpeg、Kubernetes
 - 内容：
-  - 在单机（8张RTX3060、20核40线程CPU）上对200路rtsp视频流拉取，每路视频流允许开启最多10个算法，同时允许算法动态添加与装卸载
+  - 单机（8张RTX3060、20核40线程CPU）上对200路rtsp视频流拉取，每路视频流允许开启最多10个算法，允许算法动态添加与装卸载
   - 基于Python构建项目，利用importlib实现对符合格式（继承抽象类）的算法进行动态加载，将拉流进程与推理进程拆分从而允许多实例与高可用，利用Redis实现进程间通信，引入Kubernetes快速实现进程多实例、负载均衡、宕机进程自动拉起
   - 利用FastAPI封装，对外开放服务并自动生成文档
   - 利用ffmpeg子进程进行取帧，在python侧通过管道连接并读取帧信息，将帧数据编码为jpeg并推送至Redis，在jpeg bytes的EOI后附加json元数据的同时不影响jpeg查看，在取帧频率低于0.5fps时改为仅提取I帧，大幅提升性能
@@ -130,11 +137,11 @@
     - 负责部署、集成、故障排查；严格遵循项目规范与风格的新功能的开发；撰写与维护相关功能、技术、开发文档
     - 基于Shell设计部署流程、编写部署脚本自动执行流程，服务器单机部署时间<30分钟，版本迭代时间＜10分钟。编写各组件于k8s集群中部署所需的yaml文件。基于nginx实现后端websocket服务、minio服务统一反代。
     - 在部署脚本中基于Shell实现Harbor自动化部署，实现本地镜像的层分析算法，并利用该算法自动完成镜像复用打包，部署包体积减少40%，在部署过程中引入pigz实现并行解压缩，引入pv实现进度可视化
-    <!-- - 设计模型转换功能与架构，利用dfs实现模型转换有向图中转换路径（a-b-c）的自动计算。基于k8s jobs封装模型转换python进程，使用redis作为java/python进程间通信中间件。 -->
+    - 设计模型转换功能与架构，利用dfs实现模型转换有向图中转换路径（a-b-c）的自动计算。基于k8s jobs封装模型转换python进程，使用redis作为java/python进程间通信中间件。
     - 负责后端压缩功能开发与实现，基于ZipOutputStream实现流式压缩，考虑实际业务场景与性能瓶颈，进行了zip压缩等级的选型，使用redis存储临时下载token，在分布式场景下避免无鉴权的恶意下载请求。
     - 负责在线服务功能重构，重新设计Python端、镜像端、Java端、Web端功能，撰写相关技术文档并重新搭建Python端架构
     - 负责数据质检模块设计与开发，通过访问数据库、文件系统、Python程序获得数据集指标并发送给前端。设计并实现离散化+矩阵差分+倒排索引的算法，以高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
-    <!-- - 负责流媒体在线服务功能的功能设计与开发（Java、Python），接入慧安蜂巢物联网操作系统平台的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免接口被外部请求随意调用，利用configmap+HttpServletRequest进行接口校验。 -->
+    - 负责流媒体在线服务功能的功能设计与开发（Java、Python），接入公司其他产品的RTSP流，并解决了VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免接口被外部请求随意调用，利用configmap+HttpServletRequest进行接口校验。
     - 排查并解决关于NFS、K8S StorageClass、KubeSphere、SpringSecurity拦截、SpringCloud动态路由等多种问题
     - 撰写Dockerfile与yaml，实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载、添加路由）搭建
 ### 望极——慧安蜂巢数实融合仿真平台

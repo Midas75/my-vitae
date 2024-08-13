@@ -100,6 +100,12 @@ const config = {
     award: {
         time: {
             key: ["时间", "time"]
+        },
+        content:{
+            key:["内容","content"],
+            format:function(value){
+                return marked.parse(value)
+            }
         }
     },
     workExperience: {
