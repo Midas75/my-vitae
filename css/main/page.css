@@ -16,12 +16,13 @@
 .editor {
     width: 49vw;
     border: solid;
+    height: 100%;
 }
 
 .preview {
     width: 49vw;
     border: solid;
-    margin-left: auto;
+    height: 100%;
 }
 
 .message-list-container {

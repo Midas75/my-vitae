@@ -1,10 +1,8 @@
 # MyVitae
-简历和生成简历的项目，可以看看[在线网页](http://sun-zhongjie-0426.gitee.io/my-vitae)
-- 目前版本:**0.0.4**
+简历和生成简历的项目，可以看看[在线网页](http://sun-zhongjie-0426.gitee.io/my-vitae)，也可以看看[使用文档](./example.html)
+- 目前版本:**0.0.5**
 ## 功能简述
 基于对Markdown文件的一些约定，绘制成html文件，这样就可以在浏览器上ctrl+P直接打印为pdf了。别忘了打印时勾选“更多设置-选项-显示图形”
-
-**是纯度极高的手绘js**
 
 ## 功能
 - 基于约定格式将markdown渲染为html
@@ -25,5 +23,6 @@
 - 更多attribute支持
 - 移动端支持
 - markdown上传和显示
-- 示例
 - 富文本编辑体验改进
+## 使用文档（这是example.html的图片渲染版）
+![](./pic/example.jpeg)

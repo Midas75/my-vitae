@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>示例</title>
+</head>
+
+<body style="margin: 1vw;">
+    <script type="module">
+        import { CurriculumVitae } from "./CurriculumVitae.js"
+        import { readAsStringAsync } from "./fileReader.js"
+        import { marked } from "./marked.esm.min.js"
+        let examples = {
+            "basic": "基础",
+            "information": "个人信息",
+            "education": "教育经历",
+            "award": "获奖经历",
+            "skill": "个人技能",
+            "work": "工作经历",
+            "project": "项目经历"
+        }
+        let heightSpecify = {
+            "basic": 15,
+            "information": 20,
+            "education": 20,
+            "award": 25,
+            "skill": 15,
+            "work": 25,
+            "project": 20
+        }
+        for (const k in examples) {
+            let h1 = document.createElement("h1")
+            h1.innerHTML = examples[k]
+            document.body.appendChild(h1)
+            let explain = document.createElement("div")
+            explain.style = "font-size: 0.8vw;line-height: 1.6vw;"
+            explain.innerHTML = marked.parse(await readAsStringAsync(`./example/${k}Explain.md`))
+            document.body.appendChild(explain)
+            let container = document.createElement("div")
+            container.classList.add("container")
+            let editor = document.createElement("div")
+            container.appendChild(editor)
+            let preview = document.createElement("div")
+            container.appendChild(preview)
+            document.body.appendChild(container)
+            let cv = new CurriculumVitae(
+                await readAsStringAsync(`./example/${k}Text.md`),
+                preview,
+                2,
+                editor
+            )
+            editor.style.display = "flex";
+            preview.style.display = "flex";
+            preview.style.height = `${heightSpecify[k]}vw`;
+            editor.style.height = `${heightSpecify[k]}vw`;
+
+        }
+    </script>
+</body>
+
+</html>

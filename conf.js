@@ -136,7 +136,7 @@ const config = {
             key: ["时间", "time"]
         },
         technology: {
-            key: ["技术栈", "technoology"]
+            key: ["技术栈", "technology"]
         },
         url: {
             key: ["地址", "url"],
