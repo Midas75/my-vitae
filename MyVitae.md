@@ -41,7 +41,7 @@
 - 熟悉MQTT、OPC UA、Modbus等物联网通信协议，熟悉HTTP、TCP、UDP、Websocket等常见网络通信协议
 - 了解js/node、lua、前端、Unity开发、UE开发
 - 熟悉SpringCloud开发，熟悉相关技术栈：Nginx、Redis、Mybatis-Plus、Nacos、Feign、ELK、MinIO
-- 具备方案、技术文档等内容的撰写能力
+- 具备大量的方案、技术文档、研究报告、论文等内容的撰写经验
 - 重视数据结构与算法在开发中的应用，关注实际业务的时空复杂度
 ## 工作经历
 ### 慧之安信息技术股份有限公司
@@ -68,34 +68,34 @@
 - 技术栈：UE5、蓝图、C++、C
 - 内容：
   - 将在场景中以第一人称控制无人机的原有系统基于UE联网框架改造为多人模式
-  - 基于合作方飞控库在本地完成飞控解算，修复原有飞控库增稳模式低帧数下颠簸问题，结合AirSim代码修复该库力学碰撞行为错误问题
+  - 基于合作方飞控库在本地完成飞控解算，修复原有飞控库增稳模式低帧数下颠簸问题，参照AirSim源代码修复该库力学碰撞行为错误问题
   - 基于UE物理系统和力学方法构建场景中直升机AI，基于ChaosVehicle实现车辆AI，基于蓝图实现士兵AI
-  - 在Windows下构建后台进程管理模块，接入基于TeamSpeakSDK的语音，基于NPS的外网穿透等外部进程
+  - 在Windows下构建后台进程管理模块，接入基于TeamSpeakSDK的语音沟通，基于NPS的外网穿透等外部进程
   - 结合UE内http请求功能复杂、UMG交互功能弱等问题，构建基于MongooseWebServer的http服务器，支持静态文件访问与自定义反代，配合UE中WebBrowser使用
 
-### 某无人机仿真项目
+### 某军科委无人机项目
 - 职责：项目负责人
 - 时间：2024.4~至今
-- 技术栈：Unity、AirSim、Python、C、C++、Shader、NS3、D3D11、CUDA
+- 技术栈：Unity、AirSim、Python、C、C++、Shader、NS-3、D3D11、CUDA
 - 内容：
-  - 在Unity中引入AirSim完成无人机仿真，接入Python的AirSim客户端完成分布式控制，选用dotnetty进行多节点间TCP传输，接入真实军用无人机完成仿真测试
-  - 编写Shader，实现[利用Shader进行的线性深度图计算](https://gitee.com/sun-zhongjie-0426/distance-effect-shader)，以供强化学习算法使用
+  - 在Unity中引入AirSim完成无人机仿真，结合NS-3实现网络仿真框架，构建Python API完成分布式控制，选用dotnetty进行多节点间TCP传输，接入真实军用无人机完成仿真测试
+  - [改进AirSim在多机仿真时的卡顿问题](https://github.com/Midas75/AirSim)，构建多种替代方案定位问题所在，选取最优的单线程忙轮询+future方式代替，将单机仿真数量从20提升至210
+  - 编写Shader，实现[利用Shader进行的线性深度图计算](https://github.com/Midas75/distance-effect-shader)
   - 实现SAC算法，设计奖励函数与采样方法，基于深度信息在[Unity城市场景中实现无人机的自主避障](https://gitee.com/sun-zhongjie-0426/sac-airsim-obstacle-avoid)
-  - 接入Yolov5完成实时图像推理，为衡量识别效果，基于顶点实现[Unity中计算目标检测矩形轮廓](https://gitee.com/sun-zhongjie-0426/unity-rect-outline)
-  - 在Unity中接入[基于CUDA的动态链接库](https://gitee.com/sun-zhongjie-0426/unity-native-rendering-plugin-d3-d11-cuda)，完全在显存上将图像编码为JPEG，相比经典解决方案帧数最多提升27倍。
-  - 修改GPUJPEG代码，在编码过程完成Y轴反转，同时利用查表法完成Gamma校正
-  - Unity中实现日志收集，小地图等组件，日志收集组件利用preferredHeight+数列求和，Scroll滑动时基于二分查找动态渲染目标日志项
-  - 基于JPEG帧特征，开发基于C的工具以实现[JPEG快速切分](https://gitee.com/sun-zhongjie-0426/jpeg-spliter)，业务场景下性能为libjpeg-turbo的52倍
-  - 基于RayCast完成激光雷达仿真，结合图像数据、目标识别与姿态获取功能，完成PCD点云生成、识别物体世界坐标计算等功能
-  - 设计并实现基于asyncio.Queue\[typing.Coroutine\]的单线程无人机逻辑处理框架，利于手动控制无人机复杂业务逻辑
-  - 基于NS3构建网络仿真框架，上层基于Python完成多种通信故障的仿真，基于SQLite3完成通信数据实时记录，并构建简易ORM框架，支持类到表自动映射、建表语句、插入语句自动生成
-  - 主导项目中基于GAN的图像、雷达、文本干扰生成，基于LLM的语义一致性、基于决策树的通信故障诊断等算法研究
-
+  - 实现[基于点云数据的八叉树+A*的避障/寻路算法](https://github.com/Midas75/AirSim-OCTree-PathFinding)，利用cProfile分析性能瓶颈并通过邻居查询、小规模更新等方法提升性能
+  - 接入YOLO完成实时图像推理，为衡量识别效果，基于顶点在Unity中实现[计算目标检测矩形轮廓](https://github.com/Midas75/unity-rect-outline)
+  - 在Unity中接入[基于CUDA的动态链接库](https://github.com/Midas75/unity-native-rendering-plugin-d3d11-cuda)，完全在显卡上将图像编码为JPEG，相比经典解决方案帧数最多提升27倍。
+  - 修改GPUJPEG代码，在编码过程完成Y轴反转，同时利用查表法完成SRGB数据的Gamma校正以规避float计算的性能损耗
+  - 基于JPEG帧特征，开发基于C的工具以实现[JPEG快速切分](https://github.com/Midas75/jpeg-spliter)，业务场景下性能为libjpeg-turbo的52倍
+  <!-- - Unity中实现日志收集，小地图等组件，日志收集组件利用preferredHeight+数列求和，Scroll滑动时基于二分查找动态渲染目标日志项 -->
+  <!-- - 基于RayCast完成激光雷达仿真，结合图像数据、目标识别与姿态获取功能，完成PCD点云生成、识别物体世界坐标计算等功能 -->
+  <!-- - 设计并实现基于asyncio.Queue\[typing.Coroutine\]的单线程无人机逻辑处理框架，利于手动控制无人机复杂业务逻辑 -->
+  <!-- - 基于NS3构建网络仿真框架，上层基于Python完成多种通信故障的仿真，基于SQLite3完成通信数据实时记录，并构建简易ORM框架，支持类到表自动映射、建表语句、插入语句自动生成 -->
 ### MyVitae：基于Markdown的简历生成工具
 - 职责：前端开发
 - 时间：2023.5~至今
 - 技术栈：JavaScript、HTML、CSS、Markdown
-- 地址：https://gitee.com/sun-zhongjie-0426/my-vitae
+- 地址：https://github.com/Midas75/my-vitae
 - 内容：
     - 对markdown文档约定部分格式，通过正则表达式与marked.js库提供的Lexer方法对文档进行解析，渲染为具有一定格式的html文档，利用浏览器的打印功能生成pdf
     - 包括个人信息、教育经历、个人技能、工作经历、项目经历等模块
@@ -120,7 +120,7 @@
 - 职责：后端开发
 - 时间：2023.10~2023.11
 - 技术栈：Python、FastAPI、aiohttp、asyncio
-- 地址：https://gitee.com/sun-zhongjie-0426/py-scdl
+- 地址：https://github.com/Midas75/py-scdl
 - 内容：
   - 基于python实现的配置、服务发现、日志收集中心，功能设计参考Nacos，网络io完全使用异步实现。组件间实现解耦，可以仅启用部分功能
   - 服务端前端使用vanilla-jsoneditor实现json配置编辑，支持动态修改与提交，客户端可通过向服务端请求的方式载入配置
@@ -130,6 +130,7 @@
 - 职责：设计、后端开发
 - 时间：2023.10~2024.3
 - 技术栈：Kubernetes、SpringBoot、Websocket、xterm
+- 隐藏
 - 内容：
   - 使用Fabric8 API操作Kubernetes集群，以kubernetes的Deployment+Service为基础单位构建应用
   - 考虑了多种类型应用的访问、授权、安装、卸载等行为，设计完整的开发者指南
@@ -148,7 +149,7 @@
     - 设计并实现后端压缩功能，基于ZipOutputStream实现流式压缩，考虑实际业务场景与性能瓶颈，进行了zip压缩等级的选型，使用redis存储临时下载token以避免无鉴权的恶意下载请求
     - 设计并重构在线服务功能，包括Python端、镜像端、Java端、Web端
     - 设计与开发数据质检模块，通过访问数据库、文件系统、Python程序采集数据集指标并发送给前端。
-    - 设计并实现离散化+矩阵差分+倒排索引的算法，以高效地[计算图片标注框的重叠度](https://gitee.com/sun-zhongjie-0426/area-of-stack)
+    - 设计并实现离散化+矩阵差分+倒排索引的算法，以高效地[计算图片标注框的重叠度](https://github.com/Midas75/area-of-stack)
     - 设计并实现流媒体在线服务功能的功能（Java、Python），接入公司其他产品的RTSP流，解决VideoCapture拉流的延时问题，将报警结果装配为JSON返回。为避免接口被外部请求随意调用，利用Http Host进行接口校验。
     - 排查并解决系统关于NFS、K8s StorageClass、KubeSphere、SpringSecurity拦截、SpringCloud动态路由等各类部署问题
     - 基于Dockerfile与yaml实现前端开发环境（nginx反代+nodejs）、后端开发环境（卷挂载、添加路由）搭建
@@ -254,7 +255,7 @@
 - 职责：后端开发
 - 时间：2022.01~2022.01
 - 技术栈：C++、JAVA、计算机图形学
-- 地址：https://gitee.com/sun-zhongjie-0426/3d-demo
+- 地址：https://github.com/Midas75/3d-demo
 - 内容：
     - 手动实现了以绘制像素为基础的三维立方体展示，内容包括2ddaline直线绘制、投影变换、透视变换、光栅化、blinn-phong光照模型、纹理图片加载与渲染、裁剪等内容的完整渲染管线。
     - 实现了Java/c++两个版本，java版本通过flightRecorder的焰形图进行分析并确定性能瓶颈从而进行优化
@@ -291,6 +292,7 @@
 - 职责：前端开发、后端开发、UI设计
 - 时间：2021.02~2021.05
 - 技术栈：Nodejs、Android Studio、JSON、HTTP
+- hide
 - 内容：
     - 调用开源API建立Node服务器将请求转发给网易云服务器
     - 设计并实现推荐歌单、心动模式、个人歌单、歌词滚动显示、通过URL播放音乐、查看歌单内容、收藏歌单、随机播放（fisher-yates shuffle）等功能，通过账号与密码登录
