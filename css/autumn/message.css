@@ -24,7 +24,7 @@
     opacity: 1;
     transform: translate(0%);
     transition: opacity 0.5s ease-in-out, transform 0.5s, top 0.5s, background-color 0.5s, color 0.5s;
-    font-size: 0.6vw;
+    font-size: 0.8vw;
     border-radius: 0.4vw;
     user-select: none;
 }
