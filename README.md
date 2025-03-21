@@ -1,6 +1,6 @@
 # MyVitae
-简历和生成简历的项目，可以看看[在线网页](https://midas75.github.io/my-vitae/)，也可以看看[使用文档](./example.html)
-- 目前版本:**0.0.5**
+简历和生成简历的项目，可以看看[在线网页](https://midas75.github.io/my-vitae/)，也可以看看[使用文档](https://midas75.github.io/my-vitae/example.html)
+- 目前版本:**0.0.6**
 ## 功能简述
 基于对Markdown文件的一些约定，绘制成html文件，这样就可以在浏览器上ctrl+P直接打印为pdf了。别忘了打印时勾选“**更多设置-选项-显示图形**”
 
