@@ -5,7 +5,7 @@
 
 .pi-tag-layer {
     width: auto;
-    column-count: 3;
+    column-count: 4;
     filter: grayscale(100%);
 }
 
