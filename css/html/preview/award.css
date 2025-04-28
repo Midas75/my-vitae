@@ -1,0 +1,25 @@
+.a-container {
+    align-items: baseline;
+    display: flex;
+    margin-bottom: 4px;
+    position: relative;
+    top: 0;
+    height: 20px;
+}
+
+.a-time-layer {
+    position: absolute;
+    right:16px;
+    font-size: 12px;
+}
+
+.a-title-layer {
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+}
+.a-content-layer{
+    margin-left: 16px;
+    margin-top: -4px;
+    font-size: 12px;
+}

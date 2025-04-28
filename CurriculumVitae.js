@@ -90,6 +90,7 @@ class CurriculumVitae {
             }
         }
         this.postProcess();
+        return this.preview.body.innerHTML;
     }
     postProcess() {
         switch (this.option.showLink) {

@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+    <div id="preview-shadow" class="preview" style="display: none;width: 70vw;">
+    </div>
+    <div id="messageListContainer" class="message-list-container">
+    </div>
+    <div id="preview" class="preview"></div>
+    <script type="module">
+        import { readAsStringAsync } from "./fileReader.js"
+        import { CurriculumVitae } from "./CurriculumVitae.js"
+        import { loadLinksTo } from "./uiCreator.js"
+        let cv;
+        let str;
+        window.addEventListener('load', async function () {
+            if (localStorage.getItem("myVitae") != null && localStorage.getItem("myVitae") != undefined) {
+                str = localStorage.getItem("myVitae")
+            }
+            else {
+                str = await readAsStringAsync("./MyVitae.md");
+            }
+            cv = new CurriculumVitae(
+                str, document.getElementById('preview-shadow'),
+                2,
+                null,
+                document.getElementById('messageListContainer')
+            )
+            let style = "html";
+            loadLinksTo(document,
+                [`./css/${style}/preview/preview.css`,
+                `./css/${style}/preview/personalInformation.css`,
+                `./css/${style}/preview/educationExperience.css`,
+                `./css/${style}/preview/award.css`,
+                `./css/${style}/preview/workExperience.css`,
+                `./css/${style}/preview/projectExperience.css`,
+                `./css/${style}/preview/personalSkill.css`],
+                true)
+            document.getElementById("preview").innerHTML = cv.render();
+        })
+
+    </script>
+
+</body>
+
+</html>

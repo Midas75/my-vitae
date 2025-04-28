@@ -1,0 +1,53 @@
+.pe-main-container {
+    align-items: baseline;
+    display: flex;
+    margin-bottom: 4px;
+    border-bottom-style: solid;
+    border-color: #000;
+    border-width: 2.4px;
+    margin-right: 16px;
+}
+
+.pe-title-layer {
+    font-size: 16px;
+    padding-right: 16px;
+}
+
+.pe-role-layer {
+    font-size: 12px;
+    padding-right: 16px;
+}
+
+.pe-time-layer {
+    font-size: 12px;
+    margin-left: auto
+}
+
+.pe-technology-container {
+    align-items: baseline;
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.pe-technology-layer {
+    font-size: 12px;
+}
+
+.pe-technology-tag {
+    font-size: 12px;
+    display: inline-table;
+    margin-right: 8px;
+    padding-left: 4px;
+    /* padding-right: 0.5vw; */
+}
+
+.pe-url-layer {
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+.pe-content-layer {
+    font-size: 12px;
+    line-height: 20px;
+    padding-right: 16px;
+}

@@ -1,0 +1,36 @@
+.ee-main-container {
+    align-items: baseline;
+    display: flex;
+    margin-bottom: 4px;
+}
+
+.ee-school-layer {
+    font-size: 14px;
+    padding-right: 16px;
+    display: inline-table;
+}
+
+.ee-time-layer {
+    font-size: 14px;
+    display: inline-table;
+    padding-right: 16px;
+    margin-left: auto;
+}
+
+.ee-detail-container {
+    clear: both;
+    column-count: 4;
+    /* display: flex; */
+    /* text-align: center; */
+    margin-bottom: 0vw;
+}
+
+.ee-detail-layer {
+    font-size: 12px;
+}
+
+.ee-detail-separator {
+    visibility: hidden;
+    font-size: 12px;
+    color: #777
+}
