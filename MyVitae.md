@@ -86,12 +86,12 @@
   - 在Windows下构建后台进程管理模块，接入基于TeamSpeakSDK的语音沟通，基于NPS的外网穿透等外部进程
   - 结合UE内http请求功能复杂、UMG交互功能弱等问题，构建基于MongooseWebServer的http服务器，支持静态文件访问与自定义反代，配合UE中WebBrowser使用
 
-### 某军科委无人机项目
+### 面向无人机集群的高性能综合仿真技术研究与实现
 - 职责：项目负责人
 - 时间：2024.4~2025.01
 - 技术栈：Unity、AirSim、Python、C、C++、Shader、NS-3、D3D11、CUDA
 - 内容：
-  - 在Unity中引入AirSim完成无人机仿真，结合NS-3实现网络仿真框架，构建Python API完成分布式控制，选用dotnetty进行多节点间TCP传输，接入真实军用无人机完成仿真测试
+  - 在Unity中引入AirSim完成无人机仿真，结合NS-3实现网络仿真框架，构建Python API完成分布式控制，选用dotnetty进行多节点间TCP传输，接入真实无人机完成仿真测试
   - [改进AirSim在多机仿真时的卡顿问题](https://github.com/Midas75/AirSim)，构建多种替代方案定位问题所在，选取最优的单线程忙轮询+future方式代替，将单机仿真数量从20提升至210
   - 编写Shader，实现[利用Shader进行的线性深度图计算](https://github.com/Midas75/distance-effect-shader)
   - 实现SAC算法，设计奖励函数与采样方法，基于深度信息在[Unity城市场景中实现无人机的自主避障](https://gitee.com/sun-zhongjie-0426/sac-airsim-obstacle-avoid)
