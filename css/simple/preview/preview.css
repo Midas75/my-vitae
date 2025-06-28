@@ -1,13 +1,15 @@
 
 .container {
     clear: both;
+    
     /* margin-bottom: 1vw; */
 }
 
 .content-container {
     clear: both;
+    break-inside: avoid;
     /* margin-bottom: 2vw; */
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     padding-left: 2vw;
 }
 
@@ -45,4 +47,8 @@
 
 a{
     color:inherit;
+}
+url {
+    display: inline-block;
+    text-decoration: underline;
 }

@@ -11,7 +11,7 @@
 }
 
 .ee-time-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     color: #777;
     padding-right: 2vw
 }
@@ -24,12 +24,12 @@
 }
 
 .ee-detail-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     padding-right: 1vw;
     padding-left: 1vw
 }
 
 .ee-detail-separator {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     color: #777
 }

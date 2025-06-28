@@ -63,8 +63,6 @@ let projectExperience = {
                 urlLayer.dataset.size = data.contents[i]["url"].size;
                 obj.contents[i].appendChild(urlLayer);
             }
-
-
             if (data.contents[i]["content"] != null) {
                 let contentLayer = document.createElement('div');
                 contentLayer.classList.add("pe-content-layer");

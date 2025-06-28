@@ -12,17 +12,17 @@
 }
 
 .we-department-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     padding-right: 2vw;
 }
 
 .we-position-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     padding-right: 2vw;
 }
 
 .we-practice-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     border-radius: 0.4vw;
     /* background-color: #DFF; */
     /* color: #000; */
@@ -34,11 +34,11 @@
 }
 
 .we-time-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     margin-left: auto;
 }
 
 .we-content-layer {
-    font-size: 1.5vw;
-    line-height: 2.5vw;
+    font-size: 1.75vw;
+    line-height: 2.75vw;
 }

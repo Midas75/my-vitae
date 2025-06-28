@@ -14,12 +14,12 @@
 }
 
 .pe-role-layer {
-    font-size: 12px;
+    font-size: 14px;
     padding-right: 16px;
 }
 
 .pe-time-layer {
-    font-size: 12px;
+    font-size: 14px;
     margin-left: auto
 }
 
@@ -30,11 +30,11 @@
 }
 
 .pe-technology-layer {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .pe-technology-tag {
-    font-size: 12px;
+    font-size: 14px;
     display: inline-table;
     margin-right: 8px;
     padding-left: 4px;
@@ -42,12 +42,15 @@
 }
 
 .pe-url-layer {
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 4px;
 }
 
 .pe-content-layer {
-    font-size: 12px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 28px;
     padding-right: 16px;
+}
+.pe-content-layer url{
+    display: inline;
 }

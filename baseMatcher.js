@@ -8,8 +8,13 @@ export function removeATag(element) {
 export function expandATag(element) {
     let elements = element.getElementsByTagName('a')
     for (let e of elements) {
-        if (e.innerHTML != e.href)
-            e.innerHTML += `(${decodeURIComponent(e.href)})`
+        if (e.innerHTML != e.href) {
+            let etag = document.createElement('url')
+            etag.classList = e.classList;
+            etag.style.textDecoration = "underline"
+            etag.innerHTML = ` (${decodeURIComponent(e.href)})`
+            e.append(etag)
+        }
     }
 }
 export function findValueByKeys(listItems, keys) {
@@ -85,11 +90,11 @@ export function split(str) {
             }
             let subTokens = tokens.slice(l, r)
             let item = {
-                type:subTokens[0].tokens[0].text,
-                tokens:subTokens
+                type: subTokens[0].tokens[0].text,
+                tokens: subTokens
             }
             if (subTokens[0].tokens[0].type == "link") {
-               item.type = subTokens[0].tokens[0].href
+                item.type = subTokens[0].tokens[0].href
             }
             result.push(item)
             l = r;

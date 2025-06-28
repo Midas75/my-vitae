@@ -13,19 +13,19 @@ let award = {
             container.classList.add("a-container");
 
             if (data.contents[i]["time"] != null && data.contents[i]["name"] != null) {
-                let timeLayer = document.createElement('div');
-                timeLayer.classList.add("a-time-layer");
-                timeLayer.innerHTML = formatIfExists(config.award.time.format, data.contents[i]["time"].value);
-                timeLayer.dataset.position = data.contents[i]["time"].position;
-                timeLayer.dataset.size = data.contents[i]["time"].size;
-                container.appendChild(timeLayer);
-
                 let awardLayer = document.createElement('div');
                 awardLayer.classList.add("a-title-layer");
                 awardLayer.innerHTML = data.contents[i]["name"].value;
                 awardLayer.dataset.position = data.contents[i]["name"].position;
                 awardLayer.dataset.size = data.contents[i]["name"].size;
                 container.appendChild(awardLayer);
+
+                let timeLayer = document.createElement('div');
+                timeLayer.classList.add("a-time-layer");
+                timeLayer.innerHTML = formatIfExists(config.award.time.format, data.contents[i]["time"].value);
+                timeLayer.dataset.position = data.contents[i]["time"].position;
+                timeLayer.dataset.size = data.contents[i]["time"].size;
+                container.appendChild(timeLayer);
             }
             obj.contents[i].appendChild(container);
             if (data.contents[i]["content"] != null) {

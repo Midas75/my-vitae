@@ -13,20 +13,20 @@
 
 .we-department-layer {
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     padding-right: 2vw;
     width: 20vw;
 }
 
 .we-position-layer {
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     padding-right: 2vw;
     width: 15vw;
 }
 
 .we-practice-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     font-weight: bold;
     border-radius: 0.4vw;
     background-color: #F55;
@@ -38,11 +38,11 @@
 
 .we-time-layer {
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     margin-left: auto
 }
 
 .we-content-layer {
-    font-size: 1.5vw;
-    line-height: 2.5vw;
+    font-size: 1.75vw;
+    line-height: 2.75vw;
 }

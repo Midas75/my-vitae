@@ -4,22 +4,21 @@
     margin-bottom: 0.5vw;
     position: relative;
     top: 0;
-    height: 2.5vw;
+    height: auto;
 }
 
 .a-time-layer {
-    position: absolute;
+    flex-shrink: 0;
     right:2vw;
-    font-size: 1.5vw;
+    font-size: 1.75vw;
 }
 
 .a-title-layer {
-    position: absolute;
-    left: 0;
-    font-size: 1.5vw;
+    flex: 1 1 auto;
+    font-size: 1.75vw;
 }
 .a-content-layer{
     margin-left: 2vw;
     margin-top: -0.5vw;
-    font-size: 1.5vw;
+    font-size: 1.75vw;
 }

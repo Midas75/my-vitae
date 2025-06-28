@@ -5,13 +5,13 @@
 }
 
 .ee-school-layer {
-    font-size: 14px;
+    font-size: 16px;
     padding-right: 16px;
     display: inline-table;
 }
 
 .ee-time-layer {
-    font-size: 14px;
+    font-size: 16px;
     display: inline-table;
     padding-right: 16px;
     margin-left: auto;
@@ -26,11 +26,11 @@
 }
 
 .ee-detail-layer {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .ee-detail-separator {
     visibility: hidden;
-    font-size: 12px;
+    font-size: 14px;
     color: #777
 }

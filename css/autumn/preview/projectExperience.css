@@ -15,13 +15,13 @@
 }
 
 .pe-role-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     padding-right: 2vw;
     padding-left: 2vw;
 }
 
 .pe-time-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     margin-left: auto
 }
 
@@ -33,11 +33,11 @@
 }
 
 .pe-technology-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
 }
 
 .pe-technology-tag {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     font-weight: bold;
     color: #FFF;
     display: inline-table;
@@ -47,12 +47,15 @@
 }
 
 .pe-url-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     margin-left: 1vw;
 }
 
 .pe-content-layer {
-    font-size: 1.5vw;
-    line-height: 2.5vw;
+    font-size: 1.75vw;
+    line-height: 2.75vw;
     padding-right: 2vw;
+}
+.pe-content-layer url{
+    display: inline;
 }

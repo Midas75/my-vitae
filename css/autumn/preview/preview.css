@@ -7,7 +7,7 @@
 .content-container {
     clear: both;
     margin-bottom: 2vw;
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     padding-left: 2vw;
 }
 
@@ -57,4 +57,8 @@
 
 a{
     color:inherit;
+}
+url{
+    display: inline-block;
+    text-decoration: underline;
 }

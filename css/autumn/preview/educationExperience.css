@@ -23,7 +23,7 @@
 }
 
 .ee-detail-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     padding-right: 1vw;
     padding-left: 1vw;
     border-left-style: solid;
@@ -32,7 +32,7 @@
 }
 
 .ee-detail-separator {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     color: #777;
     visibility: hidden;
 }

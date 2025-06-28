@@ -12,17 +12,17 @@
 }
 
 .we-department-layer {
-    font-size: 12px;
+    font-size: 14px;
     padding-right: 16px;
 }
 
 .we-position-layer {
-    font-size: 12px;
+    font-size: 14px;
     padding-right: 16px;
 }
 
 .we-practice-layer {
-    font-size: 12px;
+    font-size: 14px;
     border-radius: 3.2px;
     /* background-color: #DFF; */
     /* color: #000; */
@@ -34,11 +34,11 @@
 }
 
 .we-time-layer {
-    font-size: 12px;
+    font-size: 14px;
     margin-left: auto;
 }
 
 .we-content-layer {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 20px;
 }

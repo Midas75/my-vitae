@@ -4,11 +4,11 @@
 - 生日：2000-04-26
 - 电话：15653564910
 - 邮箱：1326840837@qq.com
-- 经验：2年
+- 经验：3年
 - 微信：sunzhongjie0426
 - 住址：北京市海淀区
 - 期望岗位：Java开发/全栈开发
-<!-- - 头像：![avatar](./avatar.png) -->
+- 头像：![avatar](./avatar.jpg)
 ## 教育经历
 ### 北京航空航天大学
 - 时间：2025.09~2029.06
@@ -27,6 +27,8 @@
 - 学历：本科
 - 绩点：5%~20%
 ## 获奖经历
+### 北京市优秀毕业生
+- 时间：2025.06
 ### [第四届中国工业互联网大赛北京赛站领军组一等奖](https://mp.weixin.qq.com/s/LvKN5534wlM-NBQsEUzT5A)
 - 时间：2022.11
 ### 校内算法设计竞赛二等奖
@@ -41,12 +43,12 @@
 - 时间：2024.03
 - 内容：指挥与控制学报（IF 2.56，北大核心），三作（独立撰写）
 ## 个人技能
-- 熟悉基于linux的Java/Python/C/C++开发的相关技术栈
+- 熟悉Java/Python/C/C++开发的相关技术栈
 - 有基于Docker/Kubernetes的分布式集群设计、部署、开发经验，熟悉Dockerfile与Shell脚本开发
 - 熟悉MQTT、OPC UA、Modbus等物联网通信协议，熟悉HTTP、TCP、UDP、Websocket等常见网络通信协议
 - 了解js/node、lua、前端、Unity开发、UE开发
 - 熟悉SpringCloud开发，熟悉相关技术栈：Nginx、Redis、Mybatis-Plus、Nacos、Feign、ELK、MinIO
-- 具备大量的方案、技术文档、研究报告、论文等内容的撰写经验
+- 具备熟练的方案、技术文档、研究报告、论文等内容的撰写经验
 - 重视数据结构与算法在开发中的应用，关注实际业务的时空复杂度
 ## 工作经历
 ### 慧之安信息技术股份有限公司
@@ -56,7 +58,7 @@
 - 内容：
     - 项目开发、环境部署、外出对接、方案制定、项目进度把控
     - 参与多个项目/课题/白皮书的标书、PPT撰写，与合作方/客户对接确认需求并制定方案
-    - 中英文论文撰写（物联网、无人机仿真、系统设计方向，两篇三作论文见刊）
+    - 中英文论文撰写（物联网、无人机仿真、系统设计方向）
 ### 紫龙游戏
 - 部门：北京龙之国物语研发部
 - 职位：游戏开发实习生
@@ -67,14 +69,40 @@
     - 学习Unity+C#+lua开发模式，熟悉Unity，熟悉并手动设计实现支持热重载的lua面向对象编程形式
 
 ## 项目经历
-### IMAST——智能医学分析和统计工具集
-- 职责：项目负责人
+### 基于点云数据的八叉树+A*无人机避障/寻路算法
+- 职责：独立开发
+- 时间：2024.12~至今
+- 地址：https://github.com/Midas75/AirSim-OCTree-PathFinding
+- 技术栈：Python、C++
+- 内容：
+  - 基于点云数据构建四/八叉树，利用A*算法实现无人机寻路与避障，在更新寻路图时仅处理树上活跃节点，无需重建整张图，有效提升性能表现
+  - 将float格式坐标离散化到整数，避免精度问题，进一步基于Cantor's等配对方法实现节点/路径的唯一编码
+  - 基于交叉链表法实现空间线段与树节点相交的快速查询，用于快速判断路径是否仍可通行
+  - 在A*寻路过程中引入未知区域惩罚，在使用点云数据更新八叉树时，利用射线快速标记已知非障碍节点，同时基于计数支持剔除移动物体
+  - 基于C++实现性能更高的版本，利用cppyy封装为Python接口
+  - 针对无人机寻路场景常见的x、y尺度远大于z的情况，实现树的不均匀分割，在切分树节点时允许仅切分部分维度，从而保持叶子节点的三维度比例相同
+  - 为避免不均匀分割引入的节点间中心连线穿过其他节点的情况，引入两相邻节点接触面的中心点作为中转路径点
+  - 基于json+gzip实现正反序列化，基于opencv、open3d分别实现四叉树/八叉树的可视化
+### AIDocMe：基于LLM生成Python docstring
+- 职责：独立开发
+- 时间：2025.06~至今
+- 地址：https://github.com/Midas75/aidocme
+- 技术栈：Python、OpenAI API、JavaScript
+- 内容：
+  - 使用Python中的ast与asttokens库解析代码，定位docstring位置与其他信息
+  - 设计Prompt，引导LLM生成docstring并插入原文，处理多级缩进等细节问题，确保不破坏原有格式
+  - 在前端直接申请LLM API跨域响应，规避对后端服务器的请求压力
+### IMAST：智能医学分析和统计工具集
+- 职责：独立开发
 - 时间：2024.12~至今
 - 技术栈：Electron、Vue3、Python、R
+- 地址：https://github.com/IMASToolkits
 - 内容：
-  - 基于开源项目jamovi进行开发，重新设计UI并使用Element-Plus进行实现
+  - 基于开源项目jamovi进行开发的面向医学统计软件，重新设计UI并使用Element-Plus实现
+  - 扫描现有统计方法、表格信息、分析结果等内容，转换为Markdown并接入LLM，实现基于LLM的辅助统计、方法调用、结果解读
+  - 调整vite打包配置，引入postcss支持打包时的css内联，实现高还原度的分析报告到html/pdf的导出
   - 基于rcedit修改Electron icon等相关信息，通过PowerShell调用winapi SHChangeNotify解决图标不实时更新问题
-  - 开发新的R语言模块，在软件中实现YY/T 1709所需的分析方法
+  - 开发R语言统计学模块，在软件中实现YY/T 1709、CLSI EP06、CLSI EP30等标准中的分析方法
 ### 某UE模训项目
 - 职责：项目负责人
 - 时间：2024.09~2024.11
@@ -87,7 +115,7 @@
   - 结合UE内http请求功能复杂、UMG交互功能弱等问题，构建基于MongooseWebServer的http服务器，支持静态文件访问与自定义反代，配合UE中WebBrowser使用
 
 ### 面向无人机集群的高性能综合仿真技术研究与实现
-- 职责：项目负责人
+- 职责：硕士毕业设计
 - 时间：2024.4~2025.06
 - 技术栈：Unity、AirSim、Python、C、C++、Shader、NS-3、D3D11、CUDA
 - 内容：
@@ -95,9 +123,8 @@
   - [改进AirSim在多机仿真时的卡顿问题](https://github.com/Midas75/AirSim)，构建多种替代方案定位问题所在，选取最优的单线程忙轮询+future方式代替，将单机仿真数量从20提升至210
   - 编写Shader，实现[利用Shader进行的线性深度图计算](https://github.com/Midas75/distance-effect-shader)
   - 实现SAC算法，设计奖励函数与采样方法，基于深度信息在[Unity城市场景中实现无人机的自主避障](https://gitee.com/sun-zhongjie-0426/sac-airsim-obstacle-avoid)
-  - 实现[基于点云数据的八叉树+A*的避障/寻路算法](https://github.com/Midas75/AirSim-OCTree-PathFinding)，利用cProfile分析性能瓶颈并通过邻居查询、小规模更新等方法提升性能
   - 接入YOLO完成实时图像推理，为衡量识别效果，基于顶点在Unity中实现[计算目标检测矩形轮廓](https://github.com/Midas75/unity-rect-outline)
-  - 在Unity中接入[基于CUDA的动态链接库](https://github.com/Midas75/unity-native-rendering-plugin-d3d11-cuda)，完全在显卡上将图像编码为JPEG，相比经典解决方案帧数最多提升27倍。
+  - 在Unity中接入[基于CUDA的动态链接库](https://github.com/Midas75/unity-native-rendering-plugin-d3d11-cuda)，完全在显卡上将图像编码为JPEG，相比经典解决方案帧数最多提升27倍
   - 修改GPUJPEG代码，在编码过程完成Y轴反转，同时利用查表法完成SRGB数据的Gamma校正以规避float计算的性能损耗
   - 基于JPEG帧特征，开发基于C的工具以实现[JPEG快速切分](https://github.com/Midas75/jpeg-spliter)，业务场景下性能为libjpeg-turbo的52倍
   <!-- - Unity中实现日志收集，小地图等组件，日志收集组件利用preferredHeight+数列求和，Scroll滑动时基于二分查找动态渲染目标日志项 -->
@@ -105,7 +132,7 @@
   <!-- - 设计并实现基于asyncio.Queue\[typing.Coroutine\]的单线程无人机逻辑处理框架，利于手动控制无人机复杂业务逻辑 -->
   <!-- - 基于NS3构建网络仿真框架，上层基于Python完成多种通信故障的仿真，基于SQLite3完成通信数据实时记录，并构建简易ORM框架，支持类到表自动映射、建表语句、插入语句自动生成 -->
 ### MyVitae：基于Markdown的简历生成工具
-- 职责：前端开发
+- 职责：独立开发
 - 时间：2023.5~至今
 - 技术栈：JavaScript、HTML、CSS、Markdown
 - 地址：https://github.com/Midas75/my-vitae
@@ -113,7 +140,7 @@
     - 对markdown文档约定部分格式，通过正则表达式与marked.js库提供的Lexer方法对文档进行解析，渲染为具有一定格式的html文档，利用浏览器的打印功能生成pdf
     - 包括个人信息、教育经历、个人技能、工作经历、项目经历等模块
     - 在编辑页面实现锁定同步滚动、本地存储、打印、展示/隐藏链接、模板与风格切换、彩色/灰度设置等功能
-    - 改善了marked.js中链接跳转体验不佳的问题，基于Lexer实现从渲染结果向原始文本的跳转（双击div时选中原始文本）
+    - 改善了marked.js中链接跳转体验不佳的问题，基于Lexer实现从渲染结果向原始文本的跳转
     - 基于css实现可切换的渲染风格与多套简历模板
     - 基于svg+emoji绘制矢量ui，封装为ui加载方法；仿照ElementUI封装了message组件（css-transition），并应用于编辑页面
     - **本简历由该项目生成**
@@ -130,7 +157,7 @@
   - 利用Redis作为基于内存的消息队列，通过lua实现入队出队的原子性、实现帧数据自动过期与队列长度上限控制
   - 进行性能测试与负载计算，确保性能足够支撑服务
 ### PyScdl：基于python构建的配置·服务发现·日志收集中心
-- 职责：后端开发
+- 职责：独立开发
 - 时间：2023.10~2023.11
 - 技术栈：Python、FastAPI、aiohttp、asyncio
 - 地址：https://github.com/Midas75/py-scdl

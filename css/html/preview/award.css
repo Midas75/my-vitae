@@ -10,16 +10,16 @@
 .a-time-layer {
     position: absolute;
     right:16px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .a-title-layer {
     position: absolute;
     left: 0;
-    font-size: 12px;
+    font-size: 14px;
 }
 .a-content-layer{
     margin-left: 16px;
     margin-top: -4px;
-    font-size: 12px;
+    font-size: 14px;
 }

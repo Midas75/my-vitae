@@ -5,13 +5,13 @@
 }
 
 .ee-school-layer {
-    font-size: 1.75vw;
+    font-size: 2vw;
     padding-right: 2vw;
     display: inline-table;
 }
 
 .ee-time-layer {
-    font-size: 1.75vw;
+    font-size: 2vw;
     display: inline-table;
     padding-right: 2vw;
     margin-left: auto;
@@ -26,11 +26,11 @@
 }
 
 .ee-detail-layer {
-    font-size: 1.5vw;
+    font-size: 1.75vw;
 }
 
 .ee-detail-separator {
     visibility: hidden;
-    font-size: 1.5vw;
+    font-size: 1.75vw;
     color: #777
 }
