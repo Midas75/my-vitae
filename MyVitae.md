@@ -38,18 +38,19 @@
 ## [论文发表](获奖经历)
 ### [IoT OS Platform: Software Infrastructure for Next-Gen Industrial IoT](https://www.mdpi.com/2076-3417/14/13/5370)
 - 时间：2024.06
-- 内容：Applied Sciences（IF2.5，JCI SCI Q2），三作（约占全文80%工作量）
+- 内容：Applied Sciences（IF2.5，JCI SCI Q2），三作
 ### [基于物联网操作系统平台的无人机战术仿真系统](https://www.jc2.org.cn/CN/10.3969/j.issn.2096-0204.2024.03.0347)
 - 时间：2024.03
-- 内容：指挥与控制学报（IF 2.56，北大核心），三作（独立撰写）
+- 内容：指挥与控制学报（IF 2.56，北大核心），三作
 ## 个人技能
+- 深度参与多项国家重点项目论证、申报的完整流程，支撑建议书/任务书撰写、上会汇报、演示等各项关键工作
+- 研究/项目主要方向为军口智能软件工程、智能数据分析
 - 熟悉Java/Python/C/C++开发的相关技术栈
 - 有基于Docker/Kubernetes的分布式集群设计、部署、开发经验，熟悉Dockerfile与Shell脚本开发
 - 熟悉MQTT、OPC UA、Modbus等物联网通信协议，熟悉HTTP、TCP、UDP、Websocket等常见网络通信协议
 - 了解js/node、lua、前端、Unity开发、UE开发
 - 熟悉SpringCloud开发，熟悉相关技术栈：Nginx、Redis、Mybatis-Plus、Nacos、Feign、ELK、MinIO
-- 具备熟练的方案、技术文档、研究报告、论文等内容的撰写经验
-- 重视数据结构与算法在开发中的应用，关注实际业务的时空复杂度
+- 具备熟练的方案、技术文档、研究报告、论文、专利等内容的撰写经验
 ## 工作经历
 ### 慧之安信息技术股份有限公司
 - 部门：产品与研发中心创新部
@@ -71,7 +72,7 @@
 ## 项目经历
 ### 基于点云数据的八叉树+A*无人机避障/寻路算法
 - 职责：独立开发
-- 时间：2024.12~至今
+- 时间：2024.12~2025.9
 - 地址：https://github.com/Midas75/AirSim-OCTree-PathFinding
 - 技术栈：Python、C++
 - 内容：
@@ -85,7 +86,7 @@
   - 基于json+gzip实现正反序列化，基于opencv、open3d分别实现四叉树/八叉树的可视化
 ### AIDocMe：基于LLM生成Python docstring
 - 职责：独立开发
-- 时间：2025.06~至今
+- 时间：2025.06~2025.7
 - 地址：https://github.com/Midas75/aidocme
 - 技术栈：Python、OpenAI API、JavaScript
 - 内容：
@@ -94,9 +95,10 @@
   - 在前端直接申请LLM API跨域响应，规避对后端服务器的请求压力
 ### IMAST：智能医学分析和统计工具集
 - 职责：独立开发
-- 时间：2024.12~至今
+- 时间：2024.12~2025.7
 - 技术栈：Electron、Vue3、Python、R
 - 地址：https://github.com/IMASToolkits
+- 隐藏
 - 内容：
   - 基于开源项目jamovi进行开发的面向医学统计软件，重新设计UI并使用Element-Plus实现
   - 扫描现有统计方法、表格信息、分析结果等内容，转换为Markdown并接入LLM，实现基于LLM的辅助统计、方法调用、结果解读
@@ -264,7 +266,6 @@
 ### 基于慧安蜂巢的红色信创园区解决方案
 - 职责：产品经理
 - 时间：2022.10~2022.11
-- 隐藏：图片失效
 - 内容：
     - 北京赛站（智慧园区方向）领军组第一名（36支队伍），奖金10万
     - [全国总决赛最具发展潜力奖](https://guanwang-1257541758.obs.cn-north-4.myhuaweicloud.com/%E8%8E%B7%E5%A5%96%E8%AF%81%E4%B9%A6/%E7%AC%AC%E5%9B%9B%E5%B1%8A/%E9%A2%86%E5%86%9B%E7%BB%84%E5%A5%96%E7%8A%B6/%E6%9C%80%E5%85%B7%E5%8F%91%E5%B1%95%E6%BD%9C%E5%8A%9B%E5%A5%96/CII-C520220133.jpg)
